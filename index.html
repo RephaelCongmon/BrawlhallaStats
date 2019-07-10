@@ -1,0 +1,133 @@
+
+ <!DOCTYPE HTML>
+ <html>
+ <head>
+
+ <script async src="https://www.googletagmanager.com/gtag/js?id=UA-16820736-2" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ <script type="566ead401d4a289a66320f2a-text/javascript">
+                 window.dataLayer = window.dataLayer || [];
+                 function gtag(){dataLayer.push(arguments);}
+                 gtag('js', new Date());
+ 
+                 gtag('config', 'UA-16820736-2');
+             </script>
+ <title>
+                 Brawlhalla Player Stats | ROFEL            </title>
+
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+
+ <link rel="shortcut icon" href="favicon.ico">
+ 
+ <link href="assets/plugins/tablesaw/dist/tablesaw.css" rel="stylesheet" type="text/css" />
+ <link href="assets/plugins/bootstrap-sweetalert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+ <link href="assets/plugins/nvd3/build/nv.d3.min.css" rel="stylesheet" type="text/css" />
+ <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+ <link href="assets/css/core.css" rel="stylesheet" type="text/css">
+ <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
+ <link href="assets/css/components.css" rel="stylesheet" type="text/css">
+ <link href="assets/css/pages.css" rel="stylesheet" type="text/css">
+ <link href="assets/css/menu.css" rel="stylesheet" type="text/css">
+ <link href="assets/css/responsive.css" rel="stylesheet" type="text/css">
+ <link href="assets/css/_main.css" rel="stylesheet" type="text/css">
+ <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" type="text/css">
+
+ <script src="assets/js/modernizr.min.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ <!--[if lt IE 9]>
+             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+             <![endif]-->
+ <meta charset="utf-8" /><meta property="og:type" content="website" /><meta property="og:site_name" content="Plancke" /><meta property="og:title" content="Plancke" /><meta property="og:locale" content="en_US" /><meta property="og:description" content="Website used to view Player, Guild, etc... statistics for the Hypixel Network." /><meta property="keywords" content="Plancke,Hypixel,Stats,Statistics" /><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="author" content="Plancke" /><meta name="twitter:card" content="summary" /><meta name="twitter:site" content="@Plancke" /><meta name="twitter:creator" content="@Plancke" /><meta name="twitter:title" content="Plancke" /><meta name="twitter:description" content="Website used to view Player, Guild, etc... statistics for the Hypixel Network." /><meta name="twitter:image" content="https://plancke.io/assets/images/avatar.png" /><meta name="description" content="Website used to view Player, Guild, etc... statistics for the Hypixel Network." /><meta name="keywords" content="Plancke,Hypixel,Stats,Statistics" /> </head>
+ <body class="fixed-left">
+ 
+ <div id="wrapper">
+ 
+ <div class="topbar">
+ 
+ <div class="topbar-left">
+ <div class="text-center">
+ <a href="#" class="logo"><img src="favicon.ico" height="18px" /> <span>ROFELBot</span> </a>
+ </div>
+ </div>
+ 
+ <div class="navbar navbar-default" role="navigation"><div class="container"><div class=""><div class="pull-left"><button class="button-menu-mobile open-left waves-effect"><i class="md md-menu"></i></button><span class="clearfix"></span></div><ul class="nav navbar-nav hidden-xs"></ul></div></div></div> </div>
+ 
+ 
+ <div class="left side-menu">
+ <div class="sidebar-inner slimscrollleft">
+  <div id="sidebar-menu">
+ <ul><li class="menu-title">Brawlhalla</li><li class="has_sub"><a href="javascript:;" class="waves-effect waves-primary"><i class="md md-person"></i><span> Player </span><span class="menu-arrow"></span></a><ul class="list-unstyled"><li><a href="/hypixel/player/stats/">Stats</a></li><li><a href="/hypixel/player/calc/">Calculator</a></li><li><a href="/hypixel/player/friends/">Friends</a></li><li><a href="/hypixel/player/weapons/">Weapons</a></li><li><a href="/hypixel/player/achievements/">Achievements</a></li></ul></li><li><a href="/hypixel/guild/" class="waves-effect waves-primary"><i class="md md-group"></i><span> Guild Stats </span></a></li><li><a href="/hypixel/leaderboards/" class="waves-effect waves-primary"><i class="md md-view-list"></i><span> Leaderboards </span></a></li><li><a href="/hypixel/generators/" class="waves-effect waves-primary"><i class="md md-camera-alt"></i><span> Generators </span></a></li><li><a href="/hypixel/boosters/" class="waves-effect waves-primary"><i class="md md-timer"></i><span> Boosters </span></a></li><li><a href="/hypixel/watchdog/" class="waves-effect waves-primary"><i class="md md-remove-circle"></i><span> Watchdog Stats </span></a></li><li class="menu-title">Tools</li><li><a href="/tools/color/" class="waves-effect waves-primary"><i class="fa fa-paint-brush"></i><span> MC Color Tester </span></a></li></ul> <div class="clearfix"></div>
+ </div>
+ <div class="clearfix"></div>
+ </div>
+ 
+ </div>
+ 
+ 
+ 
+ 
+ <div class="content-page">
+ 
+ <div class="content">
+ <div class="container">
+ 
+ <div class="row">
+ <div class="col-sm-12">
+ <div class="page-title-box">
+ <h4 class="page-title">Brawlhalla Player Stats</h4>
+ </div>
+ </div>
+ </div>
+ <div class="row">
+ <div class="col-lg-12">
+ <div class="card-box">
+ <h4 class="text-dark header-title m-t-0">Search Player</h4>
+ <br>
+ <form method="post" action="/hypixel/player/stats/">
+ <div class="input-group">
+ <span class="input-group-btn"><button type="submit" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button></span>
+ <input type="text" name="player" class="form-control" placeholder="Username/UUID">
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
+ 
+ </div>
+ 
+ <footer class="footer">
+ <span>2019 © ROFEL</span>
+ <span>- Powered by <a href="https://github.com/RephaelCongmon" target="_blank">ROFELBot</a></span>
+ </footer>
+ </div>
+ 
+ 
+ 
+ <script type="566ead401d4a289a66320f2a-text/javascript">
+                 var resizefunc = [];
+             </script>
+ 
+
+ <script src="assets/js/jquery.min.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ <script src="assets/js/bootstrap.min.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ <script src="assets/js/detect.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ <script src="assets/js/fastclick.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ <script src="assets/js/jquery.slimscroll.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ <script src="assets/js/jquery.blockUI.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ <script src="assets/js/waves.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ <script src="assets/js/wow.min.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ <script src="assets/js/jquery.nicescroll.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ <script src="assets/js/jquery.scrollTo.min.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ <script src="assets/plugins/switchery/switchery.min.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ 
+ <script src="assets/js/jquery.core.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ <script src="assets/js/jquery.app.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ <script src="assets/js/_main.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
+ </div>
+ <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js" data-cf-settings="566ead401d4a289a66320f2a-|49" defer=""></script></body>
+ </html>
+ 

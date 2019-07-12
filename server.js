@@ -36,19 +36,20 @@ app.get('/submit-form', async function( req, res) {
     await fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
-            console.log("JSON = ", json.error);
+            console.log("JSON = ", json.error.code);
             
-            if (json){
+            if (json.error.code == 404){
                 // console.log(json.name);
                 // console.log(json.level);
                 // console.log(json.games);
                 // console.log("Wins = " + json.wins);
                 // console.log("Losses = " + (json.games-json.wins) );
-                
-                jsonn = json;
+                res.send('User not found!');
+                //jsonn = json;
             }
             else {
-                res.send('User not found!');
+                jsonn = json;
+                //res.send('User not found!');
             }
         });
 

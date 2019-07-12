@@ -124,13 +124,14 @@
                 <span id="playerDamageDealt"><b>Quests Completed:</b> 79<br /><br /></span>
                 <span id="playerDamageTaken"><b>Quests Completed:</b> 79<br /><br /></span>
 
-                <b>Friends:</b> <a href="/hypixel/player/friends/RupRep444">38</a> 
+                
             </div>
         </div>
         <div class="col-lg-12">
             <div class="card-box m-b-10">
-                <h4 class="m-t-0 header-title">Status</h4>
-                <b>Offline</b>
+                <h4 class="m-t-0 header-title">Clan:</h4>
+                <span id="playerClan"><b>Offline</b><br /></span>
+                <span id="playerClanXP"><b>Offline</b><br /></span>
             </div>
         </div>
         <div class="col-lg-12">
@@ -212,6 +213,8 @@
                 var playerLosses = result.games-result.wins;
                 var playerLevel = result.level;
                 var playerXP = result.xp;
+                var playerClan = result.clan.clan_name;
+                var playerClanXP = result.clan.clan_xp;
 
                 var damageDealt = 0;
                 var damageTaken = 0;
@@ -232,6 +235,8 @@
                 document.getElementById('playerDamageDealt').innerHTML = `<b>Total Damage Dealt</b> ${numberWithCommas(damageDealt)}<br />`;
                 document.getElementById('playerDamageTaken').innerHTML = `<b>Total Damage Taken:</b> ${numberWithCommas(damageTaken)}<br />`;
                 
+                document.getElementById('playerClan').innerHTML = `<b>${playerClan}</b><br />`;
+                document.getElementById('playerClanXP').innerHTML = `<b>Clan XP: </b>${numberWithCommas(playerClanXP)}<br />`;
             }
 
         })

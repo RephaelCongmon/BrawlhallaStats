@@ -138,10 +138,10 @@
             <h4 class="text-dark header-title m-t-0">Search Player</h4>
             <br>
             <form method="get" name="formxml" id ="myForm" action="/api/submit-form">
-            <div class="input-group">
-                <span class="input-group-btn"><button type="submit" onclick="" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button></span>
-                <input type="text" name="player" class="form-control" placeholder="Username/UUID">
-            </div>
+                <div class="input-group">
+                    <span class="input-group-btn"><button type="submit" onclick="" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button></span>
+                    <input type="text" name="player" class="form-control" placeholder="Username/UUID">
+                </div>
             </form>
         </div>
     </div>
@@ -166,8 +166,12 @@
 <script>
     document.querySelector('#myForm').addEventListener('submit', e => {
         console.log("Query selector ran!");
+        console.log("e.target = ", e.target);
+
         e.preventDefault();
-        fetch('http://brawlhallastats.herokuapp.com/api/submit-form')
+        fetch('http://brawlhallastats.herokuapp.com/api/submit-form', {
+            body: e.target
+        })
         .then(response => response.json())
         .then(result => {
             console.log("Result = ", JSON.stringify(result) );

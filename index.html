@@ -29,8 +29,8 @@
 
 
  <!--<link rel="stylesheet" href="assets/css/materialdesignicons.min.css" type="text/css">-->
- <script src = "assets/js/scripts.js" >
-
+ <script src = "scripts.js" >
+     
  </script>
  <!--[if lt IE 9]>
              <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -95,9 +95,9 @@
  <div class="card-box">
  <h4 class="text-dark header-title m-t-0">Search Player</h4>
  <br>
- <form method="post" action="">
+ <form method="post" name="formxml" action="">
  <div class="input-group">
- <span class="input-group-btn"><button type="submit" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button></span>
+ <span class="input-group-btn"><button type="submit" onclick="foo();" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button></span>
  <input type="text" name="player" class="form-control" placeholder="Username/UUID">
  </div>
  </form>

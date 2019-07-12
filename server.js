@@ -36,7 +36,7 @@ router.use(function(req, res, next) {
 
 // more routes will happen here
 
-router.get('/submit-form', function(req, res) {
+router.get('/submit-form', async function(req, res) {
     console.log("Form submitted");
 
     console.log("Req = ", req.query.player);

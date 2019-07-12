@@ -145,7 +145,7 @@
             console.log("Result = ", JSON.stringify(result) );
             //...do some stuff on the page with the result
 
-            if ((json.error) && (json.error.code == 404) ){
+            if ((result.error) && (result.error.code == 404) ){
                 document.querySelector('#playerNotFound').style.display = "inline";
                 
                

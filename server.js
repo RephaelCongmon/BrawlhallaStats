@@ -15,7 +15,13 @@ app.use(express.urlencoded());
 
 app.get('/submit-form', function( req, res) {
     console.log("Form submitted");
-    res.send('hello world');
+    // res.send('hello world');
+
+    console.log("req = ", req);
+    console.log("res = ", res);
+
+    var x = document.formxml.player.value;
+    console.log("x = ", x);
 });
 
 app.listen(process.env.PORT || 4000, function(){

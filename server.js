@@ -25,6 +25,16 @@ router.get('/', function(req, res) {
     console.log("here");
 });
 
+router.get('/submit-form', function(req, res) {
+    console.log("Form submitted");
+
+    console.log("Req = ", req.query.player);
+
+    let jsonn;
+
+    
+});
+
 // middleware to use for all requests
 router.use(function(req, res, next) {
     // do logging

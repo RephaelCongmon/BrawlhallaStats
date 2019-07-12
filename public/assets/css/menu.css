@@ -5,17 +5,6 @@
 
 
 
-@import url(https://fonts.googleapis.com/css?family=Play);
-body{
-  background:#050505;
-  margin:0px;
-  color:#eee;
-  font-family:Play;
-  user-select:none;
-  -webkit-user-select:none;
-  cursor:default;
-}
-
 #account-bar-wrapper{
   position:absolute;
   top:0px;
@@ -69,17 +58,6 @@ body{
   text-align:right;
 }
 
-#doit-btn{
-  margin:100px 0px 0px 0px;
-}
-
-.btn{
-  display:inline-block;
-  padding:5px;
-  height:25px;
-  background:#000;
-  cursor:pointer;
-}
 
 #xp-increase-fx{
   position:relative;

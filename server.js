@@ -22,6 +22,7 @@ var router = express.Router();
 // =============================================================================
 router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!'});
+    console.log("here");
 });
 
 // middleware to use for all requests

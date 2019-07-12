@@ -15,7 +15,7 @@ app.use(express.static(__dirname + '/public'))
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/submit-form', function( req, res) {
+app.get('/submit-form', async function( req, res) {
     console.log("Form submitted");
     // res.send('hello world');
 
@@ -24,8 +24,8 @@ app.get('/submit-form', function( req, res) {
     var x = req.query.player;
   
     let jsonn;
-    
-    fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
+
+    await fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
             //console.log(json);

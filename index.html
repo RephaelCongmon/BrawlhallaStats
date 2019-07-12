@@ -92,7 +92,7 @@
     </div>
  </div>
  
- <div class="row" id="playerNotFound" visibility="hidden">
+ <div class="row" id="playerNotFound" style="display: none;">
     <div class="col-lg-12">
         <div class="panel panel-border panel-danger">
             <div class="panel-heading"><h3 class="panel-title">Player not found</h3></div>
@@ -146,7 +146,7 @@
             //...do some stuff on the page with the result
 
             if ((json.error) && (json.error.code == 404) ){
-                document.querySelector('#playerNotFound').style.visibility = "visible";
+                document.querySelector('#playerNotFound').style.display = "inline";
                 
                
             }

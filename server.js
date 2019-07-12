@@ -37,14 +37,19 @@ app.get('/submit-form', async function( req, res) {
         .then(res => res.json())
         .then(json => {
             //console.log(json);
-          
-            console.log(json.name);
-            console.log(json.level);
-            console.log(json.games);
-            console.log("Wins = " + json.wins);
-            console.log("Losses = " + (json.games-json.wins) );
             
-            jsonn = json;
+            if (json != NULL){
+                console.log(json.name);
+                console.log(json.level);
+                console.log(json.games);
+                console.log("Wins = " + json.wins);
+                console.log("Losses = " + (json.games-json.wins) );
+                
+                jsonn = json;
+            }
+            else {
+                res.send('User not found!');
+            }
         });
 
    

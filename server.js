@@ -48,19 +48,9 @@ router.get('/submit-form', async function(req, res) {
     await fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
-            // console.log("JSON = ", json.error.code);
-            
-            res.json(json);
-            
-            // if ((json.error) && (json.error.code == 404) ){
 
-            //     res.send('User not found!');
-            //     //jsonn = json;
-            // }
-            // else {
-            //     jsonn = json;
-            //     //res.send('User not found!');
-            // }
+            res.json(json);
+        
         });
 });
 

@@ -16,3 +16,21 @@ function foo(){
     var name = document.formxml.player.value;
     alert("Your name is " + name);
 }
+
+function getInput(){
+    var res = "";
+
+    res = document.formxml.player.value;
+    return res;
+}
+
+function clickButton(){
+    console.log("Running clickButton");
+    var x = getInput();
+    console.log("x = " + x);
+
+    fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
+        .then(res => res.json())
+        .then(json => console.log(json));
+
+}

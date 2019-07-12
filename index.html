@@ -126,7 +126,7 @@
     document.querySelector('#myForm').addEventListener('submit', e => {
         console.log("Query selector ran!");
         e.preventDefault();
-        fetch('http://brawlhallastats.herokuapp.com/api')
+        fetch('http://brawlhallastats.herokuapp.com/api/submit-form')
         .then(response => response.json())
         .then(result => {
             console.log("Result = ", JSON.stringify(result) );

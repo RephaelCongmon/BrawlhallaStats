@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 const bodyParser = require('body-parser');
 
 var TOKEN = process.env.brawlhallaKEY;
-const bh = require('brawlhalla-api')('XOQ64KYMCXKEANE7JCAQYS10CFYNS');
+const bh = require('brawlhalla-api')(`${TOKEN}`);
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
@@ -24,6 +24,14 @@ app.get('/submit-form', async function( req, res) {
     var x = req.query.player;
   
     let jsonn;
+
+
+    bh.getBhidByName(x)
+        .then(function(users){
+            console.log("Users = ", users);
+        }).catch(function(error){
+            console.log(error);
+        });
 
     await fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
         .then(res => res.json())

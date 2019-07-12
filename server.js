@@ -41,7 +41,11 @@ app.get('/submit-form', async function( req, res) {
 
    
     console.log(jsonn.name);
-    res.send(jsonn.name);
+    res.send(`${jsonn.name}\n
+    ${jsonn.level}\n
+    Total games: ${jsonn.games}\n
+    Total Wins:  ${jsonn.wins}\n
+    Total Losses: ${jsonn.games-jsonn.wins}`);
     //var x = document.formxml.player.value;
     //console.log("x = ", x);
 });

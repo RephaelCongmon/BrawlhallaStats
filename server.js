@@ -26,6 +26,14 @@ app.get('/submit-form', function( req, res) {
     fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => console.log(json));
+
+    console.log(json.name);
+    console.log(json.level);
+    console.log(json.games);
+    console.log("Wins = " + json.wins);
+    console.log("Losses = " + (json.games-json.wins) );
+
+    res.send(json.name);
     //var x = document.formxml.player.value;
     //console.log("x = ", x);
 });

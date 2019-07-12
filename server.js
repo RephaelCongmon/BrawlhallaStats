@@ -21,19 +21,11 @@ var router = express.Router();
 // ROUTES FOR OUR API
 // =============================================================================
 router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!'});
+    //res.json({ message: 'hooray! welcome to our api!'});
     console.log("here");
 });
 
-router.get('/submit-form', function(req, res) {
-    console.log("Form submitted");
 
-    console.log("Req = ", req.query.player);
-
-    let jsonn;
-
-    
-});
 
 // middleware to use for all requests
 router.use(function(req, res, next) {
@@ -43,6 +35,34 @@ router.use(function(req, res, next) {
 });
 
 // more routes will happen here
+
+router.get('/submit-form', function(req, res) {
+    console.log("Form submitted");
+
+    console.log("Req = ", req.query.player);
+
+    let jsonn;
+
+    var x = req.query.player;
+
+    await fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
+        .then(res => res.json())
+        .then(json => {
+            // console.log("JSON = ", json.error.code);
+            
+            res.json(json);
+            
+            // if ((json.error) && (json.error.code == 404) ){
+
+            //     res.send('User not found!');
+            //     //jsonn = json;
+            // }
+            // else {
+            //     jsonn = json;
+            //     //res.send('User not found!');
+            // }
+        });
+});
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api

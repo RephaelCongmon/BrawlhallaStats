@@ -297,14 +297,13 @@
                 console.log(playerXPPercentageString);
 
                 var playerXP = result.xp;
+                var playerClan;
+                var playerClanXP;
                 if (result.clan){
-                    var playerClan = result.clan.clan_name;
-                    var playerClanXP = result.clan.clan_xp;
+                    playerClan = result.clan.clan_name;
+                    playerClanXP = result.clan.clan_xp;
                 }
-                else {
-                    playerClan = "Not in a clan!";
-                    playerClanXP = "Not in a clan!";
-                }
+                
                 var playerBombKOs = result.kobomb;
                 var playerMineKOs = result.komine;
                 var playerSpikeballKOs = result.kospikeball;
@@ -317,6 +316,7 @@
                 var playerKOs = 0;
                 var playerFalls = 0;
                 var playerSuicides = 0;
+                var playerDamageUnarmed = 0;
 
                 for (var i = 0; i < result.legends.length; i++){
                     damageDealt += parseInt(result.legends[i].damagedealt);
@@ -325,6 +325,7 @@
                     playerKOs += parseInt(result.legends[i].kos);
                     playerFalls += parseInt(result.legends[i].falls);
                     playerSuicides += parseInt(result.legends[i].suicides);
+                    playerDamageUnarmed += parseInt(result.legends[i].damageunarmed);
                 }
 
                 var timeSpentInGameString = timeStringFunction(timeSpentInGame);
@@ -354,8 +355,9 @@
                 }
                 else {
                     document.getElementById('playerClan').innerHTML = `<b>Not In A Clan!</b><br />`;
-                    document.getElementById('playerClanXP').innerHTML = `<b></b><br />`;
+                    document.getElementById('playerClanXP').innerHTML = `<b></b>`;
                 }
+
                 document.getElementById('playerBombKOs').innerHTML = `<b>Bomb Kills: </b>${numberWithCommas(playerBombKOs)}<br />`;
                 document.getElementById('playerMineKOs').innerHTML = `<b>Mine Kills: </b>${numberWithCommas(playerMineKOs)}<br />`;
                 document.getElementById('playerSpikeballKOs').innerHTML = `<b>Spikeball Kills: </b>${numberWithCommas(playerSpikeballKOs)}<br />`;

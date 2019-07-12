@@ -4,15 +4,15 @@ const fetch = require('node-fetch');
 var x = "ruprep444";
 var TOKEN = process.env.brawlhallaKEY;
 
-// bh.getSteamId(`https://steamcommunity.com/id/${x}/`)
-//     .then(function(steamID){
-//         console.log("steamID = ", steamID);
-//     }).catch(function(error){
-//         console.log("Error: ", error);
-//     });
+bh.getSteamId(`https://steamcommunity.com/id/${x}/`)
+    .then(function(steamID){
+        console.log("steamID = ", steamID);
+    }).catch(function(error){
+        console.log("Error: ", error);
+    });
 
 
 function foo(){
     var name = document.formxml.player.value;
-    alert(name);
+    alert("Your name is ", name);
 }

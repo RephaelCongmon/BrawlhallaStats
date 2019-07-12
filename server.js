@@ -26,24 +26,24 @@ app.get('/submit-form', async function( req, res) {
     let jsonn;
 
 
-    bh.getBhidByName(x)
-        .then(function(users){
-            console.log("Users = ", users);
-        }).catch(function(error){
-            console.log(error);
-        });
+    // bh.getBhidByName(x)
+    //     .then(function(users){
+    //         console.log("Users = ", users);
+    //     }).catch(function(error){
+    //         console.log(error);
+    //     });
 
     await fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
-            //console.log(json);
+            console.log(json);
             
-            if (json == null){
-                console.log(json.name);
-                console.log(json.level);
-                console.log(json.games);
-                console.log("Wins = " + json.wins);
-                console.log("Losses = " + (json.games-json.wins) );
+            if (json){
+                // console.log(json.name);
+                // console.log(json.level);
+                // console.log(json.games);
+                // console.log("Wins = " + json.wins);
+                // console.log("Losses = " + (json.games-json.wins) );
                 
                 jsonn = json;
             }

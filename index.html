@@ -118,9 +118,12 @@
 
                 <span id="playerXP"><b>Karma:</b> 117,680<br /></span>
                 <span id="playerGames"><b>Achievement Points:</b> 1,470<br /></span>
-                <b>Quests Completed:</b> 79<br /><br />
-                <b>Firstlogin: </b>2015-03-03 18:46 EST<br />
-                <b>Lastlogin: </b>2019-05-22 16:12 EDT<br /><br />
+                <span id="playerWins"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerLosses"><b>Quests Completed:</b> 79<br /><br /></span>
+
+                <span id="playerDamageDealt"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerDamageTaken"><b>Quests Completed:</b> 79<br /><br /></span>
+
                 <b>Friends:</b> <a href="/hypixel/player/friends/RupRep444">38</a> 
             </div>
         </div>
@@ -210,11 +213,24 @@
                 var playerLevel = result.level;
                 var playerXP = result.xp;
 
+                var damageDealt = 0;
+                var damageTaken = 0;
+
+                for (var i = 0; i < result.legends.length; i++){
+                    damageDealt += parseInt(results.legends[i].damagedealt);
+                    damageTaken += parseInt(results.legends[i].damagetaken);
+                }
+
                 document.querySelector('#playerStats').style.display = "inline";
                 document.getElementById('playerName').innerHTML = `${playerName}`;
                 document.getElementById('playerLevel').innerHTML = `<b>Level: </b>${playerLevel}<br />`;
                 document.getElementById('playerXP').innerHTML = `<b>Total XP:</b> ${numberWithCommas(playerXP)}<br />`;
-                document.getElementById('playerGames').innerHTML = `<b>Games Played:</b> ${numberWithCommas(playerGames)}<br />`
+                document.getElementById('playerGames').innerHTML = `<b>Games Played:</b> ${numberWithCommas(playerGames)}<br />`;
+                document.getElementById('playerWins').innerHTML = `<b>Games Won:</b> ${numberWithCommas(playerWins)}<br /><br />`;
+                document.getElementById('playerLosses').innerHTML = `<b>Games Lost:</b> ${numberWithCommas(playerLosses)}<br /><br />`;
+
+                document.getElementById('playerDamageDealt').innerHTML = `<b>Games Lost:</b> ${numberWithCommas(damageDealt)}<br /><br />`;
+                document.getElementById('playerDamageTaken').innerHTML = `<b>Games Lost:</b> ${numberWithCommas(damageTaken)}<br /><br />`;
                 
             }
 

@@ -20,8 +20,12 @@ app.get('/submit-form', function( req, res) {
     // res.send('hello world');
 
     console.log("req = ", req.query.player);
-    console.log("res = ", );
+    //console.log("res = ", );
+    var x = req.query.player;
 
+    fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
+        .then(res => res.json())
+        .then(json => console.log(json));
     //var x = document.formxml.player.value;
     //console.log("x = ", x);
 });

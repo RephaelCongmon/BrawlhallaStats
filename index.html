@@ -124,16 +124,28 @@
                 <span id="playerDamageDealt"><b>Quests Completed:</b> 79<br /><br /></span>
                 <span id="playerDamageTaken"><b>Quests Completed:</b> 79<br /><br /></span>
 
+                <span id="playerTimeInGame"><b>Quests Completed:</b> 79<br /><br /></span>
+
                 
             </div>
         </div>
         <div class="col-lg-12">
             <div class="card-box m-b-10">
-                <h4 class="m-t-0 header-title">Clan:</h4>
+                <h4 class="m-t-0 header-title">Clan Information</h4>
                 <span id="playerClan"><b>Offline</b><br /></span>
                 <span id="playerClanXP"><b>Offline</b><br /></span>
             </div>
         </div>
+        <div class="col-lg-12">
+                <div class="card-box m-b-10">
+                    <h4 class="m-t-0 header-title">K.O. Stats</h4>
+                    <span id="playerBombKOs"><b>Offline</b><br /></span>
+                    <span id="playerMineKOs"><b>Offline</b><br /></span>
+                    <span id="playerSpikeballKOs"><b>Offline</b><br /></span>
+                    <span id="playerSidekickKOs"><b>Offline</b><br /></span>
+                    <span id="playerSnowballKOs"><b>Offline</b><br /></span>
+                </div>
+            </div>
         <div class="col-lg-12">
             <div class="card-box m-b-10">
                 <p>
@@ -183,6 +195,35 @@
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
+    function timeStringFunction(num){
+        let totalTime = num;
+        let totalDays = Math.floor(totalTime / 86400);
+        totalTime = totalTime % 86400;
+
+        let totalHours = Math.floor(totalTime / 3600);
+        totalTime = totalTime % 3600;
+
+        let totalMinutes = Math.floor(totalTime / 60);
+        totalTime = totalTime % 60;
+
+        let totalSeconds = totalTime;
+
+        totalDays = totalDays.toFixed(0);
+        totalSeconds = totalSeconds.toFixed(0);
+        totalMinutes = totalMinutes.toFixed(0);
+        totalHours = totalHours.toFixed(0);
+
+        totalDays = numberWithCommas(totalDays);
+
+        let timeString = (totalDays != "0" && totalDays != "1" ? `${totalDays} Days ` : '' || totalDays == "1" ? `${totalDays} Day ` : '') +
+                            (totalHours > 1 ? `${totalHours} Hours ` : '' || totalHours == 1 ? `${totalHours} Hour ` : '') +
+                            (totalMinutes > 1 ? `${totalMinutes} Minutes ` : '' || totalMinutes == 1 ? `${totalMinutes} Minute ` : '') +
+                            (totalSeconds > 1 ? `${totalSeconds} Seconds` : '' || totalSeconds == 1 ? `${totalSeconds} Second` : '');
+        
+        return timeString;
+
+    }
+
     document.querySelector('#myForm').addEventListener('submit', e => {
         console.log("Query selector ran!");
         
@@ -216,13 +257,23 @@
                 var playerClan = result.clan.clan_name;
                 var playerClanXP = result.clan.clan_xp;
 
+                var playerBombKOs = result.kobomb;
+                var playerMineKOs = result.komine;
+                var playerSpikeballKOs = result.kospikeball;
+                var playerSidekickKOs = result.kosidekick;
+                var playerSnowballKOs = result.kosnowball;
+
+                var timeSpentInGame = 0;
                 var damageDealt = 0;
                 var damageTaken = 0;
 
                 for (var i = 0; i < result.legends.length; i++){
                     damageDealt += parseInt(result.legends[i].damagedealt);
                     damageTaken += parseInt(result.legends[i].damagetaken);
+                    timeSpentInGame += parseInt(result.legends[i].matchtime);
                 }
+
+                var timeSpentInGameString = timeStringFunction(timeSpentInGame);
 
                 document.querySelector('#playerStats').style.display = "inline";
                 document.getElementById('playerName').innerHTML = `${playerName}`;
@@ -233,10 +284,18 @@
                 document.getElementById('playerLosses').innerHTML = `<b>Games Lost:</b> ${numberWithCommas(playerLosses)}<br /><br />`;
 
                 document.getElementById('playerDamageDealt').innerHTML = `<b>Total Damage Dealt</b> ${numberWithCommas(damageDealt)}<br />`;
-                document.getElementById('playerDamageTaken').innerHTML = `<b>Total Damage Taken:</b> ${numberWithCommas(damageTaken)}<br />`;
+                document.getElementById('playerDamageTaken').innerHTML = `<b>Total Damage Taken:</b> ${numberWithCommas(damageTaken)}<br /><br />`;
+
+                document.getElementById('playerTimeInGame').innerHTML = `<b>Time Spent In-game:</b> ${timeSpentInGameString}<br />`;
                 
                 document.getElementById('playerClan').innerHTML = `<b>${playerClan}</b><br />`;
                 document.getElementById('playerClanXP').innerHTML = `<b>Clan XP: </b>${numberWithCommas(playerClanXP)}<br />`;
+
+                document.getElementById('playerBombKOs').innerHTML = `<b>Bomb Kills: </b>${numberWithCommas(playerBombKOs)}<br />`;
+                document.getElementById('playerMineKOs').innerHTML = `<b>Mine Kills: </b>${numberWithCommas(playerMineKOs)}<br />`;
+                document.getElementById('playerSpikeballKOs').innerHTML = `<b>Spikeball Kills: </b>${numberWithCommas(playerSpikeballKOs)}<br />`;
+                document.getElementById('playerSidekickKOs').innerHTML = `<b>Sidekick Kills: </b>${numberWithCommas(playerSidekickKOs)}<br />`;
+                document.getElementById('playerSnowballKOs').innerHTML = `<b>Snowball Kills: </b>${numberWithCommas(playerSnowballKOs)}<br />`;
             }
 
         })

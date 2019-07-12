@@ -297,9 +297,14 @@
                 console.log(playerXPPercentageString);
 
                 var playerXP = result.xp;
-                var playerClan = result.clan.clan_name;
-                var playerClanXP = result.clan.clan_xp;
-
+                if (result.clan){
+                    var playerClan = result.clan.clan_name;
+                    var playerClanXP = result.clan.clan_xp;
+                }
+                else {
+                    playerClan = "Not in a clan!";
+                    playerClanXP = "Not in a clan!";
+                }
                 var playerBombKOs = result.kobomb;
                 var playerMineKOs = result.komine;
                 var playerSpikeballKOs = result.kospikeball;
@@ -343,9 +348,14 @@
 
                 document.getElementById('playerTimeInGame').innerHTML = `<b>Time Spent In-game:</b> ${timeSpentInGameString}<br />`;
                 
-                document.getElementById('playerClan').innerHTML = `<b>${playerClan}</b><br />`;
-                document.getElementById('playerClanXP').innerHTML = `<b>Clan XP: </b>${numberWithCommas(playerClanXP)}<br />`;
-
+                if (result.clan){
+                    document.getElementById('playerClan').innerHTML = `<b>${playerClan}</b><br />`;
+                    document.getElementById('playerClanXP').innerHTML = `<b>Clan XP: </b>${numberWithCommas(playerClanXP)}<br />`;
+                }
+                else {
+                    document.getElementById('playerClan').innerHTML = `<b>Not In A Clan!</b><br />`;
+                    document.getElementById('playerClanXP').innerHTML = `<b></b><br />`;
+                }
                 document.getElementById('playerBombKOs').innerHTML = `<b>Bomb Kills: </b>${numberWithCommas(playerBombKOs)}<br />`;
                 document.getElementById('playerMineKOs').innerHTML = `<b>Mine Kills: </b>${numberWithCommas(playerMineKOs)}<br />`;
                 document.getElementById('playerSpikeballKOs').innerHTML = `<b>Spikeball Kills: </b>${numberWithCommas(playerSpikeballKOs)}<br />`;

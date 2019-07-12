@@ -98,7 +98,7 @@
  <br>
  <form method="get" name="formxml" action="/submit-form">
  <div class="input-group">
- <span class="input-group-btn"><button type="submit" onclick="" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button></span>
+ <span class="input-group-btn"><button type="submit" onclick="" class="btn waves-effect waves-light btn-primary" id = "myButton"><i class="fa fa-search"></i></button></span>
  <input type="text" name="player" class="form-control" placeholder="Username/UUID">
  </div>
  </form>
@@ -121,6 +121,22 @@
                  var resizefunc = [];
              </script>
  
+
+<script>
+    document.querySelector('#myButton').addEventListener('submit', e => {
+        e.preventDefault();
+        fetch('http://brawlhallastats.herokuapp.com/api')
+        .then(response => response.json())
+        .then(result => {
+            console.log("Result = ", result);
+            //...do some stuff on the page with the result
+        })
+        .catch(err => {
+            console.log("Error = ", err);
+            //...handle errors here
+        });
+    });
+</script>
 
  <script src="assets/js/jquery.min.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
  <script src="assets/js/bootstrap.min.js" type="566ead401d4a289a66320f2a-text/javascript"></script>

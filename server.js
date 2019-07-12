@@ -14,24 +14,37 @@ app.get('/', function(req, res) {
 app.use(express.static(__dirname + '/public'))
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+var router = express.Router();
+
+// ROUTES FOR OUR API
+// =============================================================================
+router.get('/', function(req, res) {
+    res.json({ message: 'hooray! welcome to our api!'});
+});
+
+// middleware to use for all requests
+router.use(function(req, res, next) {
+    // do logging
+    console.log('Something is happening.');
+    next(); // make sure we go to the next routes and don't stop here
+});
+
+// more routes will happen here
+
+// REGISTER OUR ROUTES -------------------------------
+// all of our routes will be prefixed with /api
+app.use('/api', router);
 
 app.get('/submit-form', async function( req, res) {
     console.log("Form submitted");
-    // res.send('hello world');
 
     console.log("req = ", req.query.player);
-    //console.log("res = ", );
+
     var x = req.query.player;
   
     let jsonn;
-
-
-    // bh.getBhidByName(x)
-    //     .then(function(users){
-    //         console.log("Users = ", users);
-    //     }).catch(function(error){
-    //         console.log(error);
-    //     });
 
     await fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
@@ -39,11 +52,7 @@ app.get('/submit-form', async function( req, res) {
             // console.log("JSON = ", json.error.code);
             
             if ((json.error) && (json.error.code == 404) ){
-                // console.log(json.name);
-                // console.log(json.level);
-                // console.log(json.games);
-                // console.log("Wins = " + json.wins);
-                // console.log("Losses = " + (json.games-json.wins) );
+
                 res.send('User not found!');
                 //jsonn = json;
             }
@@ -52,7 +61,6 @@ app.get('/submit-form', async function( req, res) {
                 //res.send('User not found!');
             }
         });
-
    
     console.log(jsonn.name);
     res.send(`${jsonn.name}\n
@@ -60,8 +68,7 @@ app.get('/submit-form', async function( req, res) {
     Total games: ${jsonn.games}\n
     Total Wins:  ${jsonn.wins}\n
     Total Losses: ${jsonn.games-jsonn.wins}`);
-    //var x = document.formxml.player.value;
-    //console.log("x = ", x);
+ 
 });
 
 app.listen(process.env.PORT || 4000, function(){

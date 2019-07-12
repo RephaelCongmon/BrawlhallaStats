@@ -36,7 +36,7 @@ app.get('/submit-form', async function( req, res) {
     await fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
-            console.log(json);
+            console.log("JSON = ", json.error);
             
             if (json){
                 // console.log(json.name);

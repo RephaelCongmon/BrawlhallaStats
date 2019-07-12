@@ -124,6 +124,10 @@
                 <span id="playerDamageDealt"><b>Quests Completed:</b> 79<br /><br /></span>
                 <span id="playerDamageTaken"><b>Quests Completed:</b> 79<br /><br /></span>
 
+                <span id="playerKOs"><b>Quests Completed:</b> 79<br /></span>
+                <span id="playerFalls"><b>Quests Completed:</b> 79<br /></span>
+                <span id="playerSuicides"><b>Quests Completed:</b> 79<br /><br /></span>
+
                 <span id="playerTimeInGame"><b>Quests Completed:</b> 79<br /><br /></span>
 
                 
@@ -266,11 +270,17 @@
                 var timeSpentInGame = 0;
                 var damageDealt = 0;
                 var damageTaken = 0;
+                var playerKOs = 0;
+                var playerFalls = 0;
+                var playerSuicides = 0;
 
                 for (var i = 0; i < result.legends.length; i++){
                     damageDealt += parseInt(result.legends[i].damagedealt);
                     damageTaken += parseInt(result.legends[i].damagetaken);
                     timeSpentInGame += parseInt(result.legends[i].matchtime);
+                    playerKOs += parseInt(result.legends[i].kos);
+                    playerFalls += parseInt(result.legends[i].falls);
+                    playerSuicides += parseInt(result.legends[i].suicides);
                 }
 
                 var timeSpentInGameString = timeStringFunction(timeSpentInGame);
@@ -285,6 +295,10 @@
 
                 document.getElementById('playerDamageDealt').innerHTML = `<b>Total Damage Dealt</b> ${numberWithCommas(damageDealt)}<br />`;
                 document.getElementById('playerDamageTaken').innerHTML = `<b>Total Damage Taken:</b> ${numberWithCommas(damageTaken)}<br /><br />`;
+
+                document.getElementById('playerKOs').innerHTML = `<b>Total KOs:</b> ${numberWithCommas(playerKOs)}<br />`;
+                document.getElementById('playerFalls').innerHTML = `<b>Total Falls:</b> ${numberWithCommas(playerFalls)}<br />`;
+                document.getElementById('playerSuicides').innerHTML = `<b>Total Suicides:</b> ${numberWithCommas(playerSuicides)}<br /><br />`;
 
                 document.getElementById('playerTimeInGame').innerHTML = `<b>Time Spent In-game:</b> ${timeSpentInGameString}<br />`;
                 

@@ -17,8 +17,8 @@ app.get('/submit-form', function( req, res) {
     console.log("Form submitted");
     // res.send('hello world');
 
-    console.log("req = ", req);
-    console.log("res = ", res);
+    console.log("req = ", req.body);
+    //console.log("res = ", res);
 
     var x = document.formxml.player.value;
     console.log("x = ", x);

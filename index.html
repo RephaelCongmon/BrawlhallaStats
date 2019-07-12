@@ -290,6 +290,12 @@
                 var playerWins = result.wins;
                 var playerLosses = result.games-result.wins;
                 var playerLevel = result.level;
+                var playerXPPercentage = result.xp_percentage;
+                playerXPPercentage *= 100;
+                playerXPPercentage = Math.floor(playerXPPercentage);
+                var playerXPPercentageString = playerXPPercentage + "%";
+                console.log(playerXPPercentageString);
+
                 var playerXP = result.xp;
                 var playerClan = result.clan.clan_name;
                 var playerClanXP = result.clan.clan_xp;
@@ -321,9 +327,9 @@
                 document.querySelector('#playerStats').style.display = "inline";
                 document.getElementById('playerName').innerHTML = `${playerName}`;
                 document.getElementById('playerLevel').innerHTML = `<b>Level: </b>${playerLevel}<br />`;
-                doit('95%');
+                doit(`${playerXPPercentageString}`);
 
-                document.getElementById('playerXP').innerHTML = `<br /><br /><b>Total XP:</b> ${numberWithCommas(playerXP)}<br />`;
+                document.getElementById('playerXP').innerHTML = `<br /><b>Total XP:</b> ${numberWithCommas(playerXP)}<br /><br />`;
                 document.getElementById('playerGames').innerHTML = `<b>Games Played:</b> ${numberWithCommas(playerGames)}<br />`;
                 document.getElementById('playerWins').innerHTML = `<b>Games Won:</b> ${numberWithCommas(playerWins)}<br />`;
                 document.getElementById('playerLosses').innerHTML = `<b>Games Lost:</b> ${numberWithCommas(playerLosses)}<br /><br />`;

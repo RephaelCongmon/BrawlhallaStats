@@ -24,10 +24,11 @@ app.get('/submit-form', function( req, res) {
     var x = req.query.player;
   
     let jsonn;
+    
     fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
-            console.log(json);
+            //console.log(json);
           
             console.log(json.name);
             console.log(json.level);

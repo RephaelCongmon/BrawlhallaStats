@@ -85,25 +85,38 @@
  <div class="container">
  
  <div class="row">
- <div class="col-sm-12">
- <div class="page-title-box">
- <h4 class="page-title">Brawlhalla Player Stats</h4>
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Brawlhalla Player Stats</h4>
+        </div>
+    </div>
  </div>
- </div>
- </div>
+ 
+ <div class="row" id="playerNotFound" display="none">
+    <div class="col-lg-12">
+        <div class="panel panel-border panel-danger">
+            <div class="panel-heading"><h3 class="panel-title">Player not found</h3></div>
+            <div class="panel-body">
+                <p>
+                <b>Player does not exist!</b> </p>
+            </div>
+        </div>
+    </div>
+</div>
+
  <div class="row">
- <div class="col-lg-12">
- <div class="card-box">
- <h4 class="text-dark header-title m-t-0">Search Player</h4>
- <br>
- <form method="get" name="formxml" id ="myForm" action="/api/submit-form">
- <div class="input-group">
- <span class="input-group-btn"><button type="submit" onclick="" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button></span>
- <input type="text" name="player" class="form-control" placeholder="Username/UUID">
- </div>
- </form>
- </div>
- </div>
+    <div class="col-lg-12">
+        <div class="card-box">
+            <h4 class="text-dark header-title m-t-0">Search Player</h4>
+            <br>
+            <form method="get" name="formxml" id ="myForm" action="/api/submit-form">
+            <div class="input-group">
+                <span class="input-group-btn"><button type="submit" onclick="" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button></span>
+                <input type="text" name="player" class="form-control" placeholder="Username/UUID">
+            </div>
+            </form>
+        </div>
+    </div>
  </div>
  </div>
  
@@ -131,9 +144,21 @@
         .then(result => {
             console.log("Result = ", JSON.stringify(result) );
             //...do some stuff on the page with the result
+
+            if ((json.error) && (json.error.code == 404) ){
+                document.querySelector('#playerNotFound').style.visibility = "visible";
+                
+               
+            }
+            else {
+                //Player found
+               
+            }
+
         })
         .catch(err => {
             console.log("Error = ", err);
+
             //...handle errors here
         });
     });

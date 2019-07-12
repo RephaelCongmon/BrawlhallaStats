@@ -38,7 +38,7 @@ app.get('/submit-form', async function( req, res) {
         .then(json => {
             //console.log(json);
             
-            if (json != NULL){
+            if (json == null){
                 console.log(json.name);
                 console.log(json.level);
                 console.log(json.games);

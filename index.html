@@ -115,6 +115,24 @@
                 <hr><a data-toggle="collapse" href="#collapse-name-history" aria-expanded="false" class="collapsed text-inverse"><b>Name History <i style="font-size: 10px !important;" class="glyphicon glyphicon-plus"></i></b></a><div id="collapse-name-history" class="collapse" aria-expanded="false"><div class="panel-body">Ryuziku<br />RupRepYT<br /></div></div><br /><br />
               
                 <span id="playerLevel"><b>Level:</b> 32.85<br /></span>
+                <!-- XP BAR TESTING! -->
+                <div id='xp-bar'>
+                    <div id='xp-bar-fill'>
+                        <div id='xp-increase-fx'>
+                            <div id='xp-increase-fx-flicker'>
+                                <div class='xp-increase-glow1'>
+                                </div>
+                                <div class='xp-increase-glow2'>
+                                </div>
+                                <div class='xp-increase-glow3'>
+                                </div>
+                            </div>
+                            <div class='xp-increase-glow2'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <span id="playerXP"><b>Karma:</b> 117,680<br /></span>
                 <span id="playerGames"><b>Achievement Points:</b> 1,470<br /></span>
@@ -228,6 +246,21 @@
 
     }
 
+    function doit(x){
+        $("#xp-increase-fx").css("display","inline-block");
+        $("#xp-bar-fill").css("box-shadow",/*"0px 0px 15px #06f,*/ "-5px 0px 10px #fff inset");
+
+
+        setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 2s ease");
+        $("#xp-bar-fill").css("width",`${x}`);},100);
+
+        console.log("This ran");
+
+        setTimeout(function(){$("#xp-increase-fx").fadeOut(500);$("#xp-bar-fill").css({"-webkit-transition":"all 0.5s ease","box-shadow":""});},2000);
+        setTimeout(function(){$("#xp-bar-fill").css({"width":`${x}`});},3000);
+    }
+
+
     document.querySelector('#myForm').addEventListener('submit', e => {
         console.log("Query selector ran!");
         
@@ -288,6 +321,8 @@
                 document.querySelector('#playerStats').style.display = "inline";
                 document.getElementById('playerName').innerHTML = `${playerName}`;
                 document.getElementById('playerLevel').innerHTML = `<b>Level: </b>${playerLevel}<br />`;
+                doIt(75);
+
                 document.getElementById('playerXP').innerHTML = `<b>Total XP:</b> ${numberWithCommas(playerXP)}<br />`;
                 document.getElementById('playerGames').innerHTML = `<b>Games Played:</b> ${numberWithCommas(playerGames)}<br />`;
                 document.getElementById('playerWins').innerHTML = `<b>Games Won:</b> ${numberWithCommas(playerWins)}<br />`;

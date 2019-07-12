@@ -14,5 +14,5 @@ bh.getSteamId(`https://steamcommunity.com/id/${x}/`)
 
 function foo(){
     var name = document.formxml.player.value;
-    alert("Your name is ", name);
+    alert("Your name is " + name);
 }

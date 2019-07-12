@@ -39,7 +39,7 @@ app.get('/submit-form', function( req, res) {
         });
 
    
-
+    console.log(jsonn.name);
     res.send(jsonn.name);
     //var x = document.formxml.player.value;
     //console.log("x = ", x);

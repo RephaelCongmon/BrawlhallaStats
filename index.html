@@ -124,6 +124,7 @@
 
 <script>
     document.querySelector('#myButton').addEventListener('submit', e => {
+        console.log("Query selector ran!");
         e.preventDefault();
         fetch('http://brawlhallastats.herokuapp.com/api')
         .then(response => response.json())

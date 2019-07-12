@@ -116,8 +116,8 @@
               
                 <span id="playerLevel"><b>Level:</b> 32.85<br /></span>
 
-                <b>Karma:</b> 117,680<br />
-                <b>Achievement Points:</b> 1,470<br />
+                <span id="playerXP"><b>Karma:</b> 117,680<br /></span>
+                <span id="playerGames"><b>Achievement Points:</b> 1,470<br /></span>
                 <b>Quests Completed:</b> 79<br /><br />
                 <b>Firstlogin: </b>2015-03-03 18:46 EST<br />
                 <b>Lastlogin: </b>2019-05-22 16:12 EDT<br /><br />
@@ -174,6 +174,11 @@
  
 
 <script>
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     document.querySelector('#myForm').addEventListener('submit', e => {
         console.log("Query selector ran!");
         
@@ -208,6 +213,8 @@
                 document.querySelector('#playerStats').style.display = "inline";
                 document.getElementById('playerName').innerHTML = `${playerName}`;
                 document.getElementById('playerLevel').innerHTML = `<b>Level: </b>${playerLevel}<br />`;
+                document.getElementById('playerXP').innerHTML = `<b>Total XP:</b> ${numberWithCommas(playerXP)}<br />`;
+                document.getElementById('playerGames').innerHTML = `<b>Games Played:</b> ${numberWithCommas(playerGames)}<br />`
                 
             }
 

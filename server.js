@@ -11,9 +11,18 @@ app.get('/', function(req, res) {
 
 app.use(express.static(__dirname + '/public'))
 
+app.use(express.urlencoded());
+
+app.get('/submit-form', function( req, res) {
+    console.log("Form submitted");
+    res.send('hello world');
+});
+
 app.listen(process.env.PORT || 4000, function(){
     console.log('Your node js server is running');
 });
+
+
 
 
 function getInput(){

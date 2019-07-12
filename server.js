@@ -38,7 +38,7 @@ app.get('/submit-form', async function( req, res) {
         .then(json => {
             console.log("JSON = ", json.error.code);
             
-            if (json.error.code == 404){
+            if ((json.error.code) && (json.error.code == 404) ){
                 // console.log(json.name);
                 // console.log(json.level);
                 // console.log(json.games);

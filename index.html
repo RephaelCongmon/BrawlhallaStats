@@ -110,7 +110,8 @@
                         <h4 class="text-dark header-title m-t-0">Search Player</h4>
                         <br>
                         -->
-                        <form method="get" name="formxml" id ="myForm" action="/api/submit-form">
+
+                        <form method="get" name="formxml2" id ="myForm2" action="/api/submit-form">
                             <div class="input-group">
                                 <span class="input-group-btn"><button type="submit" onclick="" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button></span>
                                 <input type="text" name="player" class="form-control" placeholder="Brawlhalla ID">
@@ -369,7 +370,7 @@
 
                 var timeSpentInGameString = timeStringFunction(timeSpentInGame);
 
-                document.querySelector('#hiddenSearchBar').style.display = "inline";
+                //document.querySelector('#hiddenSearchBar').style.display = "inline";
                 document.querySelector('#playerStats').style.display = "inline";
                 document.getElementById('playerName').innerHTML = `${playerName}`;
                 document.getElementById('playerLevel').innerHTML = `<b>Level: </b>${playerLevel}<br />`;

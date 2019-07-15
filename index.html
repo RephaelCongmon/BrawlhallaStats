@@ -111,23 +111,20 @@
                         <br>
                         -->
 
-                        <!--
+                        
                         <form method="get" name="formxml2" id="hiddenSearchBar" style="display: none" action="/api/submit-form">
                             <div class="input-group">
                                 <span class="input-group-btn"><button type="submit" onclick="" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button></span>
                                 <input type="text" name="player" class="form-control" placeholder="Brawlhalla ID">
                             </div>
                         </form>
-                        -->
+                        
 
 
                     <!--</div>-->
 
                 </li>
-                <li><a href="/hypixel/player/stats/RupRep444">Stats</a></li>
-                <li><a href="/hypixel/player/calc/RupRep444">Calculator</a></li>
-                <li><a href="/hypixel/player/weapons/RupRep444">Weapons</a></li>
-                <li><a href="/hypixel/generators/RupRep444">Generators</a></li>
+         
                 
 
                 <!--
@@ -380,7 +377,7 @@
 
                 var timeSpentInGameString = timeStringFunction(timeSpentInGame);
 
-                document.querySelector('#hiddenSearchBar').style.display = "inline";
+                document.querySelector('#hiddenSearchBar').style.display = "flex";
                 document.querySelector('#playerStats').style.display = "inline";
                 document.getElementById('playerName').innerHTML = `${playerName}`;
                 document.getElementById('playerLevel').innerHTML = `<b>Level: </b>${playerLevel}<br />`;

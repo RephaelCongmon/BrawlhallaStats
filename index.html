@@ -103,6 +103,29 @@
  <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
+            <ol class="breadcrumb pull-right" id="hiddenSearchBar" style="display: none;">
+                <li>
+                    <div class="card-box">
+                        <!--
+                        <h4 class="text-dark header-title m-t-0">Search Player</h4>
+                        <br>
+                        -->
+                        <form method="get" name="formxml" id ="myForm" action="/api/submit-form">
+                            <div class="input-group">
+                                <span class="input-group-btn"><button type="submit" onclick="" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button></span>
+                                <input type="text" name="player" class="form-control" placeholder="Brawlhalla ID">
+                            </div>
+                        </form>
+                    </div>
+                </li>
+
+                <!--
+                <li><a href="/hypixel/player/calc/RupRep444">Calculator</a></li>
+                <li><a href="/hypixel/player/weapons/RupRep444">Weapons</a></li>
+                <li><a href="/hypixel/generators/RupRep444">Generators</a></li>
+                <li><a href="/hypixel/achievements/RupRep444">Achievements</a></li>
+                -->
+            </ol>
             <h4 class="page-title">Brawlhalla Player Stats</h4>
         </div>
     </div>
@@ -346,6 +369,7 @@
 
                 var timeSpentInGameString = timeStringFunction(timeSpentInGame);
 
+                document.querySelector('#hiddenSearchBar').style.display = "inline";
                 document.querySelector('#playerStats').style.display = "inline";
                 document.getElementById('playerName').innerHTML = `${playerName}`;
                 document.getElementById('playerLevel').innerHTML = `<b>Level: </b>${playerLevel}<br />`;

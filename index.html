@@ -151,6 +151,20 @@
     </div>
 </div>
 
+<div class="row" id="playerLoading" style="display: none;">
+    <div class="col-lg-12">
+        
+        <div class="panel-heading"><h3 class="panel-title">Fetching Data</h3></div>
+        <div class="panel-body">
+            <img style="height: 1em;" src="assets/images/ROFEL_64.gif"></img>
+            <p>
+            <b>Player does not exist!</b> </p>
+        </div>
+        
+    </div>
+</div>
+
+
 
 <!-- DISPLAYED STATS!-->
 <div class="row" id="playerStats" style="display: none;">
@@ -316,12 +330,16 @@
         console.log("myFormData = ", myFormData);
 
         e.preventDefault();
+
+        document.querySelector('#playerLoading').style.display = "inline";
+
         fetch('http://brawlhallastats.herokuapp.com/api/submit-form?' + new URLSearchParams(new FormData(e.target)).toString() )
         .then(response => response.json())
         .then(result => {
             console.log("Result = ", JSON.stringify(result) );
             //...do some stuff on the page with the result
-
+            document.querySelector('#playerLoading').style.display = "none";
+            
             if ((result.error) && (result.error.code == 404) ){
                 document.querySelector('#playerNotFound').style.display = "inline";
                 

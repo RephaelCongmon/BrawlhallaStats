@@ -1061,7 +1061,8 @@
                 var legendGames;
                 var legendWins;
                 var legendLosses;
-
+                var legendWinRatio;
+                var legendKillRatio;
 
                 for (var i = 0; i < result.legends.length; i++){
                     damageDealt += parseInt(result.legends[i].damagedealt);
@@ -1080,16 +1081,20 @@
                     legendWins = result.legends[i].wins;
                     legendLosses = legendGames - legendWins;
                     legendWinRatio = legendWins/legendLosses;
+                    legendKillRatio = legendKills/legendFalls;
 
                     document.getElementById("legendName" + `${i}`).innerHTML = `${legendName} (Lvl. ${legendLevel})`;
                     document.querySelector("#legend" + `${i}`).style.display = "block";
                     document.getElementById("legendStatsId" + `${i}`).innerHTML = `<ul class="list-unstyled"><li><b>Level:</b> ${legendLevel}</li><br />` + 
-                        `<li><b>Kills:</b> ${legendKills}</li>` +
-                        `<li><b>Deaths:</b> ${legendFalls}</li>` +
-                        `<li><b>Games Played:</b> ${legendGames}</li>` +
-                        `<li><b>Wins:</b> ${legendWins}</li>` +
-                        `<li><b>Losses:</b> ${legendLosses}</li>` +
-                        `<li><b>W/L Ratio: </b> ${legendWinRatio.toFixed(2)}</li></ul>`;
+                 
+                        `<li><b>Games Played:</b> ${numberWithCommas(legendGames)}</li>` +
+                        `<li><b>Wins:</b> ${numberWithCommas(legendWins)}</li>` +
+                        `<li><b>Losses:</b> ${numberWithCommas(legendLosses)}</li>` +
+                        `<li><b>W/L Ratio: </b> ${legendWinRatio.toFixed(2)}</li><br />` +
+                        
+                        `<li><b>Kills:</b> ${numberWithCommas(legendKills)}</li>` +
+                        `<li><b>Deaths:</b> ${numberWithCommas(legendFalls)}</li>` +
+                        `<li><b>W/L Ratio: </b> ${legendKillRatio.toFixed(2)}</li></ul>`;
                     
                 }
 

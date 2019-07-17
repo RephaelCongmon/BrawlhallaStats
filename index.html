@@ -1056,7 +1056,12 @@
                 // document.querySelector("#legend" + "0").style.display = "inline";
                 // document.getElementById("legendId" + "0").innerHTML = `<li><b>Level:</b> ${legendLevel}</li><br /><li><b>Kills:</b> 40</li><li><b>Deaths:</b> 49</li><li><b>Wins Solo:</b> 0</li><li><b>Wins Team:</b> 0</li><li><b>Kill/Death Ratio:</b> 0.82</li><li><b>Kills/Game:</b> 0.82</li>`;
                 var legendName;
-                
+                var legendKills;
+                var legendFalls;
+                var legendGames;
+                var legendWins;
+                var legendLosses;
+
 
                 for (var i = 0; i < result.legends.length; i++){
                     damageDealt += parseInt(result.legends[i].damagedealt);
@@ -1069,9 +1074,22 @@
 
                     legendLevel = result.legends[i].level;
                     legendName = result.legends[i].legend_name_key;
+                    legendKills = result.legends[i].kos;
+                    legendFalls = result.legends[i].falls;
+                    legendGames = result.legends[i].games;
+                    legendWins = result.legends[i].wins;
+                    legendLosses = legendGames - legendWins;
+                    legendWinRatio = legendWins/legendLosses;
+
                     document.getElementById("legendName" + `${i}`).innerHTML = `${legendName} (Lvl. ${legendLevel})`;
                     document.querySelector("#legend" + `${i}`).style.display = "block";
-                    document.getElementById('legendStatsId0').innerHTML = `<ul class="list-unstyled"><li><b>Level:</b> ${legendLevel}</li><br /><li><b>Kills:</b> 40</li><li><b>Deaths:</b> 49</li><li><b>Wins Solo:</b> 0</li><li><b>Wins Team:</b> 0</li><li><b>Kill/Death Ratio:</b> 0.82</li><li><b>Kills/Game:</b> 0.82</li></ul>`;
+                    document.getElementById('legendStatsId0').innerHTML = `<ul class="list-unstyled"><li><b>Level:</b> ${legendLevel}</li><br />` + 
+                        `<li><b>Kills:</b> ${legendKills}</li>` +
+                        `<li><b>Deaths:</b> ${legendFalls}</li>` +
+                        `<li><b>Games Played:</b> ${legendGames}</li>` +
+                        `<li><b>Wins:</b> ${legendWins}</li>` +
+                        `<li><b>Losses:</b> ${legendLosses}</li>` +
+                        `<li><b>W/L Ratio: </b> ${legendWinRatio.toFixed(2)}</li></ul>`;
                     
                 }
 

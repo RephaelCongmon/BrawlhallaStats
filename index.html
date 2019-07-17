@@ -1067,7 +1067,7 @@
                     playerSuicides += parseInt(result.legends[i].suicides);
                     playerDamageUnarmed += parseInt(result.legends[i].damageunarmed);
 
-                    legendLevel = result.legends[0].level;
+                    legendLevel = result.legends[i].level;
                     legendName = result.legends[i].legend_name_key;
                     document.getElementById("legendName" + `${i}`).innerHTML = `${legendName} (Lvl. ${legendLevel})`;
                     document.querySelector("#legend" + `${i}`).style.display = "block";       

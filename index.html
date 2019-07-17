@@ -246,7 +246,7 @@
             <div class="panel panel-default stat_panel" id="legend0" style="display: none;">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent=".stat-accordion" href="#collapse-1-4" aria-expanded="false" class="collapsed">
+                        <a data-toggle="collapse" data-parent=".stat-accordion" href="#collapse-1-4" aria-expanded="false" class="collapsed" id="legendName0">
                         Hattori 1 </a>
                     </h4>
                 </div>
@@ -1055,7 +1055,9 @@
                 // var legendLevel = result.legends[0].level;
                 // document.querySelector("#legend" + "0").style.display = "inline";
                 // document.getElementById("legendId" + "0").innerHTML = `<li><b>Level:</b> ${legendLevel}</li><br /><li><b>Kills:</b> 40</li><li><b>Deaths:</b> 49</li><li><b>Wins Solo:</b> 0</li><li><b>Wins Team:</b> 0</li><li><b>Kill/Death Ratio:</b> 0.82</li><li><b>Kills/Game:</b> 0.82</li>`;
-                
+                var legendName = result.legends[0].legend_name_key;
+                document.getElementById("legendName" + "0").innerHTML = `${legendName}`;
+
                 for (var i = 0; i < result.legends.length; i++){
                     damageDealt += parseInt(result.legends[i].damagedealt);
                     damageTaken += parseInt(result.legends[i].damagetaken);

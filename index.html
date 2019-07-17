@@ -321,7 +321,10 @@
     }
 
 
-    document.querySelector('#myForm').addEventListener('submit', e => {
+    //document.querySelector('#myForm').addEventListener('submit', e => {
+    document.querySelectorAll('#myForm, #hiddenSearchBar').forEach(form => form.addEventListener('submit', e=> {
+
+    
         console.log("Query selector ran!");
         
 
@@ -438,7 +441,9 @@
 
             //...handle errors here
         });
-    });
+
+    }));
+    //});
 </script>
 
  <script src="assets/js/jquery.min.js" type="566ead401d4a289a66320f2a-text/javascript"></script>

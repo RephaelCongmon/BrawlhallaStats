@@ -338,6 +338,7 @@
 
         document.querySelector('#playerSearchBar').style.display = "none";
         document.querySelector('#playerNotFound').style.display = "none";
+        document.querySelector('#playerStats').style.display = "none";
         document.querySelector('#playerLoading').style.display = "inline";
 
         fetch('https://brawlhallastats.herokuapp.com/api/submit-form?' + new URLSearchParams(new FormData(e.target)).toString() )

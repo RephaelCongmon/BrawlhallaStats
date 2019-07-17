@@ -241,9 +241,9 @@
     <!-- Right side of Player stats -->
 
     <div class="col-lg-9">
-        <div class="panel-group stat-accordion">
-        
-            <div class="panel panel-default stat_panel" id="stat_panel_BSG">
+        <div class="panel-group stat-accordion" id="individualLegendStats">
+            
+            <div class="panel panel-default stat_panel" id="legend1">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent=".stat-accordion" href="#collapse-1-4" aria-expanded="false" class="collapsed">
@@ -394,6 +394,7 @@
                 playerXPPercentage = Math.floor(playerXPPercentage);
                 var playerXPPercentageString = playerXPPercentage + "%";
                 console.log(playerXPPercentageString);
+                console.log("Amount of legends = ", results.legends.length);
 
                 var playerXP = result.xp;
                 var playerClan;

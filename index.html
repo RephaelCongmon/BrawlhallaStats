@@ -1061,7 +1061,7 @@
                     playerSuicides += parseInt(result.legends[i].suicides);
                     playerDamageUnarmed += parseInt(result.legends[i].damageunarmed);
 
-                    document.querySelector("#legend" + toString(i)).style.display = "block";       
+                    document.querySelector("#legend" + `${i}`).style.display = "block";       
                 }
 
                 var timeSpentInGameString = timeStringFunction(timeSpentInGame);

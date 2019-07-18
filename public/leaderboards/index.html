@@ -304,7 +304,10 @@
         
         e.preventDefault();
 
-        fetch('https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked?' + new URLSearchParams(new FormData(e.target)).toString() )
+        var x = document.getElementById("ButtonOneVOne").value.toString();
+        console.log(x);
+
+        fetch('https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked?' + x )
             .then(response => response.json())
             .then(result => {
                 console.log(result);

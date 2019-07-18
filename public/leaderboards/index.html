@@ -33,6 +33,14 @@
  <link href="https://brawlhallastats.herokuapp.com/assets/plugins/bootstrap-sweetalert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
  <link href="https://brawlhallastats.herokuapp.com/assets/plugins/nvd3/build/nv.d3.min.css" rel="stylesheet" type="text/css" />
 
+ <link href="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+ <link href="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+ <link href="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
+ <link href="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
+ <link href="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
+ 
+ <link href="https://brawlhallastats.herokuapp.com/assets/plugins/tablesaw/dist/tablesaw.css" rel="stylesheet" type="text/css" />
+
  <style>
         #leaderboard-table tr td:nth-child(1) {
             width: 1%;
@@ -183,6 +191,17 @@
                 </div>
                 
                 <div id="leaderboard-table-wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div id="leaderboard-table_filter" class="dataTables_filter">
+                                <label>
+                                    Search:
+                                    <input type="search" class="form-control input-sm" placeholder aria-controls="leaderboard-table">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="row">
                         <div class="col-sm-12">
                             <table id="leaderboard-table" class="table table-striped table-bordered dt-responsive dataTable no-footer dtr-inline" role="grid" aria-describedby="leaderboard-table-info">
@@ -412,6 +431,21 @@
      console.log("Hello World!");
 
  </script>
+
+<script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/jquery.dataTables.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
+<script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/dataTables.bootstrap.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
+<script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/dataTables.buttons.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
+<script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/buttons.bootstrap.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
+<script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/jszip.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
+<script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/pdfmake.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
+<script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/vfs_fonts.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
+<script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/buttons.html5.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
+<script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/buttons.print.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
+<script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/dataTables.fixedHeader.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
+<script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/dataTables.keyTable.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
+<script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/dataTables.responsive.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
+<script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/responsive.bootstrap.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
+<script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/dataTables.scroller.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
  </div>
  <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js" data-cf-settings="566ead401d4a289a66320f2a-|49" defer=""></script></body>
  </html>

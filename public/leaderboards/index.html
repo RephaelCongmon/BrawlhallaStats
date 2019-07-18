@@ -413,7 +413,7 @@
     }));
 
 </script>
-
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
  <script src="https://brawlhallastats.herokuapp.com/assets/js/jquery.min.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
  <script src="https://brawlhallastats.herokuapp.com/assets/js/bootstrap.min.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
  <script src="https://brawlhallastats.herokuapp.com/assets/js/detect.js" type="566ead401d4a289a66320f2a-text/javascript"></script>
@@ -448,19 +448,12 @@
 <script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/dataTables.responsive.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
 <script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/responsive.bootstrap.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
 <script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/dataTables.scroller.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
 <script>
-
-$(document).ready(function () {
-     
-    var table = $('#leaderboard-table');
-    
-
-    
-
-});
-
-
+    $(document).ready(function () {
+        $.noConflict();
+        var table = $('# your selector').DataTable();
+    });
 </script>
  </div>
  <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js" data-cf-settings="566ead401d4a289a66320f2a-|49" defer=""></script></body>

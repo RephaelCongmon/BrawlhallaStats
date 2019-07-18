@@ -171,6 +171,13 @@
         <div class="card-box">
             <h3 class="m-t-0 header-title">Leaderboard<span id="leaderboard-name"></span></h3>
             <div id="leaderboards">
+                <div class="panel-body" id="loadingLeaderboards" style="display: none;">
+                    <img src="assets/images/ROFEL_64.gif"></img>
+                    Loading...
+                </div>
+
+
+
                 <br />
                 <br />
                 <br />
@@ -307,12 +314,15 @@
         //var x = document.getElementById("ButtonOneVOne").value.toString();
         console.log(`e.target/value = ${e.target.value}`);
 
+        document.querySelector('#playerLoading').style.display = "inline";
+
         fetch('https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked?' + e.target.value )
             .then(response => response.json())
             .then(result => {
                 console.log(result[0]);
+                document.querySelector('#playerLoading').style.display = "none";
 
-                console.log("First Name: ", result[0].name)
+                document.getelementById("leaderboard-name").innerHTML = `${e.target.value} Ranked`;
         });
     }));
 

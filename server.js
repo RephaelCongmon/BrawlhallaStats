@@ -60,7 +60,7 @@ router.get('/leaderboards/1v1Ranked', async function(req, res) {
     //var x = req.query.player;
     console.log(req.query);
 
-    await fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
+    await fetch(`https://api.brawlhalla.com/rankings/1v1/all/1?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
 

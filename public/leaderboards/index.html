@@ -154,7 +154,7 @@
                             <div class="col-md-12">
               
 
-    <button type="submit" formaction="https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked" value="1v1" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.blitz_survival_games" >1v1 Ranked</button>
+    <button type="submit" formaction="https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked" value="1v1" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.blitz_survival_games" id="1v1Button">1v1 Ranked</button>
     <button type="button" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.cops_and_crims" >2v2 Ranked</button>
 
     
@@ -298,6 +298,18 @@
  
 
 <script>
+
+
+    document.querySelector('#1v1Button').addEventListener('click', e => {
+        
+        e.preventDefault();
+
+        fetch('https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked?' + new URLSearchParams(new FormData(e.target)).toString() )
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+        });
+    });
 
 </script>
 

@@ -304,8 +304,8 @@
         
         e.preventDefault();
 
-        var x = document.getElementById("ButtonOneVOne").value.toString();
-        console.log(x);
+        //var x = document.getElementById("ButtonOneVOne").value.toString();
+        console.log(`e.target = ${e.target}`);
 
         fetch('https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked?' + x )
             .then(response => response.json())

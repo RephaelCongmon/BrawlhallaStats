@@ -54,6 +54,22 @@ router.get('/submit-form', async function(req, res) {
         });
 });
 
+router.get('/leaderboards/1v1Ranked', async function(req, res) {
+    console.log("1v1 Button clicked submitted");
+
+    //var x = req.query.player;
+    console.log(req.query);
+
+    await fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
+        .then(res => res.json())
+        .then(json => {
+
+            res.json(json);
+        
+    });
+
+});
+
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);

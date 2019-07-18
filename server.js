@@ -55,7 +55,7 @@ router.get('/submit-form', async function(req, res) {
 });
 
 router.get('/leaderboards/1v1Ranked', async function(req, res) {
-    console.log("1v1 Button clicked submitted");
+    console.log("Button clicked submitted");
 
     var keys = [];
 

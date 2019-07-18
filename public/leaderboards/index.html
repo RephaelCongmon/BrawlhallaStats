@@ -456,20 +456,7 @@ $(document).ready(function () {
     var table = $('#leaderboard-table');
     
 
-    table.DataTable({
-        fixedHeader: true,
-        colReorder: {
-            fixedColumnsLeft: 2
-        },
-        columnDefs: [
-            {
-                searchable: false,
-                targets: 0
-            }
-        ],
-        pageLength: 25,
-        lengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]]
-    });
+    
 
 });
 

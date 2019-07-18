@@ -126,7 +126,7 @@
     <div class="col-lg-12">
         
         <div class="panel-body">
-            <img src="assets/images/ROFEL_64.gif"></img>
+            <img src="https:/brawlhallastats.herokuapp.com/assets/images/ROFEL_64.gif"></img>
             Loading...
         </div>
         
@@ -310,7 +310,9 @@
         fetch('https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked?' + e.target.value )
             .then(response => response.json())
             .then(result => {
-                console.log(result);
+                console.log(result[0]);
+
+                console.log("First Name: ", result[0].name)
         });
     }));
 

@@ -449,25 +449,16 @@
 <script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/responsive.bootstrap.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
 <script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/dataTables.scroller.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
 <script>
-$(document).ready(function () {
 
-        var table = $('#leaderboard-table');
-
-        table.DataTable({
-            fixedHeader: true,
-            colReorder: {
-                fixedColumnsLeft: 2
-            },
-            columnDefs: [
-                {
-                    searchable: false,
-                    targets: 0
-                }
-            ],
-            pageLength: 25,
-            lengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]]
-    });
-});
+window.onload = function() {
+    if (window.jQuery) {  
+        // jQuery is loaded  
+        alert("Yeah!");
+    } else {
+        // jQuery is not loaded
+        alert("Doesn't Work");
+    }
+}
 
 </script>
  </div>

@@ -231,7 +231,7 @@
 
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="dataTables_info" id="leaderboard-table-info" role="status" aria-life="polite">Showing 1 to 50 of 50 entries</div>
+                            <div class="dataTables_info" id="leaderboard-table-info" role="status" aria-live="polite">Showing 1 to 50 of 50 entries</div>
                         </div>
                     </div>
                 </div>
@@ -373,13 +373,13 @@
         //var x = document.getElementById("ButtonOneVOne").value.toString();
         console.log(`e.target/value = ${e.target.value}`);
 
-        document.querySelector('#playerLoading').style.display = "inline";
+        document.querySelector('#loadingLeaderboards').style.display = "inline";
 
         fetch('https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked?' + e.target.value )
             .then(response => response.json())
             .then(result => {
                 console.log(result[0]);
-                document.querySelector('#playerLoading').style.display = "none";
+                document.querySelector('#loadingLeaderboards').style.display = "none";
 
                 document.getElementById("leaderboard-name").innerHTML = ` - ${e.target.value} Ranked`;
         });

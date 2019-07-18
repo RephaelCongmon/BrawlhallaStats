@@ -57,8 +57,8 @@ router.get('/submit-form', async function(req, res) {
 router.get('/leaderboards/1v1Ranked', async function(req, res) {
     console.log("1v1 Button clicked submitted");
 
-    //var x = req.query.player;
-    console.log(req.query);
+    
+    console.log(req);
 
     await fetch(`https://api.brawlhalla.com/rankings/1v1/all/1?api_key=${TOKEN}`)
         .then(res => res.json())

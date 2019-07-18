@@ -63,6 +63,8 @@ router.get('/leaderboards/1v1Ranked', async function(req, res) {
         if (req.query.hasOwnProperty(key)) {
             keys.push(key);
         }
+    }
+    
     console.log(`keys[0] = ${keys[0]}`);
 
     await fetch(`https://api.brawlhalla.com/rankings/1v1/all/1?api_key=${TOKEN}`)

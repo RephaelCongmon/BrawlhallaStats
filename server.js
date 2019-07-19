@@ -74,7 +74,8 @@ router.get('/submit-form', async function(req, res) {
                     '{ "code": 404} ]}';
                 
                 var obj = JSON.parse(error);
-                console.log("obj = ", obj.error.code);
+                console.log("obj = ", obj);
+                console.log("obj.error = ", obj.error);
                 res.json(obj);
             }
             else{    

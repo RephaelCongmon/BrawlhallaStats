@@ -1029,7 +1029,7 @@
 
         fetch('https://brawlhallastats.herokuapp.com/api/search?' + new URLSearchParams(new FormData(e.target)).toString() )
         .then(response => response.json())
-        .then(result => {
+        .then(results => {
             document.querySelector('#playerSearchBar').style.display = "none";
             document.querySelector('#playerLoading').style.display = "none";
 
@@ -1040,15 +1040,16 @@
                
             }
             else {
+                document.querySelector('#hiddenSearchBar').style.display = "flex";
                 document.querySelector('#playerNotFound').style.display = "none";
                 document.querySelector('#playerSearchBar').style.display = "none";
                 document.querySelector('#searchResults').style.display = "inline";
-                console.log("Result = ", result);
-                console.log("Result length = ", result.length);
+                console.log("Result = ", results);
+                console.log("Result length = ", results.length);
                 //Player found
                 var str ="";
-                for (var i = 0; i < result.length; i++){
-                    str += `<button type="submit" formaction="https://brawlhallastats.herokuapp.com/api/submit-form2" value="${result[i].brawlhalla_id}" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.blitz_survival_games" id="ButtonSearchResult">${result[i].name} | Peak Rating: ${result[i].peak_rating}</button><br />`;
+                for (var i = 0; i < results.length; i++){
+                    str += `<button type="submit" formaction="https://brawlhallastats.herokuapp.com/api/submit-form2" value="${results[i].brawlhalla_id}" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.blitz_survival_games" id="ButtonSearchResult">${results[i].name} | Peak Rating: ${results[i].peak_rating}</button><br />`;
                 }
                 document.getElementById("searchResultsPanel").innerHTML = `` + str;
                 // `<button type="submit" formaction="https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked" value="searchOne" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.blitz_survival_games" id="ButtonOneVOne">${result[0].name} | Peak Rating: ${result[0].peak_rating}</button>
@@ -1057,21 +1058,156 @@
 
                 document.querySelectorAll('#ButtonSearchResult').forEach(button => button.addEventListener('click', ee => {
                 
-                ee.preventDefault();
+                    ee.preventDefault();
 
-                //var x = document.getElementById("ButtonOneVOne").value.toString();
-                console.log(`e.target/value = ${ee.target.value}`);
+                    //var x = document.getElementById("ButtonOneVOne").value.toString();
+                    console.log(`e.target/value = ${ee.target.value}`);
 
-                // document.querySelector('#loadingLeaderboards').style.display = "inline";
+                    // document.querySelector('#loadingLeaderboards').style.display = "inline";
+                    
+                    document.querySelector('#playerSearchBar').style.display = "none";
+                    document.querySelector('#playerNotFound').style.display = "none";
+                    document.querySelector('#playerStats').style.display = "none";
+                    document.querySelector('#playerLoading').style.display = "inline";
+                    document.querySelector('#searchResults').style.display = "none";
+                    for (var x = 0; x < 46; x++){
+                        document.querySelector("#legend" + `${x}`).style.display = "none";  
+                    }
 
-                // fetch('https://brawlhallastats.herokuapp.com/api/submit-form2?' + e.target.value )
-                //     .then(response => response.json())
-                //     .then(result => {
-                //         console.log(result[0]);
-                //         document.querySelector('#loadingLeaderboards').style.display = "none";
+                    fetch('https://brawlhallastats.herokuapp.com/api/submit-form2?' + e.target.value )
+                        .then(response => response.json())
+                        .then(result => {
+                            document.querySelector('#playerNotFound').style.display = "none";
+                            document.querySelector('#playerSearchBar').style.display = "none";
+                            
 
-                //         document.getElementById("leaderboard-name").innerHTML = ` - ${e.target.value} Ranked`;
-                // });
+                            var playerName = result.name;
+                            var playerGames = result.games;
+                            var playerWins = result.wins;
+                            var playerLosses = result.games-result.wins;
+                            var playerLevel = result.level;
+                            var playerXPPercentage = result.xp_percentage;
+                            playerXPPercentage *= 100;
+                            playerXPPercentage = Math.floor(playerXPPercentage);
+                            var playerXPPercentageString = playerXPPercentage + "%";
+                            console.log(playerXPPercentageString);
+                            console.log("Amount of legends = ", result.legends.length);
+
+                            var playerXP = result.xp;
+                            var playerClan;
+                            var playerClanXP;
+                            if (result.clan){
+                                playerClan = result.clan.clan_name;
+                                playerClanXP = result.clan.clan_xp;
+                            }
+                            
+                            var playerBombKOs = result.kobomb;
+                            var playerMineKOs = result.komine;
+                            var playerSpikeballKOs = result.kospikeball;
+                            var playerSidekickKOs = result.kosidekick;
+                            var playerSnowballKOs = result.kosnowball;
+
+                            var timeSpentInGame = 0;
+                            var damageDealt = 0;
+                            var damageTaken = 0;
+                            var playerKOs = 0;
+                            var playerFalls = 0;
+                            var playerSuicides = 0;
+                            var playerDamageUnarmed = 0;
+
+                        
+                            var legendLevel;
+                        
+                            var legendName;
+                            var legendKills;
+                            var legendFalls;
+                            var legendGames;
+                            var legendWins;
+                            var legendLosses;
+                            var legendWinRatio;
+                            var legendKillRatio;
+
+                            for (var i = 0; i < result.legends.length; i++){
+                                damageDealt += parseInt(result.legends[i].damagedealt);
+                                damageTaken += parseInt(result.legends[i].damagetaken);
+                                timeSpentInGame += parseInt(result.legends[i].matchtime);
+                                playerKOs += parseInt(result.legends[i].kos);
+                                playerFalls += parseInt(result.legends[i].falls);
+                                playerSuicides += parseInt(result.legends[i].suicides);
+                                playerDamageUnarmed += parseInt(result.legends[i].damageunarmed);
+
+                                legendLevel = result.legends[i].level;
+                                legendName = result.legends[i].legend_name_key;
+                                legendKills = result.legends[i].kos;
+                                legendFalls = result.legends[i].falls;
+                                legendGames = result.legends[i].games;
+                                legendWins = result.legends[i].wins;
+                                legendLosses = legendGames - legendWins;
+                                legendWinRatio = legendWins/legendLosses;
+                                legendKillRatio = legendKills/legendFalls;
+
+                                document.getElementById("legendName" + `${i}`).innerHTML = `${legendName} (Lvl. ${legendLevel})`;
+                                document.querySelector("#legend" + `${i}`).style.display = "block";
+                                document.getElementById("legendStatsId" + `${i}`).innerHTML = `<ul class="list-unstyled"><li><b>Level:</b> ${legendLevel}</li><br />` + 
+                            
+                                    `<li><b>Games Played:</b> ${numberWithCommas(legendGames)}</li>` +
+                                    `<li><b>Wins:</b> ${numberWithCommas(legendWins)}</li>` +
+                                    `<li><b>Losses:</b> ${numberWithCommas(legendLosses)}</li>` +
+                                    `<li><b>W/L Ratio: </b> ${legendWinRatio.toFixed(2)}</li><br />` +
+                                    
+                                    `<li><b>Kills:</b> ${numberWithCommas(legendKills)}</li>` +
+                                    `<li><b>Deaths:</b> ${numberWithCommas(legendFalls)}</li>` +
+                                    `<li><b>K/D Ratio: </b> ${legendKillRatio.toFixed(2)}</li></ul>`;
+                                
+                            }
+
+
+                            var timeSpentInGameString = timeStringFunction(timeSpentInGame);
+
+                            document.querySelector('#hiddenSearchBar').style.display = "flex";
+                            document.querySelector('#playerStats').style.display = "inline";
+                            document.getElementById('playerName').innerHTML = `${playerName}`;
+                            document.getElementById('playerLevel').innerHTML = `<b>Level: </b>${playerLevel}<br />`;
+                            doit(`${playerXPPercentageString}`);
+
+                            document.getElementById('playerXP').innerHTML = `<br /><b>Total XP:</b> ${numberWithCommas(playerXP)}<br /><br />`;
+                            document.getElementById('playerGames').innerHTML = `<b>Games Played:</b> ${numberWithCommas(playerGames)}<br />`;
+                            document.getElementById('playerWins').innerHTML = `<b>Games Won:</b> ${numberWithCommas(playerWins)}<br />`;
+                            document.getElementById('playerLosses').innerHTML = `<b>Games Lost:</b> ${numberWithCommas(playerLosses)}<br /><br />`;
+
+                            document.getElementById('playerDamageDealt').innerHTML = `<b>Total Damage Dealt:</b> ${numberWithCommas(damageDealt)}<br />`;
+                            document.getElementById('playerDamageTaken').innerHTML = `<b>Total Damage Taken:</b> ${numberWithCommas(damageTaken)}<br /><br />`;
+
+                            document.getElementById('playerKOs').innerHTML = `<b>Total KOs:</b> ${numberWithCommas(playerKOs)}<br />`;
+                            document.getElementById('playerFalls').innerHTML = `<b>Total Falls:</b> ${numberWithCommas(playerFalls)}<br />`;
+                            document.getElementById('playerSuicides').innerHTML = `<b>Total Suicides:</b> ${numberWithCommas(playerSuicides)}<br /><br />`;
+
+                            document.getElementById('playerTimeInGame').innerHTML = `<b>Time Spent In-game:</b> ${timeSpentInGameString}<br />`;
+                            
+                            if (result.clan){
+                                document.getElementById('playerClan').innerHTML = `<b>${playerClan}</b><br />`;
+                                document.getElementById('playerClanXP').innerHTML = `<b>Clan XP: </b>${numberWithCommas(playerClanXP)}<br />`;
+                            }
+                            else {
+                                document.getElementById('playerClan').innerHTML = `<b>Not In A Clan!</b><br />`;
+                                document.getElementById('playerClanXP').innerHTML = `<b></b>`;
+                            }
+
+                            document.getElementById('playerBombKOs').innerHTML = `<b>Bomb Kills: </b>${numberWithCommas(playerBombKOs)}<br />`;
+                            document.getElementById('playerMineKOs').innerHTML = `<b>Mine Kills: </b>${numberWithCommas(playerMineKOs)}<br />`;
+                            document.getElementById('playerSpikeballKOs').innerHTML = `<b>Spikeball Kills: </b>${numberWithCommas(playerSpikeballKOs)}<br />`;
+                            document.getElementById('playerSidekickKOs').innerHTML = `<b>Sidekick Kills: </b>${numberWithCommas(playerSidekickKOs)}<br />`;
+                            document.getElementById('playerSnowballKOs').innerHTML = `<b>Snowball Kills: </b>${numberWithCommas(playerSnowballKOs)}<br />`;
+                        })
+
+                    
+                        .catch(err => {
+                            console.log("Error = ", err);
+
+                        
+                        });
+                            
+                        //});
                 }));
             }
         });
@@ -1112,7 +1248,7 @@
     //             //Player found
     //             document.querySelector('#playerNotFound').style.display = "none";
     //             document.querySelector('#playerSearchBar').style.display = "none";
-    //             document.querySelector('#searchResults').style.display = "inline";
+    //             
 
     //             var playerName = result.name;
     //             var playerGames = result.games;

@@ -36,23 +36,32 @@ router.use(function(req, res, next) {
 
 // more routes will happen here
 
-// router.get('/submit-form', async function(req, res) {
-//     console.log("Form submitted");
+router.get('/submit-form2', async function(req, res) {
+  
 
-//     console.log("Req = ", req.query.player);
+    console.log("Button clicked submitted");
 
-//     let jsonn;
+    var keys = [];
 
-//     var x = req.query.player;
+    for (var key in req.query) {
+        if (req.query.hasOwnProperty(key)) {
+            keys.push(key);
+        }
+    }
 
-//     await fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
-//         .then(res => res.json())
-//         .then(json => {
+    console.log(`keys[0] = ${keys[0]}`);
 
-//             res.json(json);
+
+
+    await fetch(`https://api.brawlhalla.com/player/${keys[0]}/stats?api_key=${TOKEN}`)
+        .then(res => res.json())
+        .then(json => {
+
+            res.json(json);
         
-//         });
-// });
+        });
+});
+
 router.get('/search', async function(req, res){
     console.log("Search submitted");
 

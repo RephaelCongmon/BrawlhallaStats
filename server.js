@@ -70,8 +70,7 @@ router.get('/submit-form', async function(req, res) {
             console.log("JSON = ", json);
             
             if (!json[0]){
-                var error = '{ "error" : [' +
-                    '{ "code": 404} ]}';
+                var error = '{ "error" : { "code": 404}}';
                 
                 var obj = JSON.parse(error);
                 console.log("obj = ", obj);
@@ -87,13 +86,14 @@ router.get('/submit-form', async function(req, res) {
             }
 
             console.log("y now equals = ", y);
+            y = toString(y);
 
             await fetch(`https://api.brawlhalla.com/player/${y}/stats?api_key=${TOKEN}`)
                 .then(res2 => res2.json())
                 .then(json2 => {
 
                     console.log("JSON2 = ", json2);
-                    res.json(json2);
+                    res2.json(json2);
                 
                 });
             

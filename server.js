@@ -93,7 +93,7 @@ router.get('/submit-form', async function(req, res) {
                     .then(json2 => {
 
                         console.log("JSON2 = ", json2);
-                        res2.json(json2);
+                        res.json(json2);
                 
                 });
             }

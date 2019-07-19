@@ -39,7 +39,7 @@ router.use(function(req, res, next) {
 router.get('/submit-form2', async function(req, res) {
   
 
-    console.log("Button clicked submitted");
+    console.log("Button click submitted");
 
     var keys = [];
 

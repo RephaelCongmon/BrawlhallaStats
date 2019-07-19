@@ -70,15 +70,16 @@ router.get('/submit-form', async function(req, res) {
             console.log("JSON = ", json);
 
             var  y = json.brawlhalla_id;
+            console.log("y = ", y);
+
             await fetch(`https://api.brawlhalla.com/player/${y}/stats?api_key=${TOKEN}`)
                 .then(res2 => res2.json())
                 .then(json2 => {
 
+                    console.log("JSON2 = ", json2);
                     res.json(json2);
                 
                 });
-         
-        
         });
 });
 

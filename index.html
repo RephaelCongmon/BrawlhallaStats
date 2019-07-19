@@ -1226,6 +1226,25 @@
     //     });
 
     }));
+
+    document.getElementById("searchResultsPanel").querySelectorAll('.btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.blitz_survival_games').forEach(button => button.addEventListener('click', e => {
+        
+        e.preventDefault();
+
+        //var x = document.getElementById("ButtonOneVOne").value.toString();
+        console.log(`e.target/value = ${e.target.value}`);
+
+        // document.querySelector('#loadingLeaderboards').style.display = "inline";
+
+        // fetch('https://brawlhallastats.herokuapp.com/api/submit-form2?' + e.target.value )
+        //     .then(response => response.json())
+        //     .then(result => {
+        //         console.log(result[0]);
+        //         document.querySelector('#loadingLeaderboards').style.display = "none";
+
+        //         document.getElementById("leaderboard-name").innerHTML = ` - ${e.target.value} Ranked`;
+        // });
+    }));
    
 </script>
 

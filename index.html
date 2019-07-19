@@ -1054,6 +1054,25 @@
                 // `<button type="submit" formaction="https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked" value="searchOne" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.blitz_survival_games" id="ButtonOneVOne">${result[0].name} | Peak Rating: ${result[0].peak_rating}</button>
                 // <button type="button" formaction="https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked" value="searchTwo" id="ButtonTwoVTwo" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.cops_and_crims" >${result[1].name} | Peak Rating: ${result[1].peak_rating}</button>`
 
+
+                document.getElementById("searchResultsPanel").querySelectorAll('ButtonSearchResult').forEach(button => button.addEventListener('click', ee => {
+                
+                ee.preventDefault();
+
+                //var x = document.getElementById("ButtonOneVOne").value.toString();
+                console.log(`e.target/value = ${ee.target.value}`);
+
+                // document.querySelector('#loadingLeaderboards').style.display = "inline";
+
+                // fetch('https://brawlhallastats.herokuapp.com/api/submit-form2?' + e.target.value )
+                //     .then(response => response.json())
+                //     .then(result => {
+                //         console.log(result[0]);
+                //         document.querySelector('#loadingLeaderboards').style.display = "none";
+
+                //         document.getElementById("leaderboard-name").innerHTML = ` - ${e.target.value} Ranked`;
+                // });
+                }));
             }
         });
 

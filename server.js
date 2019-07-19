@@ -71,7 +71,7 @@ router.get('/submit-form', async function(req, res) {
             
             if (!json[0]){
                 var error = '{ "error" : [' +
-                    '{ "code:404"} ]}';
+                    '{ "code": 404} ]}';
                 
                 var obj = JSON.parse(error);
                 console.log("obj = ", obj.error.code);

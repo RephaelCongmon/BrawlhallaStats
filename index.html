@@ -1048,7 +1048,7 @@
                 //Player found
                 var str ="";
                 for (var i = 0; i < result.length; i++){
-                    str += `<button type="submit" formaction="https://brawlhallastats.herokuapp.com/api/submit-form2" value="${result[i].brawlhalla_id}" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.blitz_survival_games" id="ButtonOneVOne">${result[i].name} | Peak Rating: ${result[i].peak_rating}</button><br />`;
+                    str += `<button type="submit" formaction="https://brawlhallastats.herokuapp.com/api/submit-form2" value="${result[i].brawlhalla_id}" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.blitz_survival_games" id="ButtonSearchResult">${result[i].name} | Peak Rating: ${result[i].peak_rating}</button><br />`;
                 }
                 document.getElementById("searchResultsPanel").innerHTML = `` + str;
                 // `<button type="submit" formaction="https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked" value="searchOne" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.blitz_survival_games" id="ButtonOneVOne">${result[0].name} | Peak Rating: ${result[0].peak_rating}</button>
@@ -1227,7 +1227,7 @@
 
     }));
 
-    document.getElementById("searchResultsPanel").querySelectorAll('.btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.blitz_survival_games').forEach(button => button.addEventListener('click', e => {
+    document.getElementById("searchResultsPanel").querySelectorAll('ButtonSearchResult').forEach(button => button.addEventListener('click', e => {
         
         e.preventDefault();
 

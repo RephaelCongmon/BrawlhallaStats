@@ -1074,7 +1074,7 @@
                         document.querySelector("#legend" + `${x}`).style.display = "none";  
                     }
 
-                    fetch('https://brawlhallastats.herokuapp.com/api/submit-form2?' + e.target.value )
+                    fetch('https://brawlhallastats.herokuapp.com/api/submit-form2?' + ee.target.value )
                         .then(response => response.json())
                         .then(result => {
                             document.querySelector('#playerNotFound').style.display = "none";

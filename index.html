@@ -163,6 +163,39 @@
     </div>
 </div>
 
+<div class="row" id="searchResults" style="display: none;">
+    <div class="col-md-12">
+        <div class="portlet">
+            <div class="portlet-heading portlet-default">
+            <h3 class="portlet-title text-dark">
+            Search Results
+            </h3>
+                <div class="portlet-widgets">
+                <a data-toggle="collapse" data-parent="#accordion1" href="#bg-default">
+                    <i class="ion-minus-round"></i>
+                </a>
+                </div>
+                <div class="clearfix"></div>
+                </div>
+                <div id="bg-default" class="panel-collapse collapse in">
+                    <div class="portlet-body">
+
+                        <div class="row">
+                            <div class="col-md-12" id="searchResultsPanel">
+              
+
+    <button type="submit" formaction="https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked" value="1v1" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.blitz_survival_games" id="ButtonOneVOne">1v1 Ranked</button>
+    <button type="button" formaction="https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked" value="2v2" id="ButtonTwoVTwo" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.cops_and_crims" >2v2 Ranked</button>
+
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!-- DISPLAYED STATS!-->
@@ -1016,6 +1049,7 @@
                 //Player found
                 document.querySelector('#playerNotFound').style.display = "none";
                 document.querySelector('#playerSearchBar').style.display = "none";
+                document.querySelector('#searchResults').style.display = "none";
 
                 var playerName = result.name;
                 var playerGames = result.games;
@@ -1098,6 +1132,11 @@
                     
                 }
 
+                document.getElementById("searchResultsPanel").innerHTML = `` +
+                `<button type="submit" formaction="https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked" value="searchOne" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.blitz_survival_games" id="ButtonOneVOne">1v1 Ranked</button>
+                <button type="button" formaction="https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked" value="searchTwo" id="ButtonTwoVTwo" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.cops_and_crims" >2v2 Ranked</button>`
+
+                
                 var timeSpentInGameString = timeStringFunction(timeSpentInGame);
 
                 document.querySelector('#hiddenSearchBar').style.display = "flex";

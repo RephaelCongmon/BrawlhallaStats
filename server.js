@@ -68,12 +68,9 @@ router.get('/submit-form', async function(req, res) {
         .then(async json => {
 
             console.log("JSON = ", json);
-            console.log("json[2] = ", json[0]);
-            console.log("json[0].brawlhalla_id = ", json[0].brawlhalla_id);
-
+   
             var  y = json[0].brawlhalla_id;
-
-            console.log("y = ", y);
+  
 
             await fetch(`https://api.brawlhalla.com/player/${y}/stats?api_key=${TOKEN}`)
                 .then(res2 => res2.json())

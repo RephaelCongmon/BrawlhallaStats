@@ -77,26 +77,26 @@ router.get('/submit-form', async function(req, res) {
                 console.log("obj.error = ", obj.error);
                 console.log("obj.error.code = ", obj.error.code);
                 console.log("obj.error['code'] = ", obj.error['code']);
-                console.log("obj.error[0].code = ", obj.error[0].code);
+                //console.log("obj.error[0].code = ", obj.error[0].code);
                 
-                y = 2874632876;
+                res.json(obj);
             }
             else {
                 y = json[0].brawlhalla_id;
-            }
+            
 
-            console.log("y now equals = ", y);
-            y = toString(y);
+                console.log("y now equals = ", y);
+                y = toString(y);
 
-            await fetch(`https://api.brawlhalla.com/player/${y}/stats?api_key=${TOKEN}`)
-                .then(res2 => res2.json())
-                .then(json2 => {
+                await fetch(`https://api.brawlhalla.com/player/${y}/stats?api_key=${TOKEN}`)
+                    .then(res2 => res2.json())
+                    .then(json2 => {
 
-                    console.log("JSON2 = ", json2);
-                    res2.json(json2);
+                        console.log("JSON2 = ", json2);
+                        res2.json(json2);
                 
                 });
-            
+            }
         });
 });
 

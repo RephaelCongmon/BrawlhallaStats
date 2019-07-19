@@ -36,6 +36,24 @@ router.use(function(req, res, next) {
 
 // more routes will happen here
 
+// router.get('/submit-form', async function(req, res) {
+//     console.log("Form submitted");
+
+//     console.log("Req = ", req.query.player);
+
+//     let jsonn;
+
+//     var x = req.query.player;
+
+//     await fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
+//         .then(res => res.json())
+//         .then(json => {
+
+//             res.json(json);
+        
+//         });
+// });
+
 router.get('/submit-form', async function(req, res) {
     console.log("Form submitted");
 
@@ -45,11 +63,21 @@ router.get('/submit-form', async function(req, res) {
 
     var x = req.query.player;
 
-    await fetch(`https://api.brawlhalla.com/player/${x}/stats?api_key=${TOKEN}`)
+    await fetch(`https://api.brawlhalla.com/rankings/1v1/us-e/1?name=${x}&api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
 
-            res.json(json);
+            console.log("JSON = ", json);
+
+            var  y = json.brawlhalla_id;
+            await fetch(`https://api.brawlhalla.com/player/${y}/stats?api_key=${TOKEN}`)
+                .then(res2 => res2.json())
+                .then(json2 => {
+
+                    res.json(json2);
+                
+                });
+         
         
         });
 });

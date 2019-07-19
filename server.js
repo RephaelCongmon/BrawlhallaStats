@@ -86,7 +86,7 @@ router.get('/submit-form', async function(req, res) {
             
 
                 console.log("y now equals = ", y);
-                y = toString(y);
+                //y = toString(y);
 
                 await fetch(`https://api.brawlhalla.com/player/${y}/stats?api_key=${TOKEN}`)
                     .then(res2 => res2.json())

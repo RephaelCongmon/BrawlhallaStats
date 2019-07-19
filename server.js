@@ -68,7 +68,8 @@ router.get('/submit-form', async function(req, res) {
         .then(async json => {
 
             console.log("JSON = ", json);
-
+            console.log("json.brawlhalla_id = ", json.brawlhalla_id);
+            
             var  y = json.brawlhalla_id;
             console.log("y = ", y);
 

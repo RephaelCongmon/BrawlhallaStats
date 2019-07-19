@@ -1055,7 +1055,7 @@
                 // <button type="button" formaction="https://brawlhallastats.herokuapp.com/api/leaderboards/1v1Ranked" value="searchTwo" id="ButtonTwoVTwo" class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.cops_and_crims" >${result[1].name} | Peak Rating: ${result[1].peak_rating}</button>`
 
 
-                document.getElementById("searchResultsPanel").querySelectorAll('ButtonSearchResult').forEach(button => button.addEventListener('click', ee => {
+                document.querySelectorAll('#ButtonSearchResult').forEach(button => button.addEventListener('click', ee => {
                 
                 ee.preventDefault();
 

@@ -7,7 +7,8 @@
     "brawlhalla-api": "^4.0.5",
     "express": "^4.17.1",
     "express-validator": "^6.1.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "pg": "^7.11.0"
   },
   "devDependencies": {},
   "scripts": {

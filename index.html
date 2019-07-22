@@ -1127,6 +1127,7 @@
                             var legendLosses;
                             var legendWinRatio;
                             var legendKillRatio;
+                            var legendTime;
 
                             for (var i = 0; i < result.legends.length; i++){
                                 damageDealt += parseInt(result.legends[i].damagedealt);
@@ -1143,9 +1144,12 @@
                                 legendFalls = result.legends[i].falls;
                                 legendGames = result.legends[i].games;
                                 legendWins = result.legends[i].wins;
+                                
                                 legendLosses = legendGames - legendWins;
                                 legendWinRatio = legendWins/legendLosses;
                                 legendKillRatio = legendKills/legendFalls;
+
+                                legendTime = result.legends[i].matchtime;
 
                                 document.getElementById("legendName" + `${i}`).innerHTML = `${legendName} (Lvl. ${legendLevel})`;
                                 document.querySelector("#legend" + `${i}`).style.display = "block";
@@ -1158,7 +1162,8 @@
                                     
                                     `<li><b>Kills:</b> ${numberWithCommas(legendKills)}</li>` +
                                     `<li><b>Deaths:</b> ${numberWithCommas(legendFalls)}</li>` +
-                                    `<li><b>K/D Ratio: </b> ${legendKillRatio.toFixed(2)}</li></ul>`;
+                                    `<li><b>K/D Ratio:</b> ${legendKillRatio.toFixed(2)}</li><br />` +
+                                    `<li><b>Time In-game:</b> ${timeStringFunction(legendTime)}</li></ul>`;
                                 
                             }
 

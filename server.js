@@ -131,6 +131,11 @@ router.get('/submit-form2', async function(req, res) {
 
     }
 
+    let searchQueryData3 = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
+    let searchQueryValues3 = [keys[0]];
+
+    const data3 = await new Promise((res, rej) => pool.query(searchQueryData3, searchQueryValues3, (err, data3) => err ? rej(err) : res(data3)));
+    
     await fetch(`https://api.brawlhalla.com/player/${keys[0]}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
@@ -148,17 +153,14 @@ router.get('/submit-form2', async function(req, res) {
                 });
             }
 
-            let searchQueryData3 = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
-            let searchQueryValues3 = [keys[0]];
-
-            const data3 = await new Promise((res, rej) => pool.query(searchQueryData3, searchQueryValues3, (err, data3) => err ? rej(err) : res(data3)));
+            
             let newLookups = data3.rows[0].lookups;
 
             var json2 = json;
 
             json2.lookups = newLookups;
             console.log("Json2 = ", json2);
-            
+
             res.json(json);
         
         });

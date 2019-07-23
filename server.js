@@ -135,7 +135,7 @@ router.get('/submit-form2', async function(req, res) {
         .then(res => res.json())
         .then(json => {
 
-            console.log("This json = ", json);
+            //console.log("This json = ", json);
 
             if (inserted){
                 let updateNameQueryData = `UPDATE brawlhalla SET brawlhallaname = $1 WHERE brawlhallaid = $2`;
@@ -147,6 +147,18 @@ router.get('/submit-form2', async function(req, res) {
                     }
                 });
             }
+
+            let searchQueryData3 = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
+            let searchQueryValues3 = [keys[0]];
+
+            const data3 = await new Promise((res, rej) => pool.query(searchQueryData3, searchQueryValues3, (err, data3) => err ? rej(err) : res(data3)));
+            let newLookups = data3.rows[0].lookups;
+
+            var json2 = json;
+
+            json2.lookups = newLookups;
+            console.log("Json2 = ", json2);
+            
             res.json(json);
         
         });

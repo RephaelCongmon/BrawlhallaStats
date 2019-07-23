@@ -102,7 +102,7 @@ router.get('/submit-form2', async function(req, res) {
 
     if (data.rows.length == 0){
         inserted = 1;
-        let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid, brawlhallaname) VALUES ($1, $2, $3)`;
+        let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid, brawlhallaname, lookups) VALUES ($1, $2, $3)`;
         let insertQueryValues = [keys[0], 'default', 1];
 
         pool.query(insertQueryData, insertQueryValues, err => {

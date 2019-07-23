@@ -96,7 +96,7 @@
         -->
     </ul></li>
     <li><a href="#" class="waves-effect waves-primary"><i class="zmdi zmdi-accounts"></i><span> Clan Stats </span></a></li>
-    <li><a href="#" class="waves-effect waves-primary"><i class="zmdi zmdi-view-list-alt"></i><span> Leaderboards </span></a></li>
+    <li><a href="https://brawlhallastats.herokuapp.com/leaderboards" class="waves-effect waves-primary"><i class="zmdi zmdi-view-list-alt"></i><span> Leaderboards </span></a></li>
     <li class="menu-title">Miscellaneous</li>
     <li class="active"><a href="#" class="waves-effect waves-primary active"><i class="zmdi zmdi-chart"></i><span> Totals </span></a></li>
     <!--<li><a href="#" class="waves-effect waves-primary"><i class="zmdi zmdi-camera"></i><span> Generators </span></a></li>
@@ -117,8 +117,27 @@
  
     <div class="content">
         <div class="container">
+            
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        
+                        <h4 class="page-title">Brawlhalla Miscellaneous</h4>
+                    </div>
+                </div>
+            </div>
         
-        
+            <div class="row" id="playerLoading">
+                <div class="col-lg-12">
+                    
+                    <div class="panel-body">
+                        <img src="https://brawlhallastats.com/assets/images/ROFEL_64.gif"></img>
+                        Loading...
+                    </div>
+                    
+                </div>
+            </div>
+
             <div class="row" id="playerStats" style="display: none;">
                 <div class="col-lg-3 b-0 p-0">
                     <div class="col-lg-12">
@@ -244,7 +263,11 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        
+        fetch('https://brawlhallastats.herokuapp.com/api/totals')
+        .then(response => response.json())
+        .then(results => {
+            console.log("totals results = ", results);
+        });
 
 }, false);
 </script>

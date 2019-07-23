@@ -196,6 +196,42 @@ router.get('/search', async function(req, res){
         })
 });
 
+router.get('/totals', async function(req, res){
+    console.log("totals accessed");
+
+
+    let searchQueryData = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
+    let searchQueryValues = ['totals'];
+
+    const data = await new Promise((res, rej) => pool.query(searchQueryData, searchQueryValues, (err, data) => err ? rej(err) : res(data)));
+
+    let totalLookups = data.rows[0].lookups;
+    var text = `{ "totals" : { "lookups":${totalLookups}} }`;
+    var obj = JSON.parse(text);
+    console.log("Object = ", obj);
+    res.json(obj);
+    // await fetch(`https://api.brawlhalla.com/rankings/1v1/us-e/1?name=${x}&api_key=${TOKEN}`)
+    //     .then(res => res.json())
+    //     .then(async json => {
+    //         console.log("JSON = ", json);
+    //         if (!json[0]){
+    //             var error = '{ "error" : { "code": 404}}';
+                
+    //             var obj = JSON.parse(error);
+    //             console.log("obj = ", obj);
+    //             console.log("obj.error = ", obj.error);
+    //             console.log("obj.error.code = ", obj.error.code);
+    //             console.log("obj.error['code'] = ", obj.error['code']);
+    //             //console.log("obj.error[0].code = ", obj.error[0].code);
+                
+    //             res.json(obj);
+    //         }
+    //         else {
+    //             res.json(json);
+    //         }
+    //     })
+});
+
 router.get('/submit-form', async function(req, res) {
     console.log("Form submitted");
 

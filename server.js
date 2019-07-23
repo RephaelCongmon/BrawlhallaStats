@@ -3,9 +3,30 @@ const app = express();
 const path = require('path');
 const fetch = require('node-fetch');
 const bodyParser = require('body-parser');
+const parse = require("pg-connection-string");
+const { Pool } = require ('pg');   
 
 var TOKEN = process.env.brawlhallaKEY;
 const bh = require('brawlhalla-api')(`${TOKEN}`);
+
+const cn = {
+    connectionString: process.env.DATABASE_URL.parse,
+    port: 5432,
+
+    host: process.env.dbHost,
+    user: process.env.dbUserName,
+    password: process.env.dbPassword,
+    database: process.env.db,
+    ssl: true,
+
+}
+
+const pool = new Pool(cn);
+pool.connect(err => {
+    if(err) console.log(err);
+    console.log('Connected to PostgresSQL!');
+});
+
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));

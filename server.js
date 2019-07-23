@@ -77,8 +77,58 @@ router.get('/submit-form2', async function(req, res) {
 
     const data = await new Promise((res, rej) => pool.query(searchQueryData, searchQueryValues, (err, data) => err ? rej(err) : res(data)));
 
+    let searchQueryData2 = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
+    let searchQueryValues2 = ['totals'];
+
+    const data2 = await new Promise((res, rej) => pool.query(searchQueryData2, searchQueryValues2, (err, data2) => err ? rej(err) : res(data2)));
     console.log("Data = ", data);
     
+    let numLookups;
+    let totalLookups;
+
+    if (data.rows.length == 0){
+        let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid, lookups) VALUES ($1, $2)`;
+        let insertQueryValues = [keys[0], 1];
+
+        pool.query(insertQueryData, insertQueryValues, err => {
+            if (err) console.log("Failed to insert player into database!");
+            else {
+                console.log("Insert success!");
+            }
+        });
+
+
+    }
+    else {
+        
+        numLookups = data.rows[0].lookups*1;
+        totalLookups = data2.rows[0].totalLookups*1;
+
+        totalLookups += 1;
+        numLookups += 1;
+
+        let updateQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
+        let updateQueryValues = [numLookups, data.rows[0].brawlhallaid];
+        pool.query(updateQueryData, updateQueryValues, err => {
+            if (err) console.log("Failed to update upon lookup! ", err);
+            else {
+                console.log("Update success!");
+            }
+        });
+
+        let updateTotalQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
+        let updateTotalQueryValues = [totalLookups, 'totals'];
+
+        pool.query(updateTotalQueryData, updateTotalQueryValues, err => {
+            if (err) console.log("Failed to update total lookups! ", err);
+            else {
+                console.log("Update totals success!");
+            }
+        });
+
+        
+
+    }
 
     await fetch(`https://api.brawlhalla.com/player/${keys[0]}/stats?api_key=${TOKEN}`)
         .then(res => res.json())

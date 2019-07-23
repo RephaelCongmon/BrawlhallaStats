@@ -72,7 +72,13 @@ router.get('/submit-form2', async function(req, res) {
 
     console.log(`keys[0] = ${keys[0]}`);
 
+    let searchQueryData = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
+    let searchQueryValues = [keys[0]];
 
+    const data = await new Promise((res, rej) => pool.query(searchQueryData, searchQueryValues, (err, data) => err ? rej(err) : res(data)));
+
+    console.log("Data = ", data);
+    
 
     await fetch(`https://api.brawlhalla.com/player/${keys[0]}/stats?api_key=${TOKEN}`)
         .then(res => res.json())

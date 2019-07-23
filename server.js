@@ -58,7 +58,8 @@ router.use(function(req, res, next) {
 // more routes will happen here
 
 router.get('/submit-form2', async function(req, res) {
-  
+
+    var inserted = 0;
 
     console.log("Button click submitted");
 
@@ -100,8 +101,9 @@ router.get('/submit-form2', async function(req, res) {
     });
 
     if (data.rows.length == 0){
-        let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid, brawlhallaname) VALUES ($1, $2)`;
-        let insertQueryValues = [keys[0], 'default'];
+        inserted = 1;
+        let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid, brawlhallaname) VALUES ($1, $2, $3)`;
+        let insertQueryValues = [keys[0], 'default', 1];
 
         pool.query(insertQueryData, insertQueryValues, err => {
             if (err) console.log("Failed to insert player into database!");
@@ -113,7 +115,7 @@ router.get('/submit-form2', async function(req, res) {
 
     }
     else {
-        
+        inserted = 0;
         numLookups = data.rows[0].lookups*1;
  
         numLookups += 1;
@@ -135,8 +137,16 @@ router.get('/submit-form2', async function(req, res) {
 
             console.log("This json = ", json);
 
-            
-
+            if (inserted){
+                let updateNameQueryData = `UPDATE brawlhalla SET brawlhallaname = $1 WHERE brawlhallaid = $2`;
+                let updateNameQueryValues = [json.name, data.rows[0].brawlhallaid];
+                pool.query(updateNameQueryData, updateNameQueryValues, err => {
+                    if (err) console.log("Failed to update name! ", err);
+                    else {
+                        console.log("Update Name success!");
+                    }
+                });
+            }
             res.json(json);
         
         });

@@ -139,7 +139,7 @@ router.get('/submit-form2', async function(req, res) {
 
             if (inserted){
                 let updateNameQueryData = `UPDATE brawlhalla SET brawlhallaname = $1 WHERE brawlhallaid = $2`;
-                let updateNameQueryValues = [json.name, data.rows[0].brawlhallaid];
+                let updateNameQueryValues = [json.name, keys[0]];
                 pool.query(updateNameQueryData, updateNameQueryValues, err => {
                     if (err) console.log("Failed to update name! ", err);
                     else {

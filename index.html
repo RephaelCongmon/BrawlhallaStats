@@ -1107,6 +1107,7 @@
                             var playerSpikeballKOs = result.kospikeball;
                             var playerSidekickKOs = result.kosidekick;
                             var playerSnowballKOs = result.kosnowball;
+                            var playerLookups = result.lookups;
 
                             var timeSpentInGame = 0;
                             var damageDealt = 0;
@@ -1115,6 +1116,7 @@
                             var playerFalls = 0;
                             var playerSuicides = 0;
                             var playerDamageUnarmed = 0;
+                            
 
                         
                             var legendLevel;
@@ -1163,7 +1165,8 @@
                                     `<li><b>Kills:</b> ${numberWithCommas(legendKills)}</li>` +
                                     `<li><b>Deaths:</b> ${numberWithCommas(legendFalls)}</li>` +
                                     `<li><b>K/D Ratio:</b> ${legendKillRatio.toFixed(2)}</li><br />` +
-                                    `<li><b>Time In-game:</b> ${timeStringFunction(legendTime)}</li></ul>`;
+                                    `<li><b>Time In-game:</b> ${timeStringFunction(legendTime)}</li><br />` +
+                                    `<li><b>Searched:</b> ${numberWithCommas(playerLookups)} times</li></ul>`;
                                 
                             }
 

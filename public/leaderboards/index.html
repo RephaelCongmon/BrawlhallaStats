@@ -497,6 +497,8 @@
                     </thead>
                 </table>`;
 
+                $('#leaderboard-table').DataTable();
+                
                 document.querySelector('#leaderboardClass').innerHTML = '' + str;
                 // `<table id="leaderboard-table" class="table table-striped table-bordered dt-responsive dataTable no-footer dtr-inline" role="grid" aria-describedby="leaderboard-table-info">
 
@@ -547,6 +549,8 @@
                 // </table>`;
 
                 document.getElementById("leaderboard-name").innerHTML = ` - ${e.target.value} Ranked`;
+
+                
         });
     }));
 

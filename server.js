@@ -105,7 +105,7 @@ router.get('/submit-form2', async function(req, res) {
         let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid, brawlhallaname, lookups) VALUES ($1, $2, $3)`;
         let insertQueryValues = [keys[0], 'default', 1];
 
-        pool.query(insertQueryData, insertQueryValues, err => {
+        await pool.query(insertQueryData, insertQueryValues, err => {
             if (err) console.log("Failed to insert player into database!");
             else {
                 console.log("Insert success!");
@@ -122,7 +122,7 @@ router.get('/submit-form2', async function(req, res) {
 
         let updateQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
         let updateQueryValues = [numLookups, data.rows[0].brawlhallaid];
-        pool.query(updateQueryData, updateQueryValues, err => {
+        await pool.query(updateQueryData, updateQueryValues, err => {
             if (err) console.log("Failed to update upon lookup! ", err);
             else {
                 console.log("Update success!");
@@ -135,7 +135,7 @@ router.get('/submit-form2', async function(req, res) {
     let searchQueryValues3 = [keys[0]];
 
     const data3 = await new Promise((res, rej) => pool.query(searchQueryData3, searchQueryValues3, (err, data3) => err ? rej(err) : res(data3)));
-    
+
     await fetch(`https://api.brawlhalla.com/player/${keys[0]}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {

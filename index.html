@@ -241,6 +241,8 @@
 
                 <span id="playerTimeInGame"><b>Quests Completed:</b> 79<br /><br /></span>
 
+                <span id="playerLookups"><b>Quests Completed:</b> 79<br /><br /></span>
+
                 
             </div>
         </div>
@@ -1165,8 +1167,8 @@
                                     `<li><b>Kills:</b> ${numberWithCommas(legendKills)}</li>` +
                                     `<li><b>Deaths:</b> ${numberWithCommas(legendFalls)}</li>` +
                                     `<li><b>K/D Ratio:</b> ${legendKillRatio.toFixed(2)}</li><br />` +
-                                    `<li><b>Time In-game:</b> ${timeStringFunction(legendTime)}</li><br />` +
-                                    `<li><b>Searched:</b> ${numberWithCommas(playerLookups)} times</li></ul>`;
+                                    `<li><b>Time In-game:</b> ${timeStringFunction(legendTime)}</li></ul>`;
+                                    
                                 
                             }
 
@@ -1192,6 +1194,8 @@
                             document.getElementById('playerSuicides').innerHTML = `<b>Total Suicides:</b> ${numberWithCommas(playerSuicides)}<br /><br />`;
 
                             document.getElementById('playerTimeInGame').innerHTML = `<b>Time Spent In-game:</b> ${timeSpentInGameString}<br />`;
+
+                            document.getElementById('playerLookups').innerHTML = `<b>Searched:</b> ${numberWithCommas(playerLookups)} Times<br />`;
                             
                             if (result.clan){
                                 document.getElementById('playerClan').innerHTML = `<b>${playerClan}</b><br />`;

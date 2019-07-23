@@ -105,7 +105,7 @@ router.get('/submit-form2', async function(req, res) {
         let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid, brawlhallaname, lookups) VALUES ($1, $2, $3)`;
         let insertQueryValues = [keys[0], 'default', 1];
 
-        await pool.query(insertQueryData, insertQueryValues, err => {
+        pool.query(insertQueryData, insertQueryValues, err => {
             if (err) console.log("Failed to insert player into database!");
             else {
                 console.log("Insert success!");
@@ -122,7 +122,7 @@ router.get('/submit-form2', async function(req, res) {
 
         let updateQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
         let updateQueryValues = [numLookups, data.rows[0].brawlhallaid];
-        await pool.query(updateQueryData, updateQueryValues, err => {
+        pool.query(updateQueryData, updateQueryValues, err => {
             if (err) console.log("Failed to update upon lookup! ", err);
             else {
                 console.log("Update success!");
@@ -131,18 +131,21 @@ router.get('/submit-form2', async function(req, res) {
 
     }
 
-    let searchQueryData3 = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
-    let searchQueryValues3 = [keys[0]];
+    // let searchQueryData3 = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
+    // let searchQueryValues3 = [keys[0]];
 
-    const data3 = await new Promise((res, rej) => pool.query(searchQueryData3, searchQueryValues3, (err, data3) => err ? rej(err) : res(data3)));
+    // const data3 = await new Promise((res, rej) => pool.query(searchQueryData3, searchQueryValues3, (err, data3) => err ? rej(err) : res(data3)));
 
     await fetch(`https://api.brawlhalla.com/player/${keys[0]}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
 
             //console.log("This json = ", json);
+            var json2 = json;
+            let newLookups;
 
             if (inserted){
+                newLookups = 1;
                 let updateNameQueryData = `UPDATE brawlhalla SET brawlhallaname = $1 WHERE brawlhallaid = $2`;
                 let updateNameQueryValues = [json.name, keys[0]];
                 pool.query(updateNameQueryData, updateNameQueryValues, err => {
@@ -152,11 +155,9 @@ router.get('/submit-form2', async function(req, res) {
                     }
                 });
             }
-
-            
-            let newLookups = data3.rows[0].lookups;
-
-            var json2 = json;
+            else {
+                newLookups = numLookups;
+            }            
 
             json2.lookups = newLookups;
             console.log("Json2 = ", json2);

@@ -86,6 +86,19 @@ router.get('/submit-form2', async function(req, res) {
     let numLookups;
     let totalLookups;
 
+    totalLookups = data2.rows[0].lookups*1;
+
+    totalLookups += 1;
+    let updateTotalQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
+    let updateTotalQueryValues = [totalLookups, 'totals'];
+
+    pool.query(updateTotalQueryData, updateTotalQueryValues, err => {
+        if (err) console.log("Failed to update total lookups! ", err);
+        else {
+            console.log("Update totals success!");
+        }
+    });
+
     if (data.rows.length == 0){
         let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid, lookups) VALUES ($1, $2)`;
         let insertQueryValues = [keys[0], 1];
@@ -102,9 +115,7 @@ router.get('/submit-form2', async function(req, res) {
     else {
         
         numLookups = data.rows[0].lookups*1;
-        totalLookups = data2.rows[0].totalLookups*1;
-
-        totalLookups += 1;
+ 
         numLookups += 1;
 
         let updateQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
@@ -115,18 +126,6 @@ router.get('/submit-form2', async function(req, res) {
                 console.log("Update success!");
             }
         });
-
-        let updateTotalQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
-        let updateTotalQueryValues = [totalLookups, 'totals'];
-
-        pool.query(updateTotalQueryData, updateTotalQueryValues, err => {
-            if (err) console.log("Failed to update total lookups! ", err);
-            else {
-                console.log("Update totals success!");
-            }
-        });
-
-        
 
     }
 

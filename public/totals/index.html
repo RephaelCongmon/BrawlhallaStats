@@ -267,12 +267,13 @@
         .then(response => response.json())
         .then(results => {
             console.log("totals results = ", results);
+            document.querySelector('#playerStats').style.display = "inline";
+            document.querySelector('#playerLoading').style.display = "none";
+
+            document.getElementById('playerLevel').innerHTML = `<b>Total Searches:</b> ${results.totals.lookups}<br />`;
         });
 
-        document.querySelector('#playerStats').style.display = "inline";
-        document.querySelector('#playerLoading').style.display = "none";
-
-        document.getElementById('playerLevel').innerHTML = `<b>Total Searches:</b> ${results.totals.lookups}<br />`;
+        
 
 }, false);
 </script>

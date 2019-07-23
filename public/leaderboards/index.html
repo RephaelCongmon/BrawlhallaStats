@@ -548,6 +548,12 @@
                 //     </thead>
                 // </table>`;
 
+
+                jQuery(document).ready(function ($) {
+                    $.noConflict();
+                    $('#leaderboard-table').DataTable();
+
+                });
                 document.getElementById("leaderboard-name").innerHTML = ` - ${e.target.value} Ranked`;
 
                 
@@ -592,10 +598,11 @@
 <script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/dataTables.scroller.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script> -->
 
 <script>
-    jQuery(document).ready(function ($) {
-        $.noConflict();
-        $('#leaderboard-table').DataTable();
-    });
+    // jQuery(document).ready(function ($) {
+    //     $.noConflict();
+    //     $('#leaderboard-table').DataTable();
+
+    // });
 </script>
  </div>
  <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js"  defer=""></script></body>

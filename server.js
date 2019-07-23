@@ -100,8 +100,8 @@ router.get('/submit-form2', async function(req, res) {
     });
 
     if (data.rows.length == 0){
-        let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid) VALUES ($1)`;
-        let insertQueryValues = [keys[0]];
+        let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid, brawlhallaname) VALUES ($1, $2)`;
+        let insertQueryValues = [keys[0], 'default'];
 
         pool.query(insertQueryData, insertQueryValues, err => {
             if (err) console.log("Failed to insert player into database!");
@@ -132,6 +132,10 @@ router.get('/submit-form2', async function(req, res) {
     await fetch(`https://api.brawlhalla.com/player/${keys[0]}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
+
+            console.log("This json = ", json);
+
+            
 
             res.json(json);
         

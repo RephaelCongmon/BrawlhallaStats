@@ -100,8 +100,8 @@ router.get('/submit-form2', async function(req, res) {
     });
 
     if (data.rows.length == 0){
-        let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid, lookups) VALUES ($1, $2)`;
-        let insertQueryValues = [keys[0], 1];
+        let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid) VALUES ($1)`;
+        let insertQueryValues = [keys[0]];
 
         pool.query(insertQueryData, insertQueryValues, err => {
             if (err) console.log("Failed to insert player into database!");

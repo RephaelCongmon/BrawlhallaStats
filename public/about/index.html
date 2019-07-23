@@ -210,20 +210,7 @@
 <script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/dataTables.scroller.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch('https://brawlhallastats.herokuapp.com/api/totals')
-        .then(response => response.json())
-        .then(results => {
-            console.log("totals results = ", results);
-            document.querySelector('#playerStats').style.display = "inline";
-            document.querySelector('#playerLoading').style.display = "none";
 
-            document.getElementById('playerLevel').innerHTML = `<b>Total Searches:</b> ${results.totals.lookups}<br />`;
-        });
-
-        
-
-}, false);
 </script>
  </div>
  <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js" data-cf-settings="566ead401d4a289a66320f2a-|49" defer=""></script></body>

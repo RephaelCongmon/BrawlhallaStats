@@ -583,7 +583,7 @@
             fetch('https://brawlhallastats.herokuapp.com/api/leaderboards/mostsearched' )
                 .then(response => response.json())
                 .then(result => {
-                    console.log(result[0]);
+                    console.log(result);
                     //document.querySelector('#leaderboard-table-info').style.display = "inline";
                     document.querySelector('#loadingLeaderboards').style.display = "none";
                     var str = "";
@@ -597,6 +597,10 @@
                         else {
                             str += '<tr role="row" class="even">';
                         }
+                        
+                        str += `<td class="sorting_1" tabindex="0">${i*1+1}</td>`;
+                        str += `<td><b>${result[i].brawlhallaname}</b></td>`;
+                        str += `<td>${result[i].lookups}</td>`;
                         // var losses = result[i].games - result[i].wins;
 
                         // str += `<td class="sorting_1" tabindex="0">${result[i].rank}</td>`;

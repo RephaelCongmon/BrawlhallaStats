@@ -312,7 +312,7 @@ router.get('/leaderboards/mostsearched', async function(req, res) {
     const data = await new Promise((res, rej) => pool.query(searchQueryData, (err, data) => err ? rej(err) : res(data)));
     console.log(data.rows);
 
-    res.json(data);
+    res.json(data.rows);
     // var keys = [];
 
     // for (var key in req.query) {

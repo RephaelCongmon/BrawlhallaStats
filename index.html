@@ -240,12 +240,18 @@
                 <span id="playerDamageDealt"><b>Quests Completed:</b> 79<br /><br /></span>
                 <span id="playerDamageTaken"><b>Quests Completed:</b> 79<br /><br /></span>
                 <span id="playerDamageUnarmed"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerDamageThrownItem"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerDamageGadgets"><b>Quests Completed:</b> 79<br /><br /></span>
 
+                <span id="playerKDRatio"><b>Quests Completed:</b> 79<br /><br /></span>
                 <span id="playerKOs"><b>Quests Completed:</b> 79<br /></span>
                 <span id="playerFalls"><b>Quests Completed:</b> 79<br /></span>
                 <span id="playerSuicides"><b>Quests Completed:</b> 79<br /><br /></span>
-                <span id="playerKDRatio"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerKOsUnarmed"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerKOsThrownItem"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerKOsGadgets"><b>Quests Completed:</b> 79<br /><br /></span>
                 <span id="playerSuicideRate"><b>Quests Completed:</b> 79<br /><br /></span>
+              
 
                 <span id="playerTimeInGame"><b>Quests Completed:</b> 79<br /><br /></span>
 
@@ -1126,8 +1132,12 @@
                             var playerFalls = 0;
                             var playerSuicides = 0;
                             var playerDamageUnarmed = 0;
-                            
+                            var playerDamageThrownItem = 0;
+                            var playerDamageGadgets = 0;
 
+                            var playerKOsUnarmed = 0;
+                            var playerKOsThrownItem = 0;
+                            var playerKOsGadgets = 0;
                         
                             var legendLevel;
                         
@@ -1149,6 +1159,11 @@
                                 playerFalls += parseInt(result.legends[i].falls);
                                 playerSuicides += parseInt(result.legends[i].suicides);
                                 playerDamageUnarmed += parseInt(result.legends[i].damageunarmed);
+                                playerDamageThrownItem += parseInt(result.legends[i].damagethrownitem);
+                                playerDamageGadgets += parseInt(result.legends[i].damagegadgets);
+                                playerKOsUnarmed += parseInt(result.legends[i].kounarmed);
+                                playerKOsThrownItem += parseInt(result.legends[i].kothrownitem);
+                                playerKOsGadgets += parseInt(result.legends[i].kogadgets);
 
                                 legendLevel = result.legends[i].level;
                                 legendName = result.legends[i].legend_name_key;
@@ -1197,12 +1212,17 @@
 
                             document.getElementById('playerDamageDealt').innerHTML = `<b>Total Damage Dealt:</b> ${numberWithCommas(damageDealt)}<br />`;
                             document.getElementById('playerDamageTaken').innerHTML = `<b>Total Damage Taken:</b> ${numberWithCommas(damageTaken)}<br />`;
-                            document.getElementById('playerDamageUnarmed').innerHTML = `<b>Damage Using Unarmed:</b> ${numberWithCommas(playerDamageUnarmed)}<hr>`
+                            document.getElementById('playerDamageUnarmed').innerHTML = `<b>Damage Using Unarmed:</b> ${numberWithCommas(playerDamageUnarmed)}<br />`;
+                            document.getElementById('playerDamageThrownItem').innerHTML = `<b>Damage With Thrown Items:</b> ${numberWithCommas(playerDamageThrownItem)}<br />`;
+                            document.getElementById('playerDamageGadgets').innerHTML = `<b>Damage Using Gadgets:</b> ${numberWithCommas(playerDamageGadgets)}<hr>`;
 
+                            document.getElementById('playerKDRatio').innerHTML = `<b>K/D Ratio:</b> ${ (playerKOs/playerFalls).toFixed(2)}<br />`;
                             document.getElementById('playerKOs').innerHTML = `<b>Total KOs:</b> ${numberWithCommas(playerKOs)}<br />`;
                             document.getElementById('playerFalls').innerHTML = `<b>Total Falls:</b> ${numberWithCommas(playerFalls)}<br />`;
                             document.getElementById('playerSuicides').innerHTML = `<b>Total Suicides:</b> ${numberWithCommas(playerSuicides)}<br />`;
-                            document.getElementById('playerKDRatio').innerHTML = `<b>K/D Ratio:</b> ${ (playerKOs/playerFalls).toFixed(2)}<br />`;
+                            document.getElementById('playerKOsUnarmed').innerHTML = `<b>KOs Using Unarmed:</b> ${numberWithCommas(playerKOsUnarmed)}<br />`;
+                            document.getElementById('playerKOsThrownItem').innerHTML = `<b>KOs Throwing Items:</b> ${numberWithCommas(playerKOsThrownItem)}<br />`;
+                            document.getElementById('playerKOsGadgets').innerHTML = `<b>KOs Using Gadgets:</b> ${numberWithCommas(playerKOsGadgets)}<br /><br />`
                             document.getElementById('playerSuicideRate').innerHTML = `One suicide every <b>${ (playerGames/playerSuicides).toFixed(2)} games</b><hr>`;
 
                             document.getElementById('playerTimeInGame').innerHTML = `<b>Time Spent In-game:</b> ${timeSpentInGameString}<br /><br />`;

@@ -244,6 +244,8 @@
                 <span id="playerKOs"><b>Quests Completed:</b> 79<br /></span>
                 <span id="playerFalls"><b>Quests Completed:</b> 79<br /></span>
                 <span id="playerSuicides"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerKDRatio"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerSuicideRate"><b>Quests Completed:</b> 79<br /><br /></span>
 
                 <span id="playerTimeInGame"><b>Quests Completed:</b> 79<br /><br /></span>
 
@@ -1195,11 +1197,13 @@
 
                             document.getElementById('playerDamageDealt').innerHTML = `<b>Total Damage Dealt:</b> ${numberWithCommas(damageDealt)}<br />`;
                             document.getElementById('playerDamageTaken').innerHTML = `<b>Total Damage Taken:</b> ${numberWithCommas(damageTaken)}<br />`;
-                            document.getElementById('playerDamageUnarmed').innerHTML = `<b>Damage Using Unarmed:</b> ${numberWithCommas(playerDamageUnarmed)}<br /><br />`
+                            document.getElementById('playerDamageUnarmed').innerHTML = `<b>Damage Using Unarmed:</b> ${numberWithCommas(playerDamageUnarmed)}<hr>`
 
                             document.getElementById('playerKOs').innerHTML = `<b>Total KOs:</b> ${numberWithCommas(playerKOs)}<br />`;
                             document.getElementById('playerFalls').innerHTML = `<b>Total Falls:</b> ${numberWithCommas(playerFalls)}<br />`;
-                            document.getElementById('playerSuicides').innerHTML = `<b>Total Suicides:</b> ${numberWithCommas(playerSuicides)}<br /><br />`;
+                            document.getElementById('playerSuicides').innerHTML = `<b>Total Suicides:</b> ${numberWithCommas(playerSuicides)}<br />`;
+                            document.getElementById('playerKDRatio').innerHTML = `<b>K/D Ratio:</b> ${ (playerKOs/playerFalls).toFixed(2)}<br />`;
+                            document.getElementById('playerSuicideRate').innerHTML = `One suicide every <b>${ (playerGames/playerSuicides).toFixed(2)} games</b>`;
 
                             document.getElementById('playerTimeInGame').innerHTML = `<b>Time Spent In-game:</b> ${timeSpentInGameString}<br /><br />`;
 

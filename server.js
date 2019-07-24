@@ -450,7 +450,7 @@ router.get('/leaderboards/mostsearched', async function(req, res) {
     let searchQueryData = `SELECT * FROM brawlhalla ORDER BY lookups DESC LIMIT 100 OFFSET 1`;
 
     const data = await new Promise((res, rej) => pool.query(searchQueryData, (err, data) => err ? rej(err) : res(data)));
-    console.log(data.rows);
+    //console.log(data.rows);
 
     res.json(data.rows);
     // var keys = [];

@@ -13,14 +13,14 @@ console.log("DATABASE_URL: ", process.env.DATABASE_URL);
 console.log("Database URL Parse = ", process.env.DATABASE_URL.parse);
 
 const cn = {
-    connectionString: process.env.DATABASE_URL.parse,
+    connectionString: process.env.DATABASE_URL,
     port: 5432,
 
-    host: process.env.dbHost,
-    user: process.env.dbUserName,
-    password: process.env.dbPassword,
-    database: process.env.db,
-    ssl: true,
+    // host: process.env.dbHost,
+    // user: process.env.dbUserName,
+    // password: process.env.dbPassword,
+    // database: process.env.db,
+    // ssl: true,
 
 }
 

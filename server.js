@@ -304,6 +304,34 @@ router.get('/leaderboards/1v1Ranked', async function(req, res) {
 
 });
 
+router.get('/leaderboards/mostsearched', async function(req, res) {
+    console.log("most searched button submitted");
+
+    let searchQueryData = `SELECT * FROM brawlhalla ORDER BY lookups DESC LIMIT 100 OFFSET 1`;
+
+    const data = await new Promise((res, rej) => pool.query(searchQueryData, (err, data) => err ? rej(err) : res(data)));
+
+    res.json(data);
+    // var keys = [];
+
+    // for (var key in req.query) {
+    //     if (req.query.hasOwnProperty(key)) {
+    //         keys.push(key);
+    //     }
+    // }
+
+    // console.log(`keys[0] = ${keys[0]}`);
+
+    // await fetch(`https://api.brawlhalla.com/rankings/${keys[0]}/all/1?api_key=${TOKEN}`)
+    //     .then(res => res.json())
+    //     .then(json => {
+
+    //         res.json(json);
+        
+    // });
+
+});
+
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);

@@ -9,6 +9,9 @@ const { Pool } = require ('pg');
 var TOKEN = process.env.brawlhallaKEY;
 const bh = require('brawlhalla-api')(`${TOKEN}`);
 
+console.log("DATABASE_URL: ", process.env.DATABASE_URL);
+console.log("Database URL Parse = ", process.env.DATABASE_URL.parse);
+
 const cn = {
     connectionString: process.env.DATABASE_URL.parse,
     port: 5432,

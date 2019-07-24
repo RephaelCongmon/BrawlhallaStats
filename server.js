@@ -177,7 +177,7 @@ router.get('/search', async function(req, res){
 
     var x = req.query.player;
 
-    await fetch(`https://api.brawlhalla.com/rankings/1v1/us-e/1?name=${x}&api_key=${TOKEN}`)
+    await fetch(`https://api.brawlhalla.com/rankings/1v1/all/1?name=${x}&api_key=${TOKEN}`)
         .then(res => res.json())
         .then(async json => {
             console.log("JSON = ", json);

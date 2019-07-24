@@ -186,7 +186,7 @@ router.get('/submit-form2', async function(req, res) {
             });
 
             let updatePlayerQueryData = `UPDATE brawlhalla SET totaldamage = $1, totalgames = $2 WHERE brawlhallaid = $3`;
-            let updatePlayerQueryValues = [json.games, damageDealt, keys[0]];
+            let updatePlayerQueryValues = [damageDealt, json.games, keys[0]];
             pool.query(updatePlayerQueryData, updatePlayerQueryValues, err => {
                 if (err) console.log("Failed to update player total stats!");
                 else {

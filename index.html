@@ -156,6 +156,21 @@
     </div>
 </div>
 
+<div class="row" id="playerSearchBar">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <h4 class="text-dark header-title m-t-0">Search Player</h4>
+            <br>
+            <form method="get" name="formxml" id ="myForm" action="/api/submit-form">
+                <div class="input-group">
+                    <span class="input-group-btn"><button type="submit" onclick="" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button></span>
+                    <input type="text" name="player" class="form-control" placeholder="Brawlhalla Username">
+                </div>
+            </form>
+        </div>
+    </div>
+ </div>
+
 <div class="row" id="playerLoading" style="display: none;">
     <div class="col-lg-12">
         
@@ -942,7 +957,7 @@
 </div>
 
 
- <div class="row" id="playerSearchBar">
+ <!-- <div class="row" id="playerSearchBar">
     <div class="col-lg-12">
         <div class="card-box">
             <h4 class="text-dark header-title m-t-0">Search Player</h4>
@@ -955,7 +970,8 @@
             </form>
         </div>
     </div>
- </div>
+ </div> -->
+ 
  </div>
  
  </div>
@@ -1216,7 +1232,7 @@
                             document.getElementById('playerDamageThrownItem').innerHTML = `<b>Damage With Thrown Items:</b> ${numberWithCommas(playerDamageThrownItem)}<br />`;
                             document.getElementById('playerDamageGadgets').innerHTML = `<b>Damage Using Gadgets:</b> ${numberWithCommas(playerDamageGadgets)}<hr>`;
 
-                            document.getElementById('playerKDRatio').innerHTML = `<b>K/D Ratio:</b> ${ (playerKOs/playerFalls).toFixed(2)}<br />`;
+                            document.getElementById('playerKDRatio').innerHTML = `<b>K/D Ratio:</b> ${ (playerKOs/playerFalls).toFixed(2)}<br /><br />`;
                             document.getElementById('playerKOs').innerHTML = `<b>Total KOs:</b> ${numberWithCommas(playerKOs)}<br />`;
                             document.getElementById('playerFalls').innerHTML = `<b>Total Falls:</b> ${numberWithCommas(playerFalls)}<br />`;
                             document.getElementById('playerSuicides').innerHTML = `<b>Total Suicides:</b> ${numberWithCommas(playerSuicides)}<br />`;

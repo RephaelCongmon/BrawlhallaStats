@@ -239,6 +239,7 @@
 
                 <span id="playerDamageDealt"><b>Quests Completed:</b> 79<br /><br /></span>
                 <span id="playerDamageTaken"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerDamageUnarmed"><b>Quests Completed:</b> 79<br /><br /></span>
 
                 <span id="playerKOs"><b>Quests Completed:</b> 79<br /></span>
                 <span id="playerFalls"><b>Quests Completed:</b> 79<br /></span>
@@ -1190,10 +1191,11 @@
                             document.getElementById('playerGames').innerHTML = `<b>Games Played:</b> ${numberWithCommas(playerGames)}<br />`;
                             document.getElementById('playerWins').innerHTML = `<b>Games Won:</b> ${numberWithCommas(playerWins)}<br />`;
                             document.getElementById('playerLosses').innerHTML = `<b>Games Lost:</b> ${numberWithCommas(playerLosses)}<br />`;
-                            document.getElementById('playerWinRate').innerHTML = `<b>Win Rate:</b> ${ ((playerWins/playerLosses)*100).toFixed(2).toString() + '%'}<br /><br />`;
+                            document.getElementById('playerWinRate').innerHTML = `<b>Win Rate:</b> ${ ((playerWins/playerGames)*100).toFixed(2).toString() + '%'}<hr>`;
 
                             document.getElementById('playerDamageDealt').innerHTML = `<b>Total Damage Dealt:</b> ${numberWithCommas(damageDealt)}<br />`;
-                            document.getElementById('playerDamageTaken').innerHTML = `<b>Total Damage Taken:</b> ${numberWithCommas(damageTaken)}<br /><br />`;
+                            document.getElementById('playerDamageTaken').innerHTML = `<b>Total Damage Taken:</b> ${numberWithCommas(damageTaken)}<br />`;
+                            document.getElementById('playerDamageUnarmed').innerHTML = `<b>Damage Using Unarmed:</b> ${numberWithCommas(playerDamageUnarmed)}<br /><br />`
 
                             document.getElementById('playerKOs').innerHTML = `<b>Total KOs:</b> ${numberWithCommas(playerKOs)}<br />`;
                             document.getElementById('playerFalls').innerHTML = `<b>Total Falls:</b> ${numberWithCommas(playerFalls)}<br />`;

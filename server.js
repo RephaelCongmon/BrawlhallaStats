@@ -310,6 +310,7 @@ router.get('/submit-form3', async function(req, res) {
             var json2 = json;
             let newLookups;
 
+            console.log("This is the json = ", json);
             
 
             if (!json[0]){

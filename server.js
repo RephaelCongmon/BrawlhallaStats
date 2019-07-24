@@ -198,7 +198,7 @@ router.get('/search', async function(req, res){
             }
         })
         .catch(err => {
-            var error = '{ "error" : { "code": 404}}';
+            var error = '{ "error" : { "code": 4004}}';
                 
             var obj = JSON.parse(error);
             //console.log("obj = ", obj);

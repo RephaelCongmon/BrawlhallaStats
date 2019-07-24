@@ -271,7 +271,7 @@ router.get('/totals', async function(req, res){
     const globalData = await new Promise((res, rej) => pool.query(searchGlobalQueryData, (err, globalData) => err ? rej(err) : res(globalData)));
 
     let totalGames = globalData.rows[0].totalgames;
-    let totalDamage = globalData.rows[0].totalDamage;
+    let totalDamage = globalData.rows[0].totaldamage;
 
     let totalLookups = data.rows[0].lookups;
     var text = `{ "totals" : { "lookups":${totalLookups}, "totalgames":${totalGames}, "totaldamage":${totalDamage}} }`;

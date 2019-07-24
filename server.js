@@ -197,6 +197,18 @@ router.get('/search', async function(req, res){
                 res.json(json);
             }
         })
+        .catch(err => {
+            var error = '{ "error" : { "code": 404}}';
+                
+            var obj = JSON.parse(error);
+            //console.log("obj = ", obj);
+            //console.log("obj.error = ", obj.error);
+            //console.log("obj.error.code = ", obj.error.code);
+            console.log("Catch block in submit-form2 = ", obj.error['code']);
+            //console.log("obj.error[0].code = ", obj.error[0].code);
+            
+            res.json(obj);
+        });
 });
 
 router.get('/totals', async function(req, res){

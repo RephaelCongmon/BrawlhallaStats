@@ -256,7 +256,7 @@ router.get('/submit-form', async function(req, res) {
 
     var x = req.query.player;
     var y;
-    await fetch(`https://api.brawlhalla.com/rankings/1v1/us-e/1?name=${x}&api_key=${TOKEN}`)
+    await fetch(`https://api.brawlhalla.com/rankings/1v1/all/1?name=${x}&api_key=${TOKEN}`)
         .then(res => res.json())
         .then(async json => {
 

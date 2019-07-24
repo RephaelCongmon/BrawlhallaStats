@@ -310,10 +310,10 @@ router.get('/submit-form3', async function(req, res) {
             var json2 = json;
             let newLookups;
 
-            console.log("This is the json = ", json);
+            console.log("This is the json = ", json.brawlhalla_id);
             
 
-            if (!json[0]){
+            if (!json.brawlhalla_id){
                 var error = '{ "error" : { "code": 404}}';
                 
                 var obj = JSON.parse(error);

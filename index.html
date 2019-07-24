@@ -235,6 +235,7 @@
                 <span id="playerGames"><b>Achievement Points:</b> 1,470<br /></span>
                 <span id="playerWins"><b>Quests Completed:</b> 79<br /><br /></span>
                 <span id="playerLosses"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerWinRate"><b>Quests Completed:</b> 79<br /><br /></span>
 
                 <span id="playerDamageDealt"><b>Quests Completed:</b> 79<br /><br /></span>
                 <span id="playerDamageTaken"><b>Quests Completed:</b> 79<br /><br /></span>
@@ -1188,7 +1189,8 @@
                             document.getElementById('playerXP').innerHTML = `<br /><b>Total XP:</b> ${numberWithCommas(playerXP)}<br /><br />`;
                             document.getElementById('playerGames').innerHTML = `<b>Games Played:</b> ${numberWithCommas(playerGames)}<br />`;
                             document.getElementById('playerWins').innerHTML = `<b>Games Won:</b> ${numberWithCommas(playerWins)}<br />`;
-                            document.getElementById('playerLosses').innerHTML = `<b>Games Lost:</b> ${numberWithCommas(playerLosses)}<br /><br />`;
+                            document.getElementById('playerLosses').innerHTML = `<b>Games Lost:</b> ${numberWithCommas(playerLosses)}<br />`;
+                            document.getElementById('playerWinRate').innerHTML = `<b>Win Rate:</b> ${ ((playerWins/playerLosses)*100).toFixed(2).toString() + '%'}<br /><br />`;
 
                             document.getElementById('playerDamageDealt').innerHTML = `<b>Total Damage Dealt:</b> ${numberWithCommas(damageDealt)}<br />`;
                             document.getElementById('playerDamageTaken').innerHTML = `<b>Total Damage Taken:</b> ${numberWithCommas(damageTaken)}<br /><br />`;

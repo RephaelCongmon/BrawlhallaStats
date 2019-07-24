@@ -274,7 +274,7 @@ router.get('/totals', async function(req, res){
     let totalDamage = globalData.rows[0].totalDamage;
 
     let totalLookups = data.rows[0].lookups;
-    var text = `{ "totals" : { "lookups":${totalLookups}, "totalgames":${totalGames}, "totalDamage":${totalDamage}} }`;
+    var text = `{ "totals" : { "lookups":${totalLookups}, "totalgames":${totalGames}, "totaldamage":${totalDamage}} }`;
     var obj = JSON.parse(text);
     console.log("Object = ", obj);
     res.json(obj);

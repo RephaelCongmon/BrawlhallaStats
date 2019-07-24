@@ -85,7 +85,7 @@ router.get('/submit-form2', async function(req, res) {
     let searchQueryValues2 = ['totals'];
 
     const data2 = await new Promise((res, rej) => pool.query(searchQueryData2, searchQueryValues2, (err, data2) => err ? rej(err) : res(data2)));
-    console.log("Data = ", data);
+    //console.log("Data = ", data);
     
     let numLookups;
     let totalLookups;
@@ -163,7 +163,7 @@ router.get('/submit-form2', async function(req, res) {
             }            
 
             json2.lookups = newLookups;
-            console.log("Json2 = ", json2);
+            //console.log("Json2 = ", json2);
 
             res.json(json);
         

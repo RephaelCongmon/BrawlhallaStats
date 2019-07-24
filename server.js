@@ -295,65 +295,7 @@ router.get('/submit-form3', async function(req, res) {
     //     }
     // }
 
-    console.log(`HEY keys[0] = ${keys[0]}`);
-
-    let searchQueryData = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
-    let searchQueryValues = [keys[0]];
-
-    const data = await new Promise((res, rej) => pool.query(searchQueryData, searchQueryValues, (err, data) => err ? rej(err) : res(data)));
-
-    let searchQueryData2 = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
-    let searchQueryValues2 = ['totals'];
-
-    const data2 = await new Promise((res, rej) => pool.query(searchQueryData2, searchQueryValues2, (err, data2) => err ? rej(err) : res(data2)));
-    //console.log("Data = ", data);
     
-    let numLookups;
-    let totalLookups;
-
-    totalLookups = data2.rows[0].lookups*1;
-
-    totalLookups += 1;
-    let updateTotalQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
-    let updateTotalQueryValues = [totalLookups, 'totals'];
-
-    pool.query(updateTotalQueryData, updateTotalQueryValues, err => {
-        if (err) console.log("Failed to update total lookups! ", err);
-        else {
-            console.log("Update totals success!");
-        }
-    });
-
-    if (data.rows.length == 0){
-        inserted = 1;
-        let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid, brawlhallaname, lookups) VALUES ($1, $2, $3)`;
-        let insertQueryValues = [keys[0], 'default', 1];
-
-        pool.query(insertQueryData, insertQueryValues, err => {
-            if (err) console.log("Failed to insert player into database!");
-            else {
-                console.log("Insert success!");
-            }
-        });
-
-
-    }
-    else {
-        inserted = 0;
-        numLookups = data.rows[0].lookups*1;
- 
-        numLookups += 1;
-
-        let updateQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
-        let updateQueryValues = [numLookups, data.rows[0].brawlhallaid];
-        pool.query(updateQueryData, updateQueryValues, err => {
-            if (err) console.log("Failed to update upon lookup! ", err);
-            else {
-                console.log("Update success!");
-            }
-        });
-
-    }
 
     // let searchQueryData3 = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
     // let searchQueryValues3 = [keys[0]];
@@ -368,21 +310,96 @@ router.get('/submit-form3', async function(req, res) {
             var json2 = json;
             let newLookups;
 
-            if (inserted){
-                newLookups = 1;
-                let updateNameQueryData = `UPDATE brawlhalla SET brawlhallaname = $1 WHERE brawlhallaid = $2`;
-                let updateNameQueryValues = [json.name, keys[0]];
-                pool.query(updateNameQueryData, updateNameQueryValues, err => {
-                    if (err) console.log("Failed to update name! ", err);
-                    else {
-                        console.log("Update Name success!");
-                    }
-                });
+            
+
+            if (!json[0]){
+                var error = '{ "error" : { "code": 404}}';
+                
+                var obj = JSON.parse(error);
+                //console.log("obj = ", obj);
+                //console.log("obj.error = ", obj.error);
+                //console.log("obj.error.code = ", obj.error.code);
+                console.log("obj.error['code'] = ", obj.error['code']);
+                //console.log("obj.error[0].code = ", obj.error[0].code);
+                
+                res.json(obj);
             }
             else {
-                newLookups = numLookups;
-            }            
+                console.log(`HEY keys[0] = ${keys[0]}`);
 
+                let searchQueryData = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
+                let searchQueryValues = [keys[0]];
+
+                const data = await new Promise((res, rej) => pool.query(searchQueryData, searchQueryValues, (err, data) => err ? rej(err) : res(data)));
+
+                let searchQueryData2 = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
+                let searchQueryValues2 = ['totals'];
+
+                const data2 = await new Promise((res, rej) => pool.query(searchQueryData2, searchQueryValues2, (err, data2) => err ? rej(err) : res(data2)));
+                //console.log("Data = ", data);
+                
+                let numLookups;
+                let totalLookups;
+
+                totalLookups = data2.rows[0].lookups*1;
+
+                totalLookups += 1;
+                let updateTotalQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
+                let updateTotalQueryValues = [totalLookups, 'totals'];
+
+                pool.query(updateTotalQueryData, updateTotalQueryValues, err => {
+                    if (err) console.log("Failed to update total lookups! ", err);
+                    else {
+                        console.log("Update totals success!");
+                    }
+                });
+
+                if (data.rows.length == 0){
+                    inserted = 1;
+                    let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid, brawlhallaname, lookups) VALUES ($1, $2, $3)`;
+                    let insertQueryValues = [keys[0], 'default', 1];
+
+                    pool.query(insertQueryData, insertQueryValues, err => {
+                        if (err) console.log("Failed to insert player into database!");
+                        else {
+                            console.log("Insert success!");
+                        }
+                    });
+
+
+                }
+                else {
+                    inserted = 0;
+                    numLookups = data.rows[0].lookups*1;
+            
+                    numLookups += 1;
+
+                    let updateQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
+                    let updateQueryValues = [numLookups, data.rows[0].brawlhallaid];
+                    pool.query(updateQueryData, updateQueryValues, err => {
+                        if (err) console.log("Failed to update upon lookup! ", err);
+                        else {
+                            console.log("Update success!");
+                        }
+                    });
+
+                }
+
+                if (inserted){
+                    newLookups = 1;
+                    let updateNameQueryData = `UPDATE brawlhalla SET brawlhallaname = $1 WHERE brawlhallaid = $2`;
+                    let updateNameQueryValues = [json.name, keys[0]];
+                    pool.query(updateNameQueryData, updateNameQueryValues, err => {
+                        if (err) console.log("Failed to update name! ", err);
+                        else {
+                            console.log("Update Name success!");
+                        }
+                    });
+                }
+                else {
+                    newLookups = numLookups;
+                }            
+            }
             json2.lookups = newLookups;
             //console.log("Json2 = ", json2);
 

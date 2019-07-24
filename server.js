@@ -176,7 +176,7 @@ router.get('/submit-form2', async function(req, res) {
             afterGlobalDamage = previousGlobalDamage + damageDifference;
             afterGlobalGames = previousGlobalGames + gamesDifference;
             
-            let updateGlobalQueryData = `UPDATE globalstats SET totaldamage = $1 totalgames = $2`;
+            let updateGlobalQueryData = `UPDATE globalstats SET totaldamage = $1, totalgames = $2`;
             let updateGlobalQueryValues = [afterGlobalDamage, afterGlobalGames];
             pool.query(updateGlobalQueryData, updateGlobalQueryValues, err => {
                 if (err) console.log("Failed to update global stats! ", err);
@@ -185,7 +185,7 @@ router.get('/submit-form2', async function(req, res) {
                 }
             });
 
-            let updatePlayerQueryData = `UPDATE brawlhalla SET totaldamage = $1 totalgames = $2 WHERE brawlhallaid = $3`;
+            let updatePlayerQueryData = `UPDATE brawlhalla SET totaldamage = $1, totalgames = $2 WHERE brawlhallaid = $3`;
             let updatePlayerQueryValues = [json.games, damageDealt, keys[0]];
             pool.query(updatePlayerQueryData, updatePlayerQueryValues, err => {
                 if (err) console.log("Failed to update player total stats!");

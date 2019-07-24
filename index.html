@@ -1473,7 +1473,14 @@
                         //});
                 }));
             }
+        })
+        .catch(err => {
+            document.querySelector('#playerNotFound').style.display = "inline";
+            document.querySelector('#hiddenSearchBar').style.display = "flex";
+            console.log("Error = ", err);
+
         });
+      
 
 
     //     console.log("Query selector ran!");

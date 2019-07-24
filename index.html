@@ -1071,7 +1071,7 @@
         .then(response => response.json())
         .then(result => {
 
-            if ((results.error) && (results.error.code == 404) ){
+            if ((result.error) && (result.error.code == 404) ){
                 document.querySelector('#playerNotFound').style.display = "inline";
                 document.querySelector('#hiddenSearchBar').style.display = "flex";
                 

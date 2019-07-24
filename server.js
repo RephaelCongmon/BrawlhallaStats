@@ -267,8 +267,14 @@ router.get('/totals', async function(req, res){
 
     const data = await new Promise((res, rej) => pool.query(searchQueryData, searchQueryValues, (err, data) => err ? rej(err) : res(data)));
 
+    let searchGlobalQueryData = `SELECT * FROM globalstats`;
+    const globalData = await new Promise((res, rej) => pool.query(searchGlobalQueryData, (err, globalData) => err ? rej(err) : res(globalData)));
+
+    let totalGames = globalData.rows[0].totalgames;
+    let totalDamage = globalData.rows[0].totalDamage;
+
     let totalLookups = data.rows[0].lookups;
-    var text = `{ "totals" : { "lookups":${totalLookups}} }`;
+    var text = `{ "totals" : { "lookups":${totalLookups}, "totalgames":${totalGames}, "totalDamage":${totalDamage}} }`;
     var obj = JSON.parse(text);
     console.log("Object = ", obj);
     res.json(obj);

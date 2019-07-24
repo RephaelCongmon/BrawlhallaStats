@@ -145,7 +145,7 @@
                         <div class="card-box m-b-10">
                             <h3 class="m-t-0 header-title">Website Information</h3>
 
-                            <hr><br /><br />
+                            <hr>
                         
                             <span id="playerLevel"><b>Total Searches:</b> 32.85<br /></span>
                         
@@ -154,36 +154,26 @@
                             
                         </div>
                     </div>
-                    <!-- <div class="col-lg-12">
+                </div>
+                
+                <div class="col-lg-3 b-0 p-0">
+                    <div class="col-lg-12">
                         <div class="card-box m-b-10">
-                            <h4 class="m-t-0 header-title">Clan Information</h4>
-                            <span id="playerClan"><b>Offline</b><br /></span>
-                            <span id="playerClanXP"><b>Offline</b><br /></span>
+                            <h3 class="m-t-0 header-title">Global Statistics</h3>
+
+                            <hr>
+                        
+                            <span id="totalDamage"><b>Total Searches:</b> 32.85<br /></span>
+                            <span id="totalGames"><b>Total Searches:</b> 32.85<br /></span>
+                        
+
+            
+                            
                         </div>
-                    </div> -->
-
-                    <!-- <div class="col-lg-12">
-                        <div class="card-box m-b-10">
-                            <h4 class="m-t-0 header-title">K.O. Stats</h4>
-                            <span id="playerBombKOs"><b>Offline</b><br /></span>
-                            <span id="playerMineKOs"><b>Offline</b><br /></span>
-                            <span id="playerSpikeballKOs"><b>Offline</b><br /></span>
-                            <span id="playerSidekickKOs"><b>Offline</b><br /></span>
-                            <span id="playerSnowballKOs"><b>Offline</b><br /></span>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-lg-12">
-                        <div class="card-box m-b-10">
-                            <p>
-                            If you see any issues with stats being wrong compared to ingame, missing stats, missing achievements, etc. or just have a suggestion.
-                            Please contact me through <a href="https://discord.gg/PceXSSf">discord</a>.
-                            </p>
-                        </div>
-                    </div> -->
+                    </div>
+                </div>
 
 
-                </div>   
             </div>
         </div>
 </div>
@@ -272,6 +262,9 @@
             document.querySelector('#playerLoading').style.display = "none";
 
             document.getElementById('playerLevel').innerHTML = `<b>Total Searches:</b> ${results.totals.lookups}<br />`;
+
+            document.getElementById('totalGames').innerHTML = `<b>Total Games Globally:</b> ${results.totals.totalgames}<br />`;
+            document.getElementById('totalDamage').innerHTML = `<b>Total Damage Globally:</b> ${results.totals.totaldamage}<br />`;
         });
 
         

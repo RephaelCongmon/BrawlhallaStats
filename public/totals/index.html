@@ -253,6 +253,41 @@
 <script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/dataTables.scroller.min.js" type="209b54fc97458f3ccce79bd1-text/javascript"></script>
 
 <script>
+
+function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function timeStringFunction(num){
+        let totalTime = num;
+        let totalDays = Math.floor(totalTime / 86400);
+        totalTime = totalTime % 86400;
+
+        let totalHours = Math.floor(totalTime / 3600);
+        totalTime = totalTime % 3600;
+
+        let totalMinutes = Math.floor(totalTime / 60);
+        totalTime = totalTime % 60;
+
+        let totalSeconds = totalTime;
+
+        totalDays = totalDays.toFixed(0);
+        totalSeconds = totalSeconds.toFixed(0);
+        totalMinutes = totalMinutes.toFixed(0);
+        totalHours = totalHours.toFixed(0);
+
+        totalDays = numberWithCommas(totalDays);
+
+        let timeString = (totalDays != "0" && totalDays != "1" ? `${totalDays} Days ` : '' || totalDays == "1" ? `${totalDays} Day ` : '') +
+                            (totalHours > 1 ? `${totalHours} Hours ` : '' || totalHours == 1 ? `${totalHours} Hour ` : '') +
+                            (totalMinutes > 1 ? `${totalMinutes} Minutes ` : '' || totalMinutes == 1 ? `${totalMinutes} Minute ` : '') +
+                            (totalSeconds > 1 ? `${totalSeconds} Seconds` : '' || totalSeconds == 1 ? `${totalSeconds} Second` : '');
+        
+        return timeString;
+
+    }
+
+
     document.addEventListener('DOMContentLoaded', function() {
         fetch('https://brawlhallastats.herokuapp.com/api/totals')
         .then(response => response.json())
@@ -261,10 +296,10 @@
             document.querySelector('#playerStats').style.display = "inline";
             document.querySelector('#playerLoading').style.display = "none";
 
-            document.getElementById('playerLevel').innerHTML = `<b>Total Searches:</b> ${results.totals.lookups}<br />`;
+            document.getElementById('playerLevel').innerHTML = `<b>Total Searches:</b> ${numberWithCommas(results.totals.lookups)}<br />`;
 
-            document.getElementById('totalGames').innerHTML = `<b>Total Games Globally:</b> ${results.totals.totalgames}<br />`;
-            document.getElementById('totalDamage').innerHTML = `<b>Total Damage Globally:</b> ${results.totals.totaldamage}<br />`;
+            document.getElementById('totalGames').innerHTML = `<b>Total Games Globally:</b> ${numberWithCommas(results.totals.totalgames)}<br />`;
+            document.getElementById('totalDamage').innerHTML = `<b>Total Damage Globally:</b> ${numberWithCommas(results.totals.totaldamage)}<br />`;
         });
 
         

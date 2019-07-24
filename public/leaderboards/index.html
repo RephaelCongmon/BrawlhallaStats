@@ -538,7 +538,7 @@
                         str += `<td>${result[i].peak_rating}</td>`;
                         str += `<td>${result[i].wins}</td>`;
                         str += `<td>${result[i].games}</td>`;
-                        str += `<td>${(result[i].wins/losses).toFixed(2)}</td>`;
+                        str += losses ? `<td>${(result[i].wins/losses).toFixed(2)}</td>`:`Undefeated`;
                         str += `<td>${result[i].tier}</td>`;
                         str += '</tr>';
 

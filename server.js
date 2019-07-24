@@ -180,14 +180,14 @@ router.get('/search', async function(req, res){
     await fetch(`https://api.brawlhalla.com/rankings/1v1/all/1?name=${x}&api_key=${TOKEN}`)
         .then(res => res.json())
         .then(async json => {
-            console.log("JSON = ", json);
+            //console.log("JSON = ", json);
             if (!json[0]){
                 var error = '{ "error" : { "code": 404}}';
                 
                 var obj = JSON.parse(error);
-                console.log("obj = ", obj);
-                console.log("obj.error = ", obj.error);
-                console.log("obj.error.code = ", obj.error.code);
+                //console.log("obj = ", obj);
+                //console.log("obj.error = ", obj.error);
+                //console.log("obj.error.code = ", obj.error.code);
                 console.log("obj.error['code'] = ", obj.error['code']);
                 //console.log("obj.error[0].code = ", obj.error[0].code);
                 

@@ -213,15 +213,24 @@
 
 <script>
 
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
     var urlParams = new URLSearchParams(window.location.search);
     console.log("Does clan page have parameters? ", urlParams.has('clan'));
 
-    var values = urlParams.values();
-    console.log("Values = ", values);
+    
 
-    for (value of values){
-        console.log("value = ", value);
+    console.log("Parameter = ", getUrlParameter('clan'));
+
+    if (urlParams.has('clan') && getURLParameter('clan') !== ''){
+        console.log("Go fetch!");
     }
+
 
 </script>
 

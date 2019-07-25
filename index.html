@@ -1228,7 +1228,7 @@
                     str += `<td>${numberWithCommas(result.legends[i].damagedealt)}</td>`;
                     str += `<td>${numberWithCommas(result.legends[i].kos)}</td>`;
                     str += `<td>${numberWithCommas(result.legends[i].wins)}</td>`;
-                    str += results.legends[i].matchtime ? `<td data-order="${result.legends[i].matchtime}">${timeStringFunction(result.legends[i].matchtime)}</td>` : `<td data-order="0">Never Played</td>`;
+                    str += result.legends[i].matchtime ? `<td data-order="${result.legends[i].matchtime}">${timeStringFunction(result.legends[i].matchtime)}</td>` : `<td data-order="0">Never Played</td>`;
                     
                     str += '</tr>';
 
@@ -1520,7 +1520,7 @@
                                 str += `<td>${numberWithCommas(result.legends[i].damagedealt)}</td>`;
                                 str += `<td>${numberWithCommas(result.legends[i].kos)}</td>`;
                                 str += `<td>${numberWithCommas(result.legends[i].wins)}</td>`;
-                                str += results.legends[i].matchtime ? `<td data-order="${result.legends[i].matchtime}">${timeStringFunction(result.legends[i].matchtime)}</td>` : `<td data-order="0">Never Played</td>`;
+                                str += result.legends[i].matchtime ? `<td data-order="${result.legends[i].matchtime}">${timeStringFunction(result.legends[i].matchtime)}</td>` : `<td data-order="0">Never Played</td>`;
                              
                                 str += '</tr>';
 

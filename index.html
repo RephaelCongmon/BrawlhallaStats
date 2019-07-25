@@ -1471,7 +1471,7 @@
                                 }
 
 
-                                str += `<td class="sorting_1" tabindex="0">${result.legends[i].legend_name_key}</td>`;
+                                str += `<td class="sorting_1" tabindex="0"><b>${result.legends[i].legend_name_key.toUpperCase()}</b></td>`;
                                 str += `<td><b>${result.legends[i].level}</b></td>`;
                                 str += `<td>${((result.legends[i].wins/result.legends[i].games)*100).toFixed(2).toString() + '%'}</td>`;
                                 str += `<td>${numberWithCommas(result.legends[i].damagedealt)}</td>`;

@@ -1458,8 +1458,29 @@
                             var legendWinRatio;
                             var legendKillRatio;
                             var legendTime;
+                            var str = "";
+                            str += `<table id="leaderboard-table" class="table table-striped table-bordered dt-responsive dataTable no-footer dtr-inline" role="grid" aria-describedby="leaderboard-table-info">
+                            <tbody>`;
 
                             for (var i = 0; i < result.legends.length; i++){
+                                if ((i+1) % 2 == 1){
+                                    str += '<tr role="row" class="odd">';
+                                }
+                                else {
+                                    str += '<tr role="row" class="even">';
+                                }
+
+
+                                str += `<td class="sorting_1" tabindex="0">${result.legends[i].legend_name_key}</td>`;
+                                str += `<td><b>${result.legends[i].level}</b></td>`;
+                                str += `<td>${((result.legends[i].wins/result.legends[i].games)*100).toFixed(2).toString() + '%'}</td>`;
+                                str += `<td>${numberWithCommas(result.legends[i].damagedealt)}</td>`;
+                                str += `<td>${numberWithCommas(result.legends[i].kos)}</td>`;
+                                str += `<td>${numberWithCommas(result.legends[i].wins)}</td>`;
+                                str += `<td>${timeStringFunction(result.legends[i].matchtime)}</td>`;
+                             
+                                str += '</tr>';
+
                                 damageDealt += parseInt(result.legends[i].damagedealt);
                                 damageTaken += parseInt(result.legends[i].damagetaken);
                                 timeSpentInGame += parseInt(result.legends[i].matchtime);
@@ -1499,9 +1520,33 @@
                                     `<li><b>Deaths:</b> ${numberWithCommas(legendFalls)}</li>` +
                                     `<li><b>K/D Ratio:</b> ${legendKillRatio.toFixed(2)}</li><br />` +
                                     `<li><b>Time In-game:</b> ${timeStringFunction(legendTime)}</li></ul>`;
-                                    
-                                
+                                            
                             }
+
+                            str += '</tbody>';
+                            str += `<thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="leaderboard-table" rowspan="1" colspan="1" aria-label="#: activate to sort column descending" style="width: 10px;" aria-sort="ascending">Legend Name
+                                        </th>
+
+                                        <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Player: activate to sort column ascending" style="width: 464px;">Level</th>
+
+                                        <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Kills: activate to sort column ascending" style="width: 70px;">Win Rate</th>
+
+                                        <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Deaths: activate to sort column ascending" style="width: 102px;">Damage Dealt</th>
+
+                                        <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Wins: activate to sort column ascending" style="width: 78x;">Kills</th>
+
+                                        <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Wins Solo: activate to sort column ascending" style="width: 132px;">Wins</th>
+
+                                        <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Wins Team: activate to sort column ascending" style="width: 147px;">Time Played</th>
+
+                                   
+                                    </tr>
+                                </thead>
+                            </table>`;
+
+                            document.querySelector('#leaderboardClass').innerHTML = '' + str;
 
 
                             var timeSpentInGameString = timeStringFunction(timeSpentInGame);

@@ -136,29 +136,16 @@
         <div class="page-title-box">
             <ol class="breadcrumb pull-right" >
                 <li>
-                    <!--<div class="card-box">-->
-                        <!--
-                        <h4 class="text-dark header-title m-t-0">Search Player</h4>
-                        <br>
-                        -->
 
-                        
                         <form method="get" name="formxml2" id="hiddenSearchBar" style="display: none" action="/api/submit-form">
                             <div class="input-group">
                                 <span class="input-group-btn"><button type="submit" onclick="" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button></span>
                                 <input type="text" name="player" class="form-control" placeholder="Brawlhalla Username">
                             </div>
                         </form>
-                        
-
-
-                    <!--</div>-->
 
                 </li>
-         
-                
-
-           
+  
             </ol>
             <h4 class="page-title">Brawlhalla Player Stats</h4>
         </div>
@@ -1356,6 +1343,12 @@
                 document.getElementById('playerSpikeballKOs').innerHTML = `<b>Spikeball Kills: </b>${numberWithCommas(playerSpikeballKOs)}<br />`;
                 document.getElementById('playerSidekickKOs').innerHTML = `<b>Sidekick Kills: </b>${numberWithCommas(playerSidekickKOs)}<br />`;
                 document.getElementById('playerSnowballKOs').innerHTML = `<b>Snowball Kills: </b>${numberWithCommas(playerSnowballKOs)}<br />`;
+
+                jQuery(document).ready(function ($) {
+                    $.noConflict();
+                    $('#leaderboard-table').DataTable();
+
+                    });
             }
         })
 

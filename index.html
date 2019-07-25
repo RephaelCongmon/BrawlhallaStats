@@ -1692,6 +1692,7 @@
                             document.getElementById('playerLookups').innerHTML = `<b>Searched:</b> ${numberWithCommas(playerLookups)} Times<br />`;
                             
                             if (result.clan){
+                                console.log("Clan Info = ", result.clan);
                                 document.getElementById('playerClan').innerHTML = `<b>${playerClan}</b><br />`;
                                 document.getElementById('playerClanXP').innerHTML = `<b>Clan XP: </b>${numberWithCommas(playerClanXP)}<br />`;
                             }

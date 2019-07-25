@@ -176,7 +176,7 @@ router.get('/submit-form2', async function(req, res) {
 
             for (var i = 0; i < json.legends.length; i++){
                 damageDealt += parseInt(json.legends[i].damagedealt);
-                timeSpentInGame += parseInt(result.legends[i].matchtime);
+                timeSpentInGame += parseInt(json.legends[i].matchtime);
             }
 
             damageDifference = damageDealt*1 - previousDamage;

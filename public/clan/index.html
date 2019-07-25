@@ -152,7 +152,7 @@
             <form method="get" name="formxml" id ="clanForm" action="">
                 <div class="input-group">
                     <span class="input-group-btn"><button type="submit" onclick="" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button></span>
-                    <input type="text" name="clan" class="form-control" placeholder="Currently in Development">
+                    <input type="number" name="clan" class="form-control" placeholder="Currently in Development">
                 </div>
             </form>
         </div>
@@ -214,11 +214,11 @@
 <script>
 
     var urlParams = new URLSearchParams(window.location.search);
-    console.log("Does clan page have parameters? ", urlParams.has('post'));
+    console.log("Does clan page have parameters? ", urlParams.has('clan'));
 
     var values = urlParams.values();
     console.log("Values = ", values);
-    
+
     for (value of values){
         console.log("value = ", value);
     }

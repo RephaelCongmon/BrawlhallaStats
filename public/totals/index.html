@@ -255,7 +255,7 @@
 
 <script>
 
-function numberWithCommas(x) {
+    function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
@@ -288,6 +288,39 @@ function numberWithCommas(x) {
 
     }
 
+    function timeStringFunctionExpanded(num){
+        let totalTime = num;
+        let totalYears = Math.floor(totalTime / 31536000);
+        totalTime = totalTime % 31536000;
+
+        let totalDays = Math.floor(totalTime / 86400);
+        totalTime = totalTime % 86400;
+
+        let totalHours = Math.floor(totalTime / 3600);
+        totalTime = totalTime % 3600;
+
+        let totalMinutes = Math.floor(totalTime / 60);
+        totalTime = totalTime % 60;
+
+        let totalSeconds = totalTime;
+
+        totalDays = totalDays.toFixed(0);
+        totalSeconds = totalSeconds.toFixed(0);
+        totalMinutes = totalMinutes.toFixed(0);
+        totalHours = totalHours.toFixed(0);
+
+        
+
+        let timeString = (totalYears > 1 ? `${numberWithCommas(totalYears)} Years ` : '' || totalYears == 1 ? `${totalYears} Year ` : '') + 
+            (totalDays > 1 ? `${totalDays} Days ` : '' || totalDays == "1" ? `${totalDays} Day ` : '') +
+            (totalHours > 1 ? `${totalHours} Hours ` : '' || totalHours == 1 ? `${totalHours} Hour ` : '') +
+            (totalMinutes > 1 ? `${totalMinutes} Minutes ` : '' || totalMinutes == 1 ? `${totalMinutes} Minute ` : '') +
+            (totalSeconds > 1 ? `${totalSeconds} Seconds` : '' || totalSeconds == 1 ? `${totalSeconds} Second` : '');
+        
+        return timeString;
+
+    }
+
 
     document.addEventListener('DOMContentLoaded', function() {
         fetch('https://brawlhallastats.herokuapp.com/api/totals')
@@ -301,7 +334,7 @@ function numberWithCommas(x) {
 
             document.getElementById('totalGames').innerHTML = `<b>Total Games Globally:</b> ${numberWithCommas(results.totals.totalgames)}<br />`;
             document.getElementById('totalDamage').innerHTML = `<b>Total Damage Globally:</b> ${numberWithCommas(results.totals.totaldamage)}<br />`;
-            document.getElementById('totalTime').innerHTML = `<b>Total Time Played Globally:</b> ${timeStringFunction(results.totals.totaltime)}<br />`;
+            document.getElementById('totalTime').innerHTML = `<b>Total Time Played Globally:</b> ${timeStringFunctionExpanded(results.totals.totaltime)}<br />`;
         });
 
         

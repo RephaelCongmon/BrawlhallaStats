@@ -234,7 +234,7 @@ function getUrlParameter(name) {
         
         document.querySelector('#playerLoading').style.display = "inline";
 
-        fetch('https://brawlhallastats.herokuapp.com/api/clan?' + getUrlParameter('clan') )
+        fetch('https://brawlhallastats.herokuapp.com/api/clan?clan=' + getUrlParameter('clan') )
         .then(response => response.json())
         .then(results => {
 

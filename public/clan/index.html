@@ -238,10 +238,20 @@ function getUrlParameter(name) {
         .then(response => response.json())
         .then(results => {
             console.log("Clan results = ", results);
-            
+
             document.querySelector('#playerNotFound').style.display = "none";
             document.querySelector('#playerSearchBar').style.display = "none";
             document.querySelector('#playerLoading').style.display = "none";
+
+            if (!results.clan_id){
+                document.querySelector('#playerNotFound').style.display = "inline";
+            }
+            else {
+                
+            }
+
+
+            
 
         })
         .catch(err => console.log("Error block in Clans = ", err));

@@ -300,6 +300,7 @@ function numberWithCommas(x) {
 
             document.getElementById('totalGames').innerHTML = `<b>Total Games Globally:</b> ${numberWithCommas(results.totals.totalgames)}<br />`;
             document.getElementById('totalDamage').innerHTML = `<b>Total Damage Globally:</b> ${numberWithCommas(results.totals.totaldamage)}<br />`;
+            document.getElementById('totalTime').innerHTML = `<b>Total Time Played Globally:</b> ${timeStringFunction(results.totals.totaltime)}<br />`;
         });
 
         

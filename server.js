@@ -82,8 +82,10 @@ router.get('/submit-form2', async function(req, res) {
     const globalData = await new Promise((res, rej) => pool.query(searchGlobalQueryData,  (err, globalData) => err ? rej(err) : res(globalData)));
     var previousGlobalDamage = parseInt(globalData.rows[0].totaldamage);
     var previousGlobalGames = parseInt(globalData.rows[0].totalgames);
+    var previousGlobalTime = parseInt(globalData.rows[0].totaltime);
     var afterGlobalDamage = 0;
     var afterGlobalGames = 0;
+    var afterGlobalTime = 0;
 
     let searchQueryData = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
     let searchQueryValues = [keys[0]];
@@ -107,8 +109,11 @@ router.get('/submit-form2', async function(req, res) {
 
     var previousDamage = 0;
     var previousGames = 0;
+    var previousTime = 0;
+
     var damageDifference = 0;
     var gamesDifference = 0;
+    var timeDifference = 0;
 
     pool.query(updateTotalQueryData, updateTotalQueryValues, err => {
         if (err) console.log("Failed to update total lookups! ", err);
@@ -139,6 +144,7 @@ router.get('/submit-form2', async function(req, res) {
 
         previousDamage = data.rows[0].totaldamage;
         previousGames = data.rows[0].totalgames;
+        previousTime = data.rows[0].totaltime;
 
         let updateQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
         let updateQueryValues = [numLookups, data.rows[0].brawlhallaid];
@@ -164,20 +170,24 @@ router.get('/submit-form2', async function(req, res) {
             var json2 = json;
             let newLookups;
             var damageDealt = 0;
+            var timeSpentInGame = 0;
 
             gamesDifference = json.games*1 - previousGames;
 
             for (var i = 0; i < json.legends.length; i++){
                 damageDealt += parseInt(json.legends[i].damagedealt);
+                timeSpentInGame += parseInt(result.legends[i].matchtime);
             }
 
             damageDifference = damageDealt*1 - previousDamage;
+            timeDifference = timeSpentInGame*1 - previousTime;
 
             afterGlobalDamage = previousGlobalDamage + damageDifference;
             afterGlobalGames = previousGlobalGames + gamesDifference;
-            
-            let updateGlobalQueryData = `UPDATE globalstats SET totaldamage = $1, totalgames = $2`;
-            let updateGlobalQueryValues = [afterGlobalDamage, afterGlobalGames];
+            afterGlobalTime = previousGlobalTime + timeDifference;
+
+            let updateGlobalQueryData = `UPDATE globalstats SET totaldamage = $1, totalgames = $2, totaltime = $3`;
+            let updateGlobalQueryValues = [afterGlobalDamage, afterGlobalGames, afterGlobalTime];
             pool.query(updateGlobalQueryData, updateGlobalQueryValues, err => {
                 if (err) console.log("Failed to update global stats! ", err);
                 else {
@@ -185,8 +195,8 @@ router.get('/submit-form2', async function(req, res) {
                 }
             });
 
-            let updatePlayerQueryData = `UPDATE brawlhalla SET totaldamage = $1, totalgames = $2 WHERE brawlhallaid = $3`;
-            let updatePlayerQueryValues = [damageDealt, json.games, keys[0]];
+            let updatePlayerQueryData = `UPDATE brawlhalla SET totaldamage = $1, totalgames = $2, totaltime = $3 WHERE brawlhallaid = $4`;
+            let updatePlayerQueryValues = [damageDealt, json.games, timeSpentInGame, keys[0]];
             pool.query(updatePlayerQueryData, updatePlayerQueryValues, err => {
                 if (err) console.log("Failed to update player total stats!");
                 else {
@@ -272,9 +282,10 @@ router.get('/totals', async function(req, res){
 
     let totalGames = globalData.rows[0].totalgames;
     let totalDamage = globalData.rows[0].totaldamage;
+    let totalTime = globalData.rows[0].totaltime;
 
     let totalLookups = data.rows[0].lookups;
-    var text = `{ "totals" : { "lookups":${totalLookups}, "totalgames":${totalGames}, "totaldamage":${totalDamage}} }`;
+    var text = `{ "totals" : { "lookups":${totalLookups}, "totalgames":${totalGames}, "totaldamage":${totalDamage}, "totaltime":${totalTime}} }`;
     var obj = JSON.parse(text);
     console.log("Object = ", obj);
     res.json(obj);

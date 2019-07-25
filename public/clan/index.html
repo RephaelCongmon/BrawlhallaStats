@@ -213,7 +213,15 @@
 
 <script>
 
+    var urlParams = new URLSearchParams(window.location.search);
+    console.log("Does clan page have parameters? ", urlParams.has('post'));
+
+    var values = urlParams.values();
+    console.log("Values = ", values);
     
+    for (value of values){
+        console.log("value = ", value);
+    }
 
 </script>
 

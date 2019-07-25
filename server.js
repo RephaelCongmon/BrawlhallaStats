@@ -537,13 +537,13 @@ router.get('/leaderboards/mostsearched', async function(req, res) {
 
 });
 
-router.get('clan', async function(req, res) {
+router.get('/clan', async function(req, res) {
     console.log("Clan search submitted!");
 
     let clanID = req.query.clan;
 
     console.log("Searching for ", clanID);
-    
+
 });
 
 // REGISTER OUR ROUTES -------------------------------

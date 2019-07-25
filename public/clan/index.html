@@ -228,9 +228,21 @@ function getUrlParameter(name) {
     console.log("Parameter = ", getUrlParameter('clan'));
 
     if (urlParams.has('clan') && getUrlParameter('clan') !== ''){
+
+        document.querySelector('#playerSearchBar').style.display = "none";
+        document.querySelector('#playerNotFound').style.display = "none";
+        
+        document.querySelector('#playerLoading').style.display = "inline";
+
         fetch('https://brawlhallastats.herokuapp.com/api/clan?' + new URLSearchParams(new FormData(e.target)).toString() )
         .then(response => response.json())
         .then(results => {
+
+            document.querySelector('#playerNotFound').style.display = "none";
+            document.querySelector('#playerSearchBar').style.display = "none";
+            document.querySelector('#playerLoading').style.display = "none";
+
+            
 
         })
         .catch(err => console.log("Error block in Clans = ", err));

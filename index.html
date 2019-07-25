@@ -1076,9 +1076,11 @@
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     
-    // jQuery(document).ready(function ($) {
-    //     // Your code here
-    // });
+    jQuery(document).ready(function ($) {
+    $.noConflict();
+    // $('#leaderboard-table').DataTable();
+
+    });
 
     function timeStringFunction(num){
         let totalTime = num;

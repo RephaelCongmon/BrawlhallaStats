@@ -78,7 +78,7 @@
     <li><a href="#">Weapons</a></li>
       
     </ul></li>
-    <li class="active"><a href="#" class="waves-effect waves-primary active"><i class="zmdi zmdi-accounts"></i><span> Clan Stats </span></a></li>
+    <li class="active"><a href="https://brawlhallastats.herokuapp.com/clan" class="waves-effect waves-primary active"><i class="zmdi zmdi-accounts"></i><span> Clan Stats </span></a></li>
     <li><a href="/leaderboards" class="waves-effect waves-primary"><i class="zmdi zmdi-view-list-alt"></i><span> Leaderboards </span></a></li>
     <li class="menu-title">Miscellaneous</li>
     <li><a href="https://brawlhallastats.herokuapp.com/totals" class="waves-effect waves-primary"><i class="zmdi zmdi-chart"></i><span> Totals </span></a></li>
@@ -108,14 +108,54 @@
     </div>
  </div>
  
+ <div class="row" id="clanStats" style="display: none;">
+    <div class="col-lg-3 b-0 p-0">
+        <div class="col-lg-12">
+            <div class="card-box m-b-10" id="clanStatsInformation">
+                <h3 class="m-t-0 header-title">Player Information</h3>
+                <span style="font-family: 'Minecraftia', serif;"><span style='text-shadow: 1px 1px #eee; color:#AAAAAA' id="playerName"> RupRep444</span></span>
+                <hr>
+         
+
+                <span id="playerXP"><b>Karma:</b> 117,680<br /></span>
+                <span id="playerGames"><b>Achievement Points:</b> 1,470<br /></span>
+                <span id="playerWins"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerLosses"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerWinRate"><b>Quests Completed:</b> 79<br /><br /></span>
+
+                <span id="playerDamageDealt"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerDamageTaken"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerDamageUnarmed"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerDamageThrownItem"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerDamageGadgets"><b>Quests Completed:</b> 79<br /><br /></span>
+
+                <span id="playerKDRatio"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerKOs"><b>Quests Completed:</b> 79<br /></span>
+                <span id="playerFalls"><b>Quests Completed:</b> 79<br /></span>
+                <span id="playerSuicides"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerKOsUnarmed"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerKOsThrownItem"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerKOsGadgets"><b>Quests Completed:</b> 79<br /><br /></span>
+                <span id="playerSuicideRate"><b>Quests Completed:</b> 79<br /><br /></span>
+                
+
+                <span id="playerTimeInGame"><b>Quests Completed:</b> 79<br /><br /></span>
+
+                <span id="playerLookups"><b>Quests Completed:</b> 79<br /><br /></span>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="row" id="playerNotFound" style="display: none;">
     <div class="col-lg-12">
         <div class="panel panel-border panel-danger">
-            <div class="panel-heading"><h3 class="panel-title">Player not found</h3></div>
+            <div class="panel-heading"><h3 class="panel-title">Clan not found</h3></div>
             <div class="panel-body">
                 <p>
-                <b>Player does not exist!</b><br />Beginning must match exactly!  Try searching your Steam name or search using your Brawlhalla ID.</p>
+                <b>Clan does not exist!</b><br />Try searching by clan ID.</p>
             </div>
         </div>
     </div>
@@ -247,7 +287,7 @@ function getUrlParameter(name) {
                 document.querySelector('#playerNotFound').style.display = "inline";
             }
             else {
-                
+
             }
 
 

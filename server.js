@@ -544,6 +544,17 @@ router.get('/clan', async function(req, res) {
 
     console.log("Searching for ", clanID);
 
+    //curl "https://api.brawlhalla.com/clan/1/?api_key=EXAMPLEKEY"
+
+    await fetch(`https://api.brawlhalla.com/clan/${clanID}?api_key=${TOKEN}`)
+        .then(res => res.json())
+        .then(json => {
+
+            res.json(json);
+            
+        })
+        .catch(err => console.log("Clan Search error: ", err));
+
 });
 
 // REGISTER OUR ROUTES -------------------------------

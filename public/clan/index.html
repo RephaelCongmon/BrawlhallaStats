@@ -237,7 +237,8 @@ function getUrlParameter(name) {
         fetch('https://brawlhallastats.herokuapp.com/api/clan?clan=' + getUrlParameter('clan') )
         .then(response => response.json())
         .then(results => {
-
+            console.log("Clan results = ", results);
+            
             document.querySelector('#playerNotFound').style.display = "none";
             document.querySelector('#playerSearchBar').style.display = "none";
             document.querySelector('#playerLoading').style.display = "none";

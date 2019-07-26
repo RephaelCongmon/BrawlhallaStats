@@ -314,8 +314,11 @@ function numberWithCommas(x) {
                 month[10] = "November";
                 month[11] = "December";
 
-                
+                var text = '{ "Leader":0, "Officer":1, "Member":2 }';
+                var ranks = JSON.parse(text);
 
+                console.log("Ranks[Officer] = ", ranks['Officer']);
+                
                 for (var i = 0; i < results.clan.length; i++){
                     if ((i+1) % 2 == 1){
                         str += '<tr role="row" class="odd">';
@@ -332,7 +335,7 @@ function numberWithCommas(x) {
                         myDate.getHours() == 0 || myDate.getHours() > 12 ? `${Math.abs(myDate.getHours()-12)}`:`${myDate.getHours()}` + `:${myDate.getMinutes()} ` + 
                         (myDate.getHours() == 0 || myDate.getHours() > 12 ) ? `P.M.`:`A.M.` + ` </td>`;
 
-                    str += `<td>${results.clan[i].rank}</td>`;       
+                    str += `<td data-order="${ranks[results.clan[i].rank]}">${results.clan[i].rank}</td>`;       
                     str += '</tr>';
                 }
 
@@ -352,14 +355,18 @@ function numberWithCommas(x) {
                         </tr>
                     </thead>
                 </table>`;
-            }
 
+                document.querySelector('#leaderboardClass').innerHTML = '' + str;
 
-            jQuery(document).ready(function ($) {
+                jQuery(document).ready(function ($) {
                 $.noConflict();
                 $('#leaderboard-table').DataTable();
 
                 });
+            }
+
+
+            
 
         })
         .catch(err => console.log("Error block in Clans = ", err));

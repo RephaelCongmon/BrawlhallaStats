@@ -327,6 +327,9 @@
                 <span id="playerClan"><b>Offline</b><br /></span>
                 <span id="playerClanXP"><b>Offline</b><br /></span>
                 <span id="playerClanIndividual"></span>
+                <div id="clanButton">
+
+                </div>
             </div>
         </div>
         <div class="col-lg-12">
@@ -1379,9 +1382,9 @@
                 document.getElementById('playerLookups').innerHTML = `<b>Searched:</b> ${numberWithCommas(playerLookups)} Times<br />`;
                 
                 if (result.clan){
-                    document.getElementById('playerClan').innerHTML = `<b>${playerClan}</b><br />`;
+                    document.getElementById('playerClan').innerHTML = `<b>${playerClan}</b><br /><br />`;
                     document.getElementById('playerClanXP').innerHTML = `<b>Clan XP: </b>${numberWithCommas(playerClanXP)}<br />`;
-                    document.getElementById('playerClanIndividual').innerHTML = `<b>Individual Contribution: </b>${numberWithCommas(playerClanContribution)}<br />`;
+                    document.getElementById('playerClanIndividual').innerHTML = `<b>Individual Contribution: </b>${numberWithCommas(playerClanContribution)} xp<br />`;
                 }
                 else {
                     document.getElementById('playerClan').innerHTML = `<b>Not In A Clan!</b><br />`;
@@ -1699,9 +1702,10 @@
                             
                             if (result.clan){
                                 console.log("Clan Info = ", result.clan);
-                                document.getElementById('playerClan').innerHTML = `<b>${playerClan}</b><br />`;
+                                document.getElementById('playerClan').innerHTML = `<b>${playerClan}</b><br /><br />`;
                                 document.getElementById('playerClanXP').innerHTML = `<b>Clan XP: </b>${numberWithCommas(playerClanXP)}<br />`;
-                                document.getElementById('playerClanIndividual').innerHTML = `<b>Individual Contribution: </b>${numberWithCommas(playerClanContribution)}<br />`;
+                                document.getElementById('playerClanIndividual').innerHTML = `<b>Individual Contribution: </b>${numberWithCommas(playerClanContribution)} xp<br />`;
+                                document.getElementById('clanButton').innerHTML = `<button onclick="window.location.href = "https://www.brawlhallastats.com/clan/?clan=${result.clan.clan_id}  class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.cops_and_crims" >Click to View Clan</button>`;
                             }
                             else {
                                 document.getElementById('playerClan').innerHTML = `<b>Not In A Clan!</b><br />`;

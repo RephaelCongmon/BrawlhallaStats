@@ -281,7 +281,7 @@ function numberWithCommas(x) {
             str += `<table id="leaderboard-table" class="table table-striped table-bordered dt-responsive dataTable no-footer dtr-inline" role="grid" aria-describedby="leaderboard-table-info">
             <tbody>`;
 
-            for (var i = 0; i < results.clan.length; i++){
+            for (var i = 0; i < results.length; i++){
                 if ((i+1) % 2 == 1){
                     str += '<tr role="row" class="odd">';
                 }

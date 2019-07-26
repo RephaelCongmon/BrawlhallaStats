@@ -291,7 +291,7 @@ function numberWithCommas(x) {
             else {
                 document.querySelector('#clanSearchResults').style.display = "inline";
                 document.getElementById('leaderboard-name').innerHTML = `${results.clan_name}`
-                document.getElementById('clanXP').innerHTML = `<b>Clan XP:</b> ${numberWithCommas(results.clan_xp)}<br /><br /><b># of Members:</b> ${results.clan.length}<br />`;
+                document.getElementById('clanXP').innerHTML = `<b>Clan XP:</b> ${numberWithCommas(results.clan_xp)}<br /><b># of Members:</b> ${results.clan.length}<br /><br />`;
 
 
                 var str = "";
@@ -335,7 +335,7 @@ function numberWithCommas(x) {
 
                     timeStr += (myDate.getHours() == 0 || myDate.getHours() ) > 12 ? `${Math.abs(myDate.getHours()-12)}` : `${myDate.getHours()}`;
 
-                    timeStr += (myDate.getMinutes() < 10) ? `0${myDate.getMinutes()}`:`${myDate.getMinutes()} `; 
+                    timeStr += (myDate.getMinutes() < 10) ? `:0${myDate.getMinutes()} `:`:${myDate.getMinutes()} `; 
 
                     timeStr += (myDate.getHours() == 0 || myDate.getHours() > 12 ) ? `P.M.`:`A.M.`;
                     
@@ -350,14 +350,14 @@ function numberWithCommas(x) {
                 str += '</tbody>';
                 str += `<thead>
                         <tr role="row">
-                            <th class="sorting_asc" tabindex="0" aria-controls="leaderboard-table" rowspan="1" colspan="1" aria-label="#: activate to sort column descending" style="width: 100px;" aria-sort="ascending">Player
+                            <th class="sorting_asc" tabindex="0" aria-controls="leaderboard-table" rowspan="1" colspan="1" aria-label="#: activate to sort column descending" style="width: 200px;" aria-sort="ascending">Player
                             </th>
 
-                            <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Player: activate to sort column ascending" style="width: 100px;">XP</th>
+                            <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Player: activate to sort column ascending" style="width: 80px;">XP</th>
 
-                            <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Kills: activate to sort column ascending" style="width: 200px;">Join Date</th>
+                            <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Kills: activate to sort column ascending" style="width: 150px;">Join Date</th>
 
-                            <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Deaths: activate to sort column ascending" style="width: 102px;">Rank</th>
+                            <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Deaths: activate to sort column ascending" style="width: 72px;">Rank</th>
 
                         
                         </tr>

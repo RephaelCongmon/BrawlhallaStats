@@ -289,13 +289,13 @@ function numberWithCommas(x) {
                     str += '<tr role="row" class="even">';
                 }
                 
-                str += `<td class="sorting_1" tabindex="0"><b>${results.bio_name}</b></td>`;
-                str += `<td>${results.strength}</td>`;
-                str += `<td>${results.dexterity}</td>`;
-                str += `<td>${results.defense}</td>`;
-                str += `<td>${results.speed}</td>`;
-                str += `<td>${results.weapon_one}</td>`;
-                str += `<td>${results.weapon_two}</td>`;
+                str += `<td class="sorting_1" tabindex="0"><b>${results[i].bio_name}</b></td>`;
+                str += `<td>${results[i].strength}</td>`;
+                str += `<td>${results[i].dexterity}</td>`;
+                str += `<td>${results[i].defense}</td>`;
+                str += `<td>${results[i].speed}</td>`;
+                str += `<td>${results[i].weapon_one}</td>`;
+                str += `<td>${results[i].weapon_two}</td>`;
             
                 str += '</tr>';
             }

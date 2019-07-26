@@ -372,6 +372,7 @@ router.get('/submit-form3', async function(req, res) {
     // }
 
     
+    
 
     // let searchQueryData3 = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
     // let searchQueryValues3 = [keys[0]];

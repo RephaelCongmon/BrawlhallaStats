@@ -556,6 +556,22 @@ router.get('/clan', async function(req, res) {
 
 });
 
+router.get('/legends', async function(req, res) {
+    console.log("Legends page accessed");
+
+    //curl "https://api.brawlhalla.com/clan/1/?api_key=EXAMPLEKEY"
+
+    await fetch(`https://api.brawlhalla.com/legend/all?api_key=${TOKEN}`)
+        .then(res => res.json())
+        .then(json => {
+            
+            res.json(json);
+            
+        })
+        .catch(err => console.log("Legend search error: ", err));
+
+});
+
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);

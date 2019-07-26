@@ -1705,7 +1705,7 @@
                                 document.getElementById('playerClan').innerHTML = `<b>${playerClan}</b><br /><br />`;
                                 document.getElementById('playerClanXP').innerHTML = `<b>Clan XP: </b>${numberWithCommas(playerClanXP)}<br />`;
                                 document.getElementById('playerClanIndividual').innerHTML = `<b>Individual Contribution: </b>${numberWithCommas(playerClanContribution)} xp<br /><br />`;
-                                document.getElementById('clanButton').innerHTML = `<button onclick="window.location.href = "https://www.brawlhallastats.com/clan/?clan=${result.clan.clan_id}"  class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.cops_and_crims" >Click to View Clan</button>`;
+                                document.getElementById('clanButton').innerHTML = `<button onclick="window.location.href = 'https://www.brawlhallastats.com/clan/?clan=${result.clan.clan_id}';"  class="btn btn-default btn-custom waves-effect m-b-5 leaderboard-button-player.cops_and_crims" >Click to View Clan</button>`;
                             }
                             else {
                                 document.getElementById('playerClan').innerHTML = `<b>Not In A Clan!</b><br />`;

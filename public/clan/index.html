@@ -331,7 +331,7 @@ function numberWithCommas(x) {
 
 
                     var timeStr = '';
-                    timeStr += `${month[myDate.getMonth()]} ${myDate.getDay()}, ${myDate.getFullYear()} at `;
+                    timeStr += `${month[myDate.getMonth()]} ${myDate.getDate()}, ${myDate.getFullYear()} at `;
 
                     timeStr += (myDate.getHours() == 0 || myDate.getHours() ) > 12 ? `${Math.abs(myDate.getHours()-12)}` : `${myDate.getHours()}`;
 

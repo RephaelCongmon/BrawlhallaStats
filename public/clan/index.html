@@ -12,13 +12,13 @@
     gtag('config', 'UA-143787541-1');
     </script>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({
             google_ad_client: "ca-pub-9400534095151985",
             enable_page_level_ads: true
         });
-    </script>
+    </script> -->
 
  <title>
                  Brawlhalla Player Stats | Leaderboards           </title>
@@ -271,7 +271,7 @@ function getUrlParameter(name) {
 
         document.querySelector('#playerSearchBar').style.display = "none";
         document.querySelector('#playerNotFound').style.display = "none";
-        
+        document.querySelector('#clanSearchResults').style.display = "none";
         document.querySelector('#playerLoading').style.display = "inline";
 
         fetch('https://brawlhallastats.herokuapp.com/api/clan?clan=' + getUrlParameter('clan') )
@@ -282,12 +282,14 @@ function getUrlParameter(name) {
             document.querySelector('#playerNotFound').style.display = "none";
             document.querySelector('#playerSearchBar').style.display = "none";
             document.querySelector('#playerLoading').style.display = "none";
+            
 
             if (!results.clan_id){
                 document.querySelector('#playerNotFound').style.display = "inline";
             }
             else {
-
+                document.querySelector('#clanSearchResults').style.display = "inline";
+                document.getElementById('leaderboard-name').innerHTML = `${results.clan_name}`
             }
 
 

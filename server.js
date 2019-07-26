@@ -549,7 +549,7 @@ router.get('/clan', async function(req, res) {
     await fetch(`https://api.brawlhalla.com/clan/${clanID}?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
-
+            console.log("Clan JSON = ", json);
             res.json(json);
             
         })

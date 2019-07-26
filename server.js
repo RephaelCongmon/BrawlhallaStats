@@ -538,18 +538,17 @@ router.get('/leaderboards/mostsearched', async function(req, res) {
 });
 
 router.get('/clan', async function(req, res) {
-    console.log("Clan search submitted!");
 
     let clanID = req.query.clan;
 
-    console.log("Searching for ", clanID);
+    console.log("Searching for clan with ID = ", clanID);
 
     //curl "https://api.brawlhalla.com/clan/1/?api_key=EXAMPLEKEY"
 
     await fetch(`https://api.brawlhalla.com/clan/${clanID}?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
-            console.log("Clan JSON = ", json);
+            
             res.json(json);
             
         })

@@ -335,7 +335,7 @@ function numberWithCommas(x) {
 
                     timeStr += (myDate.getHours() == 0 || myDate.getHours() ) > 12 ? `${Math.abs(myDate.getHours()-12)}` : `${myDate.getHours()}`;
 
-                    timeStr += `:${myDate.getMinutes()} `; 
+                    timeStr += (myDate.getMinutes() < 10) ? `0${myDate.getMinutes()}`:`${myDate.getMinutes()} `; 
 
                     timeStr += (myDate.getHours() == 0 || myDate.getHours() > 12 ) ? `P.M.`:`A.M.`;
                     

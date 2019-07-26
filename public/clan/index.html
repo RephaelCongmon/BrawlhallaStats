@@ -291,7 +291,7 @@ function numberWithCommas(x) {
             else {
                 document.querySelector('#clanSearchResults').style.display = "inline";
                 document.getElementById('leaderboard-name').innerHTML = `${results.clan_name}`
-                document.getElementById('clanXP').innerHTML = `<b>Clan XP:</b> ${results.clan_xp}<br /><br /><b># of Members:</b> ${results.clan.length}<br />`;
+                document.getElementById('clanXP').innerHTML = `<b>Clan XP:</b> ${numberWithCommas(results.clan_xp)}<br /><br /><b># of Members:</b> ${results.clan.length}<br />`;
 
 
                 var str = "";
@@ -328,7 +328,7 @@ function numberWithCommas(x) {
 
                     str += `<td class="sorting_1" tabindex="0"><b>${results.clan[i].name}</b></td>`;
                     str += `<td><b>${numberWithCommas(results.clan[i].xp)}</b></td>`;
-                    str += `<td data-order="${join_date}">${month[myDate.getMonth()]} ${myDate.getDay()}, ${myDate.getFullYear()} at ` + 
+                    str += `<td data-order="${results.clan[i].join_date}">${month[myDate.getMonth()]} ${myDate.getDay()}, ${myDate.getFullYear()} at ` + 
                         myDate.getHours() == 0 || myDate.getHours() > 12 ? `${Math.abs(myDate.getHours()-12)}`:`${myDate.getHours()}` + `:${myDate.getMinutes()} ` + 
                         (myDate.getHours() == 0 || myDate.getHours() > 12 ) ? `P.M.`:`A.M.` + ` </td>`;
 

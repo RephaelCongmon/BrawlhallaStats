@@ -1453,6 +1453,9 @@
     //     setTimeout(function(){$("#xp-increase-fx").fadeOut(500);$("#xp-bar-fill").css({"-webkit-transition":"all 0.5s ease","box-shadow":""});},2000);
     //     setTimeout(function(){$("#xp-bar-fill").css({"width":`${x}`});},3000);
     // }
+    jQuery(document).ready(function ($) {
+        $.noConflict();
+    });
 
     var urlParams = new URLSearchParams(window.location.search);
     console.log("Does player page have parameters? ", urlParams.has('playerID'));

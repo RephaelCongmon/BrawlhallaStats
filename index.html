@@ -1171,7 +1171,7 @@
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     };
 
-    function showPlayerStats(jQuery) {
+    function showPlayerStats() {
         document.querySelector('#playerSearchBar').style.display = "none";
         document.querySelector('#playerNotFound').style.display = "none";
         document.querySelector('#playerStats').style.display = "none";
@@ -1179,11 +1179,11 @@
         document.querySelector('#playerLoading').style.display = "inline";
         document.querySelector('#playerErrorOccurred').style.display = "none";
 
-        jQuery(document).ready(function ($) {
-            $.noConflict();
-            setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 0.01s ease");
-            $("#xp-bar-fill").css("width",`0%`);},10);
-        });
+        // jQuery(document).ready(function ($) {
+        //     $.noConflict();
+        //     setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 0.01s ease");
+        //     $("#xp-bar-fill").css("width",`0%`);},10);
+        // });
 
         for (var x = 0; x < 46; x++){
             document.querySelector("#legend" + `${x}`).style.display = "none";  
@@ -1357,23 +1357,23 @@
                 document.getElementById('playerName').innerHTML = `${playerName}`;
                 document.getElementById('playerLevel').innerHTML = `<b>Level: </b>${playerLevel}<br />`;
 
-                jQuery(document).ready(function ($) {
-                    $.noConflict();
-                    setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 0.01s ease");
-                    $("#xp-bar-fill").css("width",`0%`);},10);
+                // jQuery(document).ready(function ($) {
+                //     $.noConflict();
+                //     setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 0.01s ease");
+                //     $("#xp-bar-fill").css("width",`0%`);},10);
                 
-                    $("#xp-increase-fx").css("display","inline-block");
-                    $("#xp-bar-fill").css("box-shadow",/*"0px 0px 15px #06f,*/ "-5px 0px 10px #fff inset");
+                //     $("#xp-increase-fx").css("display","inline-block");
+                //     $("#xp-bar-fill").css("box-shadow",/*"0px 0px 15px #06f,*/ "-5px 0px 10px #fff inset");
 
 
-                    setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 2s ease");
-                    $("#xp-bar-fill").css("width",`${playerXPPercentageString}`);},100);
+                //     setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 2s ease");
+                //     $("#xp-bar-fill").css("width",`${playerXPPercentageString}`);},100);
 
-                    console.log("This ran");
+                //     console.log("This ran");
 
-                    setTimeout(function(){$("#xp-increase-fx").fadeOut(500);$("#xp-bar-fill").css({"-webkit-transition":"all 0.5s ease","box-shadow":""});},2000);
-                    setTimeout(function(){$("#xp-bar-fill").css({"width":`${playerXPPercentageString}`});},3000);
-                });
+                //     setTimeout(function(){$("#xp-increase-fx").fadeOut(500);$("#xp-bar-fill").css({"-webkit-transition":"all 0.5s ease","box-shadow":""});},2000);
+                //     setTimeout(function(){$("#xp-bar-fill").css({"width":`${playerXPPercentageString}`});},3000);
+                // });
                 //doit(`${playerXPPercentageString}`);
 
                 document.getElementById('playerXP').innerHTML = `<br /><b>Total XP:</b> ${numberWithCommas(playerXP)}<br /><br />`;
@@ -1417,11 +1417,13 @@
                 document.getElementById('playerSidekickKOs').innerHTML = `<b>Sidekick Kills: </b>${numberWithCommas(playerSidekickKOs)}<br />`;
                 document.getElementById('playerSnowballKOs').innerHTML = `<b>Snowball Kills: </b>${numberWithCommas(playerSnowballKOs)}<br />`;
 
-                jQuery(document).ready(function ($) {
-                    $.noConflict();
-                    $('#leaderboard-table').DataTable();
+                // jQuery(document).ready(function ($) {
+                //     $.noConflict();
+                //     $('#leaderboard-table').DataTable();
 
-                    });
+                //     });
+
+                
             }
         })
 
@@ -1431,6 +1433,8 @@
 
         
         });
+
+        return playerXPPercentageString;
     }
 
     // function doit(x){
@@ -1455,7 +1459,38 @@
     console.log("Parameter = ", getUrlParameter('playerID'));
 
     if (urlParams.has('playerID') && getUrlParameter('playerID') !== ''){
-        showPlayerStats(jQuery);
+        jQuery(document).ready(function ($) {
+            $.noConflict();
+            setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 0.01s ease");
+            $("#xp-bar-fill").css("width",`0%`);},10);
+        });
+        
+        var playerXPPercentageString = showPlayerStats();
+
+        jQuery(document).ready(function ($) {
+            $.noConflict();
+            setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 0.01s ease");
+            $("#xp-bar-fill").css("width",`0%`);},10);
+        
+            $("#xp-increase-fx").css("display","inline-block");
+            $("#xp-bar-fill").css("box-shadow",/*"0px 0px 15px #06f,*/ "-5px 0px 10px #fff inset");
+
+
+            setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 2s ease");
+            $("#xp-bar-fill").css("width",`${playerXPPercentageString}`);},100);
+
+            console.log("This ran");
+
+            setTimeout(function(){$("#xp-increase-fx").fadeOut(500);$("#xp-bar-fill").css({"-webkit-transition":"all 0.5s ease","box-shadow":""});},2000);
+            setTimeout(function(){$("#xp-bar-fill").css({"width":`${playerXPPercentageString}`});},3000);
+        });
+
+        jQuery(document).ready(function ($) {
+            $.noConflict();
+            $('#leaderboard-table').DataTable();
+
+            });
+    
     }
 
     // document.querySelector('#myFormByBrawlhallaID').addEventListener('submit', e => {

@@ -161,12 +161,21 @@ router.get('/submit-form2', async function(req, res) {
     // let searchQueryValues3 = [keys[0]];
 
     // const data3 = await new Promise((res, rej) => pool.query(searchQueryData3, searchQueryValues3, (err, data3) => err ? rej(err) : res(data3)));
+    var jsonRanked;
+
+    await fetch(`https://api.brawlhalla.com/player/${keys[0]}/ranked?api_key=${TOKEN}`)
+    .then(res => res.json())
+    .then(json => {
+        jsonRanked = json;
+    });
 
     await fetch(`https://api.brawlhalla.com/player/${keys[0]}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
 
             //console.log("This json = ", json);
+            console.log("json Ranked = ", jsonRanked);
+            
             var json2 = json;
             let newLookups;
             var damageDealt = 0;

@@ -175,7 +175,7 @@ router.get('/submit-form2', async function(req, res) {
 
             //console.log("This json = ", json);
             console.log("json Ranked = ", jsonRanked);
-            
+
             var json2 = json;
             let newLookups;
             var damageDealt = 0;
@@ -374,19 +374,6 @@ router.get('/submit-form3', async function(req, res) {
 
     var keys = [req.query.player];
 
-    // for (var key in req.query) {
-    //     if (req.query.hasOwnProperty(key)) {
-    //         keys.push(key);
-    //     }
-    // }
-
-    
-    
-
-    // let searchQueryData3 = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
-    // let searchQueryValues3 = [keys[0]];
-
-    // const data3 = await new Promise((res, rej) => pool.query(searchQueryData3, searchQueryValues3, (err, data3) => err ? rej(err) : res(data3)));
 
     await fetch(`https://api.brawlhalla.com/player/${keys[0]}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
@@ -564,6 +551,173 @@ router.get('/clan', async function(req, res) {
         })
         .catch(err => console.log("Clan Search error: ", err));
 
+});
+
+router.get('/player-stats', async function(req, res) {
+
+    let playerID = req.query.playerID;
+
+    if (playerID){
+    console.log("Searching for player with ID = ", playerID);
+    var inserted = 0;
+    console.log("Button click submitted");
+
+    //Data for global stats!
+    let searchGlobalQueryData = `SELECT * FROM globalstats`;
+
+    const globalData = await new Promise((res, rej) => pool.query(searchGlobalQueryData,  (err, globalData) => err ? rej(err) : res(globalData)));
+    var previousGlobalDamage = parseInt(globalData.rows[0].totaldamage);
+    var previousGlobalGames = parseInt(globalData.rows[0].totalgames);
+    var previousGlobalTime = parseInt(globalData.rows[0].totaltime);
+    var afterGlobalDamage = 0;
+    var afterGlobalGames = 0;
+    var afterGlobalTime = 0;
+
+    let searchQueryData = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
+    let searchQueryValues = [playerID];
+
+    const data = await new Promise((res, rej) => pool.query(searchQueryData, searchQueryValues, (err, data) => err ? rej(err) : res(data)));
+
+    let searchQueryData2 = `SELECT * FROM brawlhalla WHERE brawlhallaid = $1`;
+    let searchQueryValues2 = ['totals'];
+
+    const data2 = await new Promise((res, rej) => pool.query(searchQueryData2, searchQueryValues2, (err, data2) => err ? rej(err) : res(data2)));
+    //console.log("Data = ", data);
+    
+    let numLookups;
+    let totalLookups;
+
+    totalLookups = data2.rows[0].lookups*1;
+
+    totalLookups += 1;
+    let updateTotalQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
+    let updateTotalQueryValues = [totalLookups, 'totals'];
+
+    var previousDamage = 0;
+    var previousGames = 0;
+    var previousTime = 0;
+
+    var damageDifference = 0;
+    var gamesDifference = 0;
+    var timeDifference = 0;
+
+    pool.query(updateTotalQueryData, updateTotalQueryValues, err => {
+        if (err) console.log("Failed to update total lookups! ", err);
+        else {
+            console.log("Update totals success!");
+        }
+    });
+
+    if (data.rows.length == 0){
+        inserted = 1;
+        let insertQueryData = `INSERT INTO brawlhalla (brawlhallaid, brawlhallaname, lookups) VALUES ($1, $2, $3)`;
+        let insertQueryValues = [keys[0], 'default', 1];
+
+        pool.query(insertQueryData, insertQueryValues, err => {
+            if (err) console.log("Failed to insert player into database!");
+            else {
+                console.log("Insert success!");
+            }
+        });
+
+
+    }
+    else {
+        inserted = 0;
+        numLookups = data.rows[0].lookups*1;
+ 
+        numLookups += 1;
+
+        previousDamage = data.rows[0].totaldamage;
+        previousGames = data.rows[0].totalgames;
+        previousTime = data.rows[0].totaltime;
+
+        let updateQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
+        let updateQueryValues = [numLookups, data.rows[0].brawlhallaid];
+        pool.query(updateQueryData, updateQueryValues, err => {
+            if (err) console.log("Failed to update upon lookup! ", err);
+            else {
+                console.log("Update success!");
+            }
+        });
+
+    }
+
+    var jsonRanked;
+
+    await fetch(`https://api.brawlhalla.com/player/${playerID}/ranked?api_key=${TOKEN}`)
+    .then(res => res.json())
+    .then(json => {
+        jsonRanked = json;
+    });
+
+    await fetch(`https://api.brawlhalla.com/player/${playerID}/stats?api_key=${TOKEN}`)
+        .then(res => res.json())
+        .then(json => {
+
+            //console.log("This json = ", json);
+            console.log("json Ranked = ", jsonRanked);
+
+            var json2 = json;
+            let newLookups;
+            var damageDealt = 0;
+            var timeSpentInGame = 0;
+
+            gamesDifference = json.games*1 - previousGames;
+
+            for (var i = 0; i < json.legends.length; i++){
+                damageDealt += parseInt(json.legends[i].damagedealt);
+                timeSpentInGame += parseInt(json.legends[i].matchtime);
+            }
+
+            damageDifference = damageDealt*1 - previousDamage;
+            timeDifference = timeSpentInGame*1 - previousTime;
+
+            afterGlobalDamage = previousGlobalDamage + damageDifference;
+            afterGlobalGames = previousGlobalGames + gamesDifference;
+            afterGlobalTime = previousGlobalTime + timeDifference;
+
+            let updateGlobalQueryData = `UPDATE globalstats SET totaldamage = $1, totalgames = $2, totaltime = $3`;
+            let updateGlobalQueryValues = [afterGlobalDamage, afterGlobalGames, afterGlobalTime];
+            pool.query(updateGlobalQueryData, updateGlobalQueryValues, err => {
+                if (err) console.log("Failed to update global stats! ", err);
+                else {
+                    console.log("Updated global stats successfully!");
+                }
+            });
+
+            let updatePlayerQueryData = `UPDATE brawlhalla SET totaldamage = $1, totalgames = $2, totaltime = $3 WHERE brawlhallaid = $4`;
+            let updatePlayerQueryValues = [damageDealt, json.games, timeSpentInGame, keys[0]];
+            pool.query(updatePlayerQueryData, updatePlayerQueryValues, err => {
+                if (err) console.log("Failed to update player total stats!");
+                else {
+                    console.log("Successfully updated player total damage and total games!");
+                }
+            });
+
+            if (inserted){
+                newLookups = 1;
+                let updateNameQueryData = `UPDATE brawlhalla SET brawlhallaname = $1 WHERE brawlhallaid = $2`;
+                let updateNameQueryValues = [json.name, keys[0]];
+                pool.query(updateNameQueryData, updateNameQueryValues, err => {
+                    if (err) console.log("Failed to update name! ", err);
+                    else {
+                        console.log("Update Name success!");
+                    }
+                });
+            }
+            else {
+                newLookups = numLookups;
+            }            
+
+            json2.lookups = newLookups;
+            //console.log("Json2 = ", json2);
+
+            res.json(json);
+        
+        });
+
+    }
 });
 
 router.get('/legends', async function(req, res) {

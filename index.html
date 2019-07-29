@@ -1171,7 +1171,7 @@
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     };
 
-    function showPlayerStats() {
+    function showPlayerStats(jQuery) {
         document.querySelector('#playerSearchBar').style.display = "none";
         document.querySelector('#playerNotFound').style.display = "none";
         document.querySelector('#playerStats').style.display = "none";
@@ -1455,7 +1455,7 @@
     console.log("Parameter = ", getUrlParameter('playerID'));
 
     if (urlParams.has('playerID') && getUrlParameter('playerID') !== ''){
-        showPlayerStats();
+        showPlayerStats(jQuery);
     }
 
     // document.querySelector('#myFormByBrawlhallaID').addEventListener('submit', e => {

@@ -1,0 +1,2 @@
+# BrawlhallaStats
+Tracks Brawlhalla Statistics

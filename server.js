@@ -382,6 +382,13 @@ router.get('/submit-form3', async function(req, res) {
 
     var keys = [req.query.player];
 
+    var previousDamage = 0;
+    var previousGames = 0;
+    var previousTime = 0;
+
+    var damageDifference = 0;
+    var gamesDifference = 0;
+    var timeDifference = 0;
 
     await fetch(`https://api.brawlhalla.com/player/${keys[0]}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
@@ -456,6 +463,10 @@ router.get('/submit-form3', async function(req, res) {
             
                     numLookups += 1;
 
+                    previousDamage = data.rows[0].totaldamage;
+                    previousGames = data.rows[0].totalgames;
+                    previousTime = data.rows[0].totaltime;
+
                     let updateQueryData = `UPDATE brawlhalla SET lookups = $1 WHERE brawlhallaid = $2`;
                     let updateQueryValues = [numLookups, data.rows[0].brawlhallaid];
                     pool.query(updateQueryData, updateQueryValues, err => {
@@ -480,6 +491,14 @@ router.get('/submit-form3', async function(req, res) {
                 }
                 else {
                     newLookups = numLookups;
+                    let updateNameQueryData = `UPDATE brawlhalla SET brawlhallaname = $1 WHERE brawlhallaid = $2`;
+                    let updateNameQueryValues = [json.name, keys[0]];
+                    pool.query(updateNameQueryData, updateNameQueryValues, err => {
+                        if (err) console.log("Failed to update name! ", err);
+                        else {
+                            console.log("Update Name success!");
+                        }
+                    });
                 }            
             }
             json2.lookups = newLookups;

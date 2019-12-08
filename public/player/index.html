@@ -2248,6 +2248,7 @@
 <script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/dataTables.scroller.min.js"  ></script>
 
 <script>
+    var urlParams = new URLSearchParams(window.location.search);
     console.log("Does player page have parameters? ", urlParams.has('playerID'));
     console.log("Parameter = ", getUrlParameter('playerID'));
 

@@ -1256,7 +1256,8 @@
             document.querySelector("#legend" + `${x}`).style.display = "none";  
         }
 
-        fetch('https://brawlhallastats.herokuapp.com/api/player-stats?playerID=' +  getUrlParameter('playerID') )
+        //fetch('https://brawlhallastats.herokuapp.com/api/player-stats?playerID=' +  getUrlParameter('playerID') )
+        fetch('https://brawlhallastats.herokuapp.com/api/submit-form3?' + new URLSearchParams(window.location.search).toString() )
         .then(response => response.json())
         .then(result => {
 
@@ -1504,67 +1505,6 @@
         //return playerXPPercentageString;
         return;
     }
-
-    // function doit(x){
-    //     setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 0.01s ease");
-    //     $("#xp-bar-fill").css("width",`0%`);},10);
-
-    //     $("#xp-increase-fx").css("display","inline-block");
-    //     $("#xp-bar-fill").css("box-shadow",/*"0px 0px 15px #06f,*/ "-5px 0px 10px #fff inset");
-
-
-    //     setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 2s ease");
-    //     $("#xp-bar-fill").css("width",`${x}`);},100);
-
-    //     console.log("This ran");
-
-    //     setTimeout(function(){$("#xp-increase-fx").fadeOut(500);$("#xp-bar-fill").css({"-webkit-transition":"all 0.5s ease","box-shadow":""});},2000);
-    //     setTimeout(function(){$("#xp-bar-fill").css({"width":`${x}`});},3000);
-    // }
-
-    // *********TESTING NEW PAGE SEARCH**********
-    // jQuery(document).ready(function ($) {
-    //     $.noConflict();
-    // });
-
-    // var urlParams = new URLSearchParams(window.location.search);
-    // console.log("Does player page have parameters? ", urlParams.has('playerID'));
-    // console.log("Parameter = ", getUrlParameter('playerID'));
-
-    // if (urlParams.has('playerID') && getUrlParameter('playerID') !== ''){
-    //     jQuery(document).ready(function ($) {
-    //         $.noConflict();
-    //         setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 0.01s ease");
-    //         $("#xp-bar-fill").css("width",`0%`);},10);
-    //     });
-        
-    //     var playerXPPercentageString = showPlayerStats();
-
-    //     jQuery(document).ready(function ($) {
-    //         $.noConflict();
-    //         setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 0.01s ease");
-    //         $("#xp-bar-fill").css("width",`0%`);},10);
-        
-    //         $("#xp-increase-fx").css("display","inline-block");
-    //         $("#xp-bar-fill").css("box-shadow",/*"0px 0px 15px #06f,*/ "-5px 0px 10px #fff inset");
-
-
-    //         setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 2s ease");
-    //         $("#xp-bar-fill").css("width",`${playerXPPercentageString}`);},100);
-
-    //         console.log("This ran");
-
-    //         setTimeout(function(){$("#xp-increase-fx").fadeOut(500);$("#xp-bar-fill").css({"-webkit-transition":"all 0.5s ease","box-shadow":""});},2000);
-    //         setTimeout(function(){$("#xp-bar-fill").css({"width":`${playerXPPercentageString}`});},3000);
-    //     });
-
-    //     jQuery(document).ready(function ($) {
-    //         $.noConflict();
-    //         $('#leaderboard-table').DataTable();
-
-    //         });
-    
-    // }
 
     document.querySelector('#myFormByBrawlhallaID').addEventListener('submit', e => {
         console.log("Search by Brawlhalla ID Ran!");
@@ -1835,9 +1775,6 @@
         //});
               
     });
-
-
-
 
     document.querySelectorAll('#myForm, #hiddenSearchBar').forEach(form => form.addEventListener('submit', e=> {
         console.log("Search ran!");
@@ -2250,11 +2187,11 @@
 
 <script>
     var urlParams = new URLSearchParams(window.location.search);
-    console.log("Does player page have parameters? ", urlParams.has('playerID'));
-    console.log("Parameter = ", getUrlParameter('playerID'));
+    console.log("Does player page have parameters? ", urlParams.has('player'));
+    console.log("Parameter = ", getUrlParameter('player'));
 
-    if (urlParams.has('playerID') && getUrlParameter('playerID') !== ''){
-        console.log("PlayerID parameter found!");
+    if (urlParams.has('player') && getUrlParameter('player') !== ''){
+        console.log("Player parameter found!");
         showPlayerStats();
     }
 

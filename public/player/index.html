@@ -2248,16 +2248,21 @@
 <script src="https://brawlhallastats.herokuapp.com/assets/plugins/datatables/dataTables.scroller.min.js"  ></script>
 
 <script>
-    jQuery(document).ready(function ($) {
-        $.noConflict();
+    console.log("Does player page have parameters? ", urlParams.has('playerID'));
+    console.log("Parameter = ", getUrlParameter('playerID'));
 
-        if (getURLParameter('playerID')){
-            console.log("Player ran with " + getURLParameter('playerID'));
-            showPlayerStats();
-        }
-        //$('#leaderboard-table').DataTable();
+    if (urlParams.has('playerID') && getUrlParameter('playerID') !== ''){
+        console.log("PlayerID parameter found!");
+        showPlayerStats();
+    }
 
-    });
+    // jQuery(document).ready(function ($) {
+    //     $.noConflict();
+
+        
+    //     //$('#leaderboard-table').DataTable();
+
+    // });
 </script>
  </div>
  <!-- <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js" data-cf-settings="566ead401d4a289a66320f2a-|49" defer=""></script></body> -->

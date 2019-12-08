@@ -497,9 +497,10 @@
                         }
                         var losses = result[i].games - result[i].wins;
 
-                        var playerLink = "https://www.brawlhallastats.herokuapp.com/player?player=" + result[i].brawlhalla_id.toString();
+                
+                        var playerLink = "https://brawlhallastats.herokuapp.com/player/?player=" + result[i].brawlhalla_id.toString();
                         str += `<td class="sorting_1" tabindex="0">${result[i].rank}</td>`;
-                        str += `<td onClick="document.location.href='${playerLink}';"><b>${result[i].name}</b></td>`;
+                        str += `<td><a href="${playerLink}" class="waves-effect waves-primary"><b>${result[i].name}</b></a></td>`;
                         str += `<td>${result[i].rating}</td>`;
                         str += `<td>${result[i].peak_rating}</td>`;
                         str += `<td>${result[i].wins}</td>`;

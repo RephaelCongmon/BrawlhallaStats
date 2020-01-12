@@ -253,6 +253,13 @@
 
 <script>
 
+function getPlayerLink(id){
+    var ret = "https://brawlhallastats.herokuapp.com/player/?player=";
+    ret += id.toString();
+
+    return ret;
+}
+
 function getUrlParameter(name) {
     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -342,7 +349,7 @@ function numberWithCommas(x) {
 
                     timeStr += (myDate.getHours() == 0 || myDate.getHours() > 12 ) ? `P.M.`:`A.M.`;
                     
-                    str += `<td class="sorting_1" tabindex="0"><b>${results.clan[i].name}</b></td>`;
+                    str += `<td class="sorting_1" tabindex="0"><b><a href="${getPlayerLink(results.clan[i].brawlhalla_id)}" class="waves-effect waves-primary">${results.clan[i].name}</a></b></td>`;
                     str += `<td><b>${numberWithCommas(results.clan[i].xp)}</b></td>`;
                     str += `<td data-order="${results.clan[i].join_date}">${timeStr}</td>`;
 

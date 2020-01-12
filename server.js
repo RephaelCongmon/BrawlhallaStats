@@ -525,7 +525,7 @@ router.get('/leaderboards/1v1Ranked', async function(req, res) {
     await fetch(`https://api.brawlhalla.com/rankings/${keys[0]}/all/1?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {
-
+            console.log(json);
             res.json(json);
         
     });

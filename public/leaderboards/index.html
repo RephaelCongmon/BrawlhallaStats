@@ -464,7 +464,30 @@
 
 <script>
 
-    
+    function teamnameSplit(teamname, id1, id2){
+        var player1Name = "";
+        var player2Name = "";
+        var temp = "";
+        for (var i = 0; i < teamname.length; i++){
+            if (teamname[i] == '+'){
+            player1Name = temp;
+            temp = "";
+            }
+            else {
+            temp += teamname[i];
+            }
+            console.log(teamname[i]);
+        }
+
+        player2Name = temp;
+
+        console.log(player1Name);
+        console.log(player2Name);
+
+        return {player1name: player1Name, player2name: player2Name,player1id: id1, player2id: id2
+        };
+
+    }
 
 
     document.querySelectorAll('#ButtonOneVOne, #ButtonTwoVTwo, #mostSearchedButton').forEach(button => button.addEventListener('click', e => {
@@ -566,6 +589,7 @@
                         }
                         var losses = result[i].games - result[i].wins;
 
+                        //var nameSplit = teamnameSplit(result[i].teamname, result[i].)
                         str += `<td class="sorting_1" tabindex="0">${result[i].rank}</td>`;
                         str += `<td><b>${result[i].teamname}</b></td>`;
                         str += `<td>${result[i].rating}</td>`;

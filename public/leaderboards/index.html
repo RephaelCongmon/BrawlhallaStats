@@ -489,6 +489,34 @@
 
     }
 
+    function getPlayerLink(id){
+    var ret = "https://brawlhallastats.herokuapp.com/player/?player=";
+    ret += id.toString();
+
+    return ret;
+    }
+
+    function namesplitParse(nameSplit){
+    var str = "";
+
+    str += "<b>";
+
+    //Player 1
+    str += `<a href="${getPlayerLink(nameSplit.player1id)}" class="waves-effect waves-primary">`;
+    str += `${nameSplit.player1name}`;
+    str += "</a>";
+
+    str += '+';
+    //Player 2
+    str += `<a href="${getPlayerLink(nameSplit.player2id)}" class="waves-effect waves-primary">`;
+    str += `${nameSplit.player2name}`;
+    str += "</a>";
+
+    str += "</b>";
+
+    return str;
+    }
+
 
     document.querySelectorAll('#ButtonOneVOne, #ButtonTwoVTwo, #mostSearchedButton').forEach(button => button.addEventListener('click', e => {
         
@@ -589,9 +617,12 @@
                         }
                         var losses = result[i].games - result[i].wins;
 
-                        //var nameSplit = teamnameSplit(result[i].teamname, result[i].)
+                        var nameSplit = teamnameSplit(result[i].teamname, result[i].brawlhalla_id_one, result[i].brawlhalla_id_two);
+                        var newTeamName = namesplitParse(nameSplit);
+                        console.log(newTeamName);
+
                         str += `<td class="sorting_1" tabindex="0">${result[i].rank}</td>`;
-                        str += `<td><b>${result[i].teamname}</b></td>`;
+                        str += `<td>${newTeamName}</td>`;
                         str += `<td>${result[i].rating}</td>`;
                         str += `<td>${result[i].peak_rating}</td>`;
                         str += `<td>${result[i].wins}</td>`;

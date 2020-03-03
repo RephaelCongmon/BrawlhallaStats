@@ -694,9 +694,9 @@ router.get('/submit-form3-by-id', async function(req, res) {
     json = await showStatsByID(req.query.player);
     console.log("Inside submit-form3-by-id:\n    json looks like:", json);
     var newJson;
-    newJson = JSON.parse(json);
-    console.log("Inside submit-form3-by-id:\n    newJson looks like:", newJson);
-    res.json(newJson);
+    //newJson = JSON.parse(json);
+    console.log("Inside submit-form3-by-id:\n    newJson looks like:", newJson.level);
+    res.json(json);
 });
 
 router.get('/leaderboards/1v1Ranked', async function(req, res) {

@@ -2130,7 +2130,7 @@
 
                 document.querySelectorAll('#ButtonSearchResult').forEach(button => button.addEventListener('click', ee => {
                 
-                    ee.preventDefault();
+                    
 
                     //var x = document.getElementById("ButtonOneVOne").value.toString();
                     console.log(`e.target/value = ${ee.target.value}`);
@@ -2140,6 +2140,7 @@
                         showPlayerStatsWithFunctions(ee.target.value);
                     }
                     else {
+                    ee.preventDefault();
                     // document.querySelector('#loadingLeaderboards').style.display = "inline";
                     
                     document.querySelector('#playerSearchBar').style.display = "none";

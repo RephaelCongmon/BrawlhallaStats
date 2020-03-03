@@ -79,7 +79,7 @@ function showStats(result) {
                 str += '<tr role="row" class="even">';
             }
 
-            str += `<td class="sorting_1" tabindex="0"><b>${result.legends[i].legend_name_key.toUpperCase()}</b></td>`;
+            str += `<td class="sorting_1" tabindex="0" data-order="${result.legends[i].legend_name_key}"><b>${result.legends[i].legend_name_key.toUpperCase()}</b></td>`;
             str += `<td data-order="result.legends[i].level"><b>${result.legends[i].level}</b></td>`;
             str += result.legends[i].games ? `<td data-order="${(result.legends[i].wins/result.legends[i].games)*100}">${((result.legends[i].wins/result.legends[i].games)*100).toFixed(2).toString() + '%'}</td data-order="0">` : `<td>0.00%</td>`;
             str += `<td data-order="${result.legends[i].damagedealt}">${numberWithCommas(result.legends[i].damagedealt)}</td>`;

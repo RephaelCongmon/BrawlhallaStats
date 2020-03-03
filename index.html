@@ -1200,9 +1200,12 @@
     var resizefunc = [];
 </script>
  
+<script src="./customMethods.js" type="module"> 
+import { showStats,  showPlayerStatsWithFunctions} from "./customMethods.js";
+</script>
 
 <script>
-    import { showStats,  showPlayerStatsWithFunctions} from "./customMethods.js";
+    
 
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

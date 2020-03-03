@@ -2479,7 +2479,7 @@
         //     showPlayerStatsWithFunctions();
         // }
         
-        showPlayerStatsWithFunctions(getUrlParameter('player').toString());
+        showPlayerStatsWithFunctions(new URLSearchParams(window.location.search).toString() );
         
     }
         //$('#leaderboard-table').DataTable();

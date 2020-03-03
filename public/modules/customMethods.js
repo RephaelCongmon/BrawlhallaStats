@@ -234,6 +234,7 @@ function showStats(result) {
                 scrollX: true,
                 responsive: false
             });
+            //}).columns.adjust();
                
             });
 

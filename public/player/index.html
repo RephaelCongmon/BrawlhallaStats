@@ -1238,6 +1238,7 @@
     };
 
     function showStats(result) {
+        console.log("Ran using showStats()!");
         if ((result.error) && (result.error.code == 404) ){
                 document.querySelector('#playerNotFound').style.display = "inline";
                 document.querySelector('#hiddenSearchBar').style.display = "flex";
@@ -1502,7 +1503,6 @@
             showStats(result);
         })
 
-    
         .catch(err => {
             console.log("Error = ", err);
 
@@ -2478,13 +2478,9 @@
         // if (urlParams.has('debug') && getUrlParameter('debug') == 'WhyAreYouLookingAtSourceCode'){
         //     showPlayerStatsWithFunctions();
         // }
-        if (getUrlParameter('player') == '2442448'){
-            showPlayerStatsWithFunctions();
-            console.log("Ran using showPlayerStatsWithFunctions()!");
-        }
-        else {
-            showPlayerStats();
-        }
+        
+        showPlayerStatsWithFunctions();
+        
     }
         //$('#leaderboard-table').DataTable();
 

@@ -68,7 +68,7 @@ function showStats(result) {
         var legendKillRatio;
         var legendTime;
         var str = "";
-        str += `<table id="leaderboard-table" class="table table-striped table-bordered dt-responsive dataTable no-footer dtr-inline" role="grid" aria-describedby="leaderboard-table-info">
+        str += `<table id="leaderboard-table" class="table table-striped table-bordered dt-responsive dataTable no-footer dtr-inline" role="grid" aria-describedby="leaderboard-table-info" width="100%">
         <tbody>`;
 
         for (var i = 0; i < result.legends.length; i++){
@@ -231,7 +231,7 @@ function showStats(result) {
             $('#leaderboard-table').DataTable( {
                 colReorder: true,
                 "bSortCellsTop": true
-                //scrollX: true
+                scrollX: true
             });
                
             });

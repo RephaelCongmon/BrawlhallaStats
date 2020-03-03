@@ -65,6 +65,9 @@ async function showStatsByID(id, req, res){
     keys.push(id);
     console.log(`showStatsByID:\nkeys[0] = ${keys[0]}`);
 
+    if (!keys[0]){
+        return null;
+    }
     //Data for global stats!
     let searchGlobalQueryData = `SELECT * FROM globalstats`;
 
@@ -687,11 +690,25 @@ router.get('/submit-form3-by-id', async function(req, res) {
     var inserted = 0;
 
     console.log("Button click submitted");
+    var id;
+    if (req.query.player){
+        id = req.query.player
+    }
+    else{
+        var keys = [];
 
-    var keys = [req.query.player]; // Brawlhalla ID
+        for (var key in req.query) {
+            if (req.query.hasOwnProperty(key)) {
+                keys.push(key);
+            }
+        }
+        id = keys[0];
+    }
 
+    //id = req.query.player; // Brawlhalla ID
+    
     //const json = await new Promise((res, rej) => pool.query(searchGlobalQueryData,  (err, globalData) => err ? rej(err) : res(globalData)));
-    json = await showStatsByID(req.query.player, req, res);
+    json = await showStatsByID(id, req, res);
     console.log("Inside submit-form3-by-id:\n    json looks like:", json.level);
     var newJson;
     //newJson = JSON.parse(json);

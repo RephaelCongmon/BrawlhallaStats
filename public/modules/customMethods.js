@@ -228,8 +228,11 @@ function showStats(result) {
 
         jQuery(document).ready(function ($) {
             $.noConflict();
-            $('#leaderboard-table').DataTable();
-
+            $('#leaderboard-table').DataTable( {
+                colReorder: true,
+                "scrollX": true
+            });
+               
             });
 
         

@@ -230,7 +230,7 @@ function showStats(result) {
             $.noConflict();
             $('#leaderboard-table').DataTable( {
                 colReorder: true,
-                scrollX: true
+                //scrollX: true
             });
                
             });

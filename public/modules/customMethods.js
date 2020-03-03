@@ -68,7 +68,7 @@ function showStats(result) {
         var legendKillRatio;
         var legendTime;
         var str = "";
-        str += `<table id="leaderboard-table" class="table table-striped table-bordered dt-responsive dataTable no-footer dtr-inline" role="grid" aria-describedby="leaderboard-table-info" width="100%" border-collapse="collapse" class="display nowrap">
+        str += `<table id="leaderboard-table" class="table table-striped table-bordered dt-responsive dataTable no-footer dtr-inline display nowrap" role="grid" aria-describedby="leaderboard-table-info" width="100%" border-collapse="collapse" class="display nowrap">
         <tbody>`;
 
         for (var i = 0; i < result.legends.length; i++){

@@ -248,8 +248,8 @@ function showStats(result) {
                 "bSortCellsTop": true,
                 scrollX: true,
                 responsive: false
-            });
-            //}).columns.adjust();
+            //});
+            }).columns.adjust();
                
             });
 

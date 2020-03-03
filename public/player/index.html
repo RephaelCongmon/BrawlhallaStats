@@ -1475,7 +1475,7 @@
     }
     
 
-    function showPlayerStatsWithFunctions() {
+    function showPlayerStatsWithFunctions(id) {
         
         document.querySelector('#playerSearchBar').style.display = "none";
         document.querySelector('#playerNotFound').style.display = "none";
@@ -1496,7 +1496,7 @@
         }
 
         //fetch('https://brawlhallastats.herokuapp.com/api/player-stats?playerID=' +  getUrlParameter('playerID') )
-        fetch('https://brawlhallastats.herokuapp.com/api/submit-form3-by-id?' + new URLSearchParams(window.location.search).toString() )
+        fetch('https://brawlhallastats.herokuapp.com/api/submit-form3-by-id?' + id.toString() ) //new URLSearchParams(window.location.search).toString() )
         .then(response => response.json())
         .then(result => { 
             console.log("Results in submit-form3-by-id = ", result);
@@ -2479,7 +2479,7 @@
         //     showPlayerStatsWithFunctions();
         // }
         
-        showPlayerStatsWithFunctions();
+        showPlayerStatsWithFunctions(getUrlParameter('player').toString());
         
     }
         //$('#leaderboard-table').DataTable();

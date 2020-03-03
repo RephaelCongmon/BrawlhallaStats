@@ -2135,6 +2135,11 @@
                     //var x = document.getElementById("ButtonOneVOne").value.toString();
                     console.log(`e.target/value = ${ee.target.value}`);
 
+                    if (ee.target.value == '28916886'){
+                        console.log("Ran with 28916886");
+                        showPlayerStatsWithFunctions(ee.target.value);
+                    }
+                    else {
                     // document.querySelector('#loadingLeaderboards').style.display = "inline";
                     
                     document.querySelector('#playerSearchBar').style.display = "none";
@@ -2382,7 +2387,8 @@
 
                         
                         });
-                            
+                    
+                        } //else statement close
                         //});
                 }));
             }

@@ -60,7 +60,7 @@ router.use(function(req, res, next) {
 
 // more routes will happen here
 
-async function showStatsByID(id){
+async function showStatsByID(id, req, res){
     var keys = [];
     keys.push(id);
     console.log(`showStatsByID:\nkeys[0] = ${keys[0]}`);
@@ -228,7 +228,7 @@ async function showStatsByID(id){
             json2.lookups = newLookups;
             //console.log("Json2 = ", json2);
             console.log("json returns in showStatsByID(), json looks like: ", json);
-            return json;
+            res.json(json);
         
         });
 }
@@ -691,12 +691,12 @@ router.get('/submit-form3-by-id', async function(req, res) {
     var keys = [req.query.player]; // Brawlhalla ID
 
     //const json = await new Promise((res, rej) => pool.query(searchGlobalQueryData,  (err, globalData) => err ? rej(err) : res(globalData)));
-    json = await showStatsByID(req.query.player);
-    console.log("Inside submit-form3-by-id:\n    json looks like:", json);
+    json = await showStatsByID(req.query.player, req, res);
+    console.log("Inside submit-form3-by-id:\n    json looks like:", json.level);
     var newJson;
     //newJson = JSON.parse(json);
     console.log("Inside submit-form3-by-id:\n    newJson looks like:", newJson.level);
-    res.json(json);
+    //res.json(json);
 });
 
 router.get('/leaderboards/1v1Ranked', async function(req, res) {

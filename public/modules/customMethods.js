@@ -84,7 +84,11 @@ function showStats(result) {
             str += result.legends[i].games ? `<td data-order="${(result.legends[i].wins/result.legends[i].games)*100}">${((result.legends[i].wins/result.legends[i].games)*100).toFixed(2).toString() + '%'}</td data-order="0">` : `<td>0.00%</td>`;
             str += `<td data-order="${result.legends[i].damagedealt}">${numberWithCommas(result.legends[i].damagedealt)}</td>`;
             str += `<td data-order="${result.legends[i].kos}">${numberWithCommas(result.legends[i].kos)}</td>`;
+            str += `<td data-order="${result.legends[i].falls}">${numberWithCommas(result.legends[i].falls)}</td>`;
+            str += `<td data-order="${result.legends[i].suicides}">${numberWithCommas(result.legends[i].suicides)}</td>`;
             str += `<td data-order="${result.legends[i].wins}">${numberWithCommas(result.legends[i].wins)}</td>`;
+            str += `<td data-order="${result.legends[i].games - result.legends[i].wins}">${numberWithCommas(result.legends[i].games - result.legends[i].wins)}</td>`;
+            str += `<td data-order="${result.legends[i].games}">${numberWithCommas(result.legends[i].games)}</td>`;
             str += result.legends[i].matchtime ? `<td data-order="${result.legends[i].matchtime}">${timeStringFunction(result.legends[i].matchtime)}</td>` : `<td data-order="0">Never Played</td>`;
             
             str += '</tr>';
@@ -116,7 +120,7 @@ function showStats(result) {
             legendTime = result.legends[i].matchtime;
 
             document.getElementById("legendName" + `${i}`).innerHTML = `${legendName} (Lvl. ${legendLevel})`;
-            document.querySelector("#legend" + `${i}`).style.display = "block";
+            //document.querySelector("#legend" + `${i}`).style.display = "block";
             document.getElementById("legendStatsId" + `${i}`).innerHTML = `<ul class="list-unstyled"><li><b>Level:</b> ${legendLevel}</li><br />` + 
         
                 `<li><b>Games Played:</b> ${numberWithCommas(legendGames)}</li>` +
@@ -146,9 +150,17 @@ function showStats(result) {
 
                         <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Wins: activate to sort column ascending" style="width: 100px;">Kills</th>
 
+                        <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Wins: activate to sort column ascending" style="width: 100px;">Deaths</th>
+
+                        <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Wins: activate to sort column ascending" style="width: 100px;">Suicides</th>
+
                         <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Wins Solo: activate to sort column ascending" style="width: 70px;">Wins</th>
 
-                        <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Wins Team: activate to sort column ascending" style="width: 447px;">Time Played</th>
+                        <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Wins Solo: activate to sort column ascending" style="width: 70px;">Losses</th>
+
+                        <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Wins Solo: activate to sort column ascending" style="width: 70px;">Games Played</th>
+
+                        <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Wins Team: activate to sort column ascending" style="width: 350px;">Time Played</th>
 
                     
                     </tr>

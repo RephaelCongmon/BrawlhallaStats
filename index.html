@@ -1799,8 +1799,20 @@
 
         e.preventDefault();
         var testFormData = new URLSearchParams(new FormData(e.target)).toString();
-        var idTarget = testFormData.get('player');
+        var idTarget = "";
+        var booleanCheck = 0;
+        for (var i = 0; i < testFormData.length; i++){
+            
+            if (booleanCheck == 1){
+                idTarget += testFormData[i];
+            }
+
+            if (testFormData[i] == '='){
+                booleanCheck = 1;
+            }
+        }
         console.log(idTarget)
+
 
         document.querySelector('#playerSearchBar').style.display = "none";
         document.querySelector('#playerNotFound').style.display = "none";

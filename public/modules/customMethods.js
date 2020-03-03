@@ -1,4 +1,4 @@
-export function showStats(result) {
+function showStats(result) {
     console.log("Ran using showStats()!");
     if ((result.error) && (result.error.code == 404) ){
             document.querySelector('#playerNotFound').style.display = "inline";
@@ -236,7 +236,7 @@ export function showStats(result) {
     }
 }
 
-export function showPlayerStatsWithFunctions(id) {
+function showPlayerStatsWithFunctions(id) {
     
     document.querySelector('#playerSearchBar').style.display = "none";
     document.querySelector('#playerNotFound').style.display = "none";

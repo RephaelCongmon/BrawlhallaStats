@@ -2475,8 +2475,12 @@
 
     if (urlParams.has('player') && getUrlParameter('player') !== ''){
         console.log("Player parameter found!");
-        if (urlParams.has('debug') && getUrlParameter('debug') == 'WhyAreYouLookingAtSourceCode'){
+        // if (urlParams.has('debug') && getUrlParameter('debug') == 'WhyAreYouLookingAtSourceCode'){
+        //     showPlayerStatsWithFunctions();
+        // }
+        if (getUrlParameter('player') == '2442448'){
             showPlayerStatsWithFunctions();
+            console.log("Ran using showPlayerStatsWithFunctions()!");
         }
         else {
             showPlayerStats();

@@ -20,6 +20,10 @@
         });
     </script>
 
+<script src="modules/customMethods.js" type="module"> 
+    import { showStats,  showPlayerStatsWithFunctions} from "modules/customMethods.js";
+</script>
+
  <title>
                  Brawlhalla Player Stats | ROFEL           </title>
 
@@ -1200,12 +1204,10 @@
     var resizefunc = [];
 </script>
  
-<script src="customMethods.js" type="module"> 
 
-</script>
 
-<script src="customMethods.js" type="module">
-    import { showStats,  showPlayerStatsWithFunctions} from "customMethods.js";
+<script>
+    
 
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

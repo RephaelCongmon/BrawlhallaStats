@@ -229,7 +229,7 @@ function showStats(result) {
         jQuery(document).ready(function ($) {
             $.noConflict();
             $('#leaderboard-table').DataTable( {
-                colReorder: true,
+                //colReorder: true,
                 "scrollX": true
             });
                

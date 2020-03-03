@@ -82,6 +82,7 @@ function showStats(result) {
             str += `<td class="sorting_1" tabindex="0" data-order="${result.legends[i].legend_name_key}"><b>${result.legends[i].legend_name_key.toUpperCase()}</b></td>`;
             str += `<td data-order="${result.legends[i].level}"><b>${result.legends[i].level}</b></td>`;
             str += result.legends[i].games ? `<td data-order="${(result.legends[i].wins/result.legends[i].games)*100}">${((result.legends[i].wins/result.legends[i].games)*100).toFixed(2).toString() + '%'}</td data-order="0">` : `<td>0.00%</td>`;
+            str += result.legends[i].games ? `<td data-order="${(result.legends[i].games/playerGames)*100}">${((result.legends[i].games/playerGames)*100).toFixed(2).toString() + '%'}</td data-order="0">` : `<td>0.00%</td>`;
             str += `<td data-order="${result.legends[i].damagedealt}">${numberWithCommas(result.legends[i].damagedealt)}</td>`;
             str += `<td data-order="${result.legends[i].kos}">${numberWithCommas(result.legends[i].kos)}</td>`;
             str += `<td data-order="${result.legends[i].falls}">${numberWithCommas(result.legends[i].falls)}</td>`;
@@ -145,6 +146,8 @@ function showStats(result) {
                         <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Player: activate to sort column ascending" style="width: 10px;">Level</th>
 
                         <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Kills: activate to sort column ascending" style="width: 70px;">Win Rate</th>
+
+                        <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Kills: activate to sort column ascending" style="width: 70px;">Play Rate</th>
 
                         <th class="sorting" tabindex="0" aria-controls = "leaderboard-table" rowspan="1" colspan="1" aria-label="Deaths: activate to sort column ascending" style="width: 132px;">Damage Dealt</th>
 

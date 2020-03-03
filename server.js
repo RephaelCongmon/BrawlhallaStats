@@ -692,8 +692,10 @@ router.get('/submit-form3-by-id', async function(req, res) {
 
     //const json = await new Promise((res, rej) => pool.query(searchGlobalQueryData,  (err, globalData) => err ? rej(err) : res(globalData)));
     json = await showStatsByID(req.query.player);
-
-    res.json(json);
+    var newJson;
+    newJson = JSON.parse(json);
+    console.log("Inside submit-form3-by-id:\n    newJson looks like:", newJson);
+    res.json(newJson);
 });
 
 router.get('/leaderboards/1v1Ranked', async function(req, res) {

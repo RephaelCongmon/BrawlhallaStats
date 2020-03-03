@@ -80,11 +80,11 @@ function showStats(result) {
             }
 
             str += `<td class="sorting_1" tabindex="0"><b>${result.legends[i].legend_name_key.toUpperCase()}</b></td>`;
-            str += `<td><b>${result.legends[i].level}</b></td>`;
-            str += result.legends[i].games ? `<td>${((result.legends[i].wins/result.legends[i].games)*100).toFixed(2).toString() + '%'}</td>` : `<td>0.00%</td>`;
-            str += `<td>${numberWithCommas(result.legends[i].damagedealt)}</td>`;
-            str += `<td>${numberWithCommas(result.legends[i].kos)}</td>`;
-            str += `<td>${numberWithCommas(result.legends[i].wins)}</td>`;
+            str += `<td data-order="result.legends[i].level"><b>${result.legends[i].level}</b></td>`;
+            str += result.legends[i].games ? `<td data-order="${(result.legends[i].wins/result.legends[i].games)*100}">${((result.legends[i].wins/result.legends[i].games)*100).toFixed(2).toString() + '%'}</td data-order="0">` : `<td>0.00%</td>`;
+            str += `<td data-order="${result.legends[i].damagedealt}">${numberWithCommas(result.legends[i].damagedealt)}</td>`;
+            str += `<td data-order="${result.legends[i].kos}">${numberWithCommas(result.legends[i].kos)}</td>`;
+            str += `<td data-order="${result.legends[i].wins}">${numberWithCommas(result.legends[i].wins)}</td>`;
             str += result.legends[i].matchtime ? `<td data-order="${result.legends[i].matchtime}">${timeStringFunction(result.legends[i].matchtime)}</td>` : `<td data-order="0">Never Played</td>`;
             
             str += '</tr>';

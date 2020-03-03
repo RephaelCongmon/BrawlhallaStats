@@ -231,7 +231,8 @@ function showStats(result) {
             $('#leaderboard-table').DataTable( {
                 colReorder: true,
                 "bSortCellsTop": true,
-                scrollX: true
+                scrollX: true,
+                responsive: false
             });
                
             });

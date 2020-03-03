@@ -1497,7 +1497,9 @@
         //fetch('https://brawlhallastats.herokuapp.com/api/player-stats?playerID=' +  getUrlParameter('playerID') )
         fetch('https://brawlhallastats.herokuapp.com/api/submit-form3-by-id?' + new URLSearchParams(window.location.search).toString() )
         .then(response => response.json())
-        .then(result => { showStats(result);
+        .then(result => { 
+            console.log("Results in submit-form3-by-id = ", result);
+            showStats(result);
         })
 
     

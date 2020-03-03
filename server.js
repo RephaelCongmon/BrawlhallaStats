@@ -63,7 +63,7 @@ router.use(function(req, res, next) {
 async function showStatsByID(id){
     var keys = [];
     keys.push(id);
-    console.log(`keys[0] = ${keys[0]}`);
+    console.log(`showStatsByID:\nkeys[0] = ${keys[0]}`);
 
     //Data for global stats!
     let searchGlobalQueryData = `SELECT * FROM globalstats`;

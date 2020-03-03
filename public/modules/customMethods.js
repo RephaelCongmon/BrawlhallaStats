@@ -229,8 +229,8 @@ function showStats(result) {
         jQuery(document).ready(function ($) {
             $.noConflict();
             $('#leaderboard-table').DataTable( {
-                //colReorder: true,
-                "scrollX": true
+                colReorder: true,
+                scrollX: true
             });
                
             });

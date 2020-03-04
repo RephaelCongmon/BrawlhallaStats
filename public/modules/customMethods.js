@@ -120,19 +120,19 @@ function showStats(result) {
 
             legendTime = result.legends[i].matchtime;
 
-            document.getElementById("legendName" + `${i}`).innerHTML = `${legendName} (Lvl. ${legendLevel})`;
+            //document.getElementById("legendName" + `${i}`).innerHTML = `${legendName} (Lvl. ${legendLevel})`;
             //document.querySelector("#legend" + `${i}`).style.display = "block";
-            document.getElementById("legendStatsId" + `${i}`).innerHTML = `<ul class="list-unstyled"><li><b>Level:</b> ${legendLevel}</li><br />` + 
+            //document.getElementById("legendStatsId" + `${i}`).innerHTML = `<ul class="list-unstyled"><li><b>Level:</b> ${legendLevel}</li><br />` + 
         
-                `<li><b>Games Played:</b> ${numberWithCommas(legendGames)}</li>` +
-                `<li><b>Wins:</b> ${numberWithCommas(legendWins)}</li>` +
-                `<li><b>Losses:</b> ${numberWithCommas(legendLosses)}</li>` +
-                `<li><b>W/L Ratio: </b> ${legendWinRatio.toFixed(2)}</li><br />` +
+                // `<li><b>Games Played:</b> ${numberWithCommas(legendGames)}</li>` +
+                // `<li><b>Wins:</b> ${numberWithCommas(legendWins)}</li>` +
+                // `<li><b>Losses:</b> ${numberWithCommas(legendLosses)}</li>` +
+                // `<li><b>W/L Ratio: </b> ${legendWinRatio.toFixed(2)}</li><br />` +
                 
-                `<li><b>Kills:</b> ${numberWithCommas(legendKills)}</li>` +
-                `<li><b>Deaths:</b> ${numberWithCommas(legendFalls)}</li>` +
-                `<li><b>K/D Ratio:</b> ${legendKillRatio.toFixed(2)}</li><br />` +
-                `<li><b>Time In-game:</b> ${timeStringFunction(legendTime)}</li></ul>`;
+                // `<li><b>Kills:</b> ${numberWithCommas(legendKills)}</li>` +
+                // `<li><b>Deaths:</b> ${numberWithCommas(legendFalls)}</li>` +
+                // `<li><b>K/D Ratio:</b> ${legendKillRatio.toFixed(2)}</li><br />` +
+                // `<li><b>Time In-game:</b> ${timeStringFunction(legendTime)}</li></ul>`;
                 
             
         }
@@ -273,9 +273,9 @@ function showPlayerStatsWithFunctions(id) {
         $("#xp-bar-fill").css("width",`0%`);},10);
     });
 
-    for (var x = 0; x < 48; x++){
-        document.querySelector("#legend" + `${x}`).style.display = "none";  
-    }
+    // for (var x = 0; x < 48; x++){
+    //     document.querySelector("#legend" + `${x}`).style.display = "none";  
+    // }
 
     //fetch('https://brawlhallastats.herokuapp.com/api/player-stats?playerID=' +  getUrlParameter('playerID') )
     fetch('https://brawlhallastats.herokuapp.com/api/submit-form3-by-id?' + id.toString() ) //new URLSearchParams(window.location.search).toString() )

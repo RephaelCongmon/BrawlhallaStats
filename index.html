@@ -642,9 +642,9 @@
             $("#xp-bar-fill").css("width",`0%`);},10);
         });
 
-        for (var x = 0; x < 48; x++){
-            document.querySelector("#legend" + `${x}`).style.display = "none";  
-        }
+        // for (var x = 0; x < 48; x++){
+        //     document.querySelector("#legend" + `${x}`).style.display = "none";  
+        // }
 
         fetch('https://brawlhallastats.herokuapp.com/api/search?' + new URLSearchParams(new FormData(e.target)).toString() )
         .then(response => response.json())

@@ -9,11 +9,11 @@ const { Pool } = require ('pg');
 var TOKEN = process.env.brawlhallaKEY;
 const bh = require('brawlhalla-api')(`${TOKEN}`);
 
-console.log("DATABASE_URL: ", process.env.DATABASE_URL);
+console.log("DATABASE_URL: ", process.env.DATABASE_URL2);
 //console.log("Database URL Parse = ", process.env.DATABASE_URL.parse);
 
 const cn = {
-    connectionString: process.env.DATABASE_URL,
+    connectionString: process.env.DATABASE_URL2,
     port: 5432,
 
     // host: process.env.dbHost,
@@ -27,7 +27,7 @@ const cn = {
 const pool = new Pool(cn);
 pool.connect(err => {
     if(err) console.log(err);
-    console.log('Connected to PostgresSQL!');
+    console.log('Connected to PostgresSQL2!');
 });
 
 

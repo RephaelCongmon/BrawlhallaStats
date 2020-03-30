@@ -229,7 +229,12 @@ async function showStatsByID(id, req, res){
             }            
 
             json2.lookups = newLookups;
-            json.playerRating = jsonRanked.rating;
+            // json.playerRating = jsonRanked.rating;
+            // json.playerPeakRating = jsonRanked.peak_rating;
+            // json.playerTier = jsonRanked.tier;
+            // json.playerWins = jsonRanked.wins;
+            // json.playerGames = jsonRanked.games;
+            json.playerRanked = jsonRanked;
             //console.log("Json2 = ", json2);
             console.log("json returns in showStatsByID(), json looks like: ", json);
             console.log("json.lookups = ", json.lookups);

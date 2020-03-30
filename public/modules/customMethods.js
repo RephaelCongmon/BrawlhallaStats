@@ -186,7 +186,7 @@ function showStats(result) {
         document.querySelector('#playerStats').style.display = "inline";
         document.getElementById('playerName').innerHTML = `${playerName}`;
         console.log("mostPlayedLegend =", mostPlayedLegend);
-        document.getElementById("playerPic").src = `https://brawlhallastats.herokuapp.com/assets/images/${mostPlayedLegend}.png`;
+        //document.getElementById("playerPic").src = `https://brawlhallastats.herokuapp.com/assets/images/${mostPlayedLegend}.png`;
         document.getElementById('playerLevel').innerHTML = `<b>Level: </b>${playerLevel}<br />`;
 
         

@@ -231,6 +231,8 @@ async function showStatsByID(id, req, res){
             json2.lookups = newLookups;
             //console.log("Json2 = ", json2);
             console.log("json returns in showStatsByID(), json looks like: ", json);
+            console.log("json.lookups = ", json.lookups);
+            console.log("json2.lookups = ", json2.lookups);
             res.json(json);
         
         });
@@ -712,7 +714,7 @@ router.get('/submit-form3-by-id', async function(req, res) {
     //console.log("Inside submit-form3-by-id:\n    json looks like:", json.level);
     var newJson;
     //newJson = JSON.parse(json);
-    console.log("Inside submit-form3-by-id:\n    newJson looks like:", newJson.level);
+    //console.log("Inside submit-form3-by-id:\n    newJson looks like:", newJson.level);
     //res.json(json);
 });
 

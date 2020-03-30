@@ -188,6 +188,8 @@ function showStats(result) {
         document.getElementById("playerPic").src = `https://brawlhallastats.herokuapp.com/assets/images/${mostPlayedLegend}.png`;
         document.getElementById('playerLevel').innerHTML = `<b>Level: </b>${playerLevel}<br />`;
 
+        console.log("mostPlayedLegend =", mostPlayedLegend);
+
         jQuery(document).ready(function ($) {
             $.noConflict();
             setTimeout(function(){$("#xp-bar-fill").css("-webkit-transition","all 0.01s ease");

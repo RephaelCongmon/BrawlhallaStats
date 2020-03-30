@@ -166,7 +166,7 @@ async function showStatsByID(id, req, res){
         .then(json => {
 
             //console.log("This json = ", json);
-            console.log("json Ranked = ", jsonRanked);
+            //console.log("json Ranked = ", jsonRanked);
 
             var json2 = json;
             let newLookups;

@@ -709,7 +709,7 @@ router.get('/submit-form3-by-id', async function(req, res) {
     
     //const json = await new Promise((res, rej) => pool.query(searchGlobalQueryData,  (err, globalData) => err ? rej(err) : res(globalData)));
     json = await showStatsByID(id, req, res);
-    console.log("Inside submit-form3-by-id:\n    json looks like:", json.level);
+    //console.log("Inside submit-form3-by-id:\n    json looks like:", json.level);
     var newJson;
     //newJson = JSON.parse(json);
     console.log("Inside submit-form3-by-id:\n    newJson looks like:", newJson.level);

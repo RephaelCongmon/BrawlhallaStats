@@ -68,6 +68,8 @@ function showStats(result) {
         var legendKillRatio;
         var legendTime;
         var str = "";
+        var mostPlayedLegend = "";
+        var mostPlayedLegendCurr = 0;
         str += `<table id="leaderboard-table" class="table table-striped table-bordered dt-responsive dataTable no-footer dtr-inline display nowrap" role="grid" aria-describedby="leaderboard-table-info" width="100%" border-collapse="collapse" class="display nowrap">
         <tbody>`;
 
@@ -93,6 +95,11 @@ function showStats(result) {
             str += result.legends[i].matchtime ? `<td data-order="${result.legends[i].matchtime}">${timeStringFunction(result.legends[i].matchtime)}</td>` : `<td data-order="0">Never Played</td>`;
             
             str += '</tr>';
+
+            if ( (result.legends[i].games/playerGames) > mostPlayedLegendCurr ){
+                mostPlayedLegendCurr = result.legends[i].games/playerGames;
+                mostPlayedLegend = result.legends[i].legend_name_key;
+            }
 
             damageDealt += parseInt(result.legends[i].damagedealt);
             damageTaken += parseInt(result.legends[i].damagetaken);
@@ -178,6 +185,7 @@ function showStats(result) {
         document.querySelector('#hiddenSearchBar').style.display = "flex";
         document.querySelector('#playerStats').style.display = "inline";
         document.getElementById('playerName').innerHTML = `${playerName}`;
+        document.getElementById("playerPic").src = `https://brawlhallastats.herokuapp.com/assets/images/${mostPlayedLegend}.png`;
         document.getElementById('playerLevel').innerHTML = `<b>Level: </b>${playerLevel}<br />`;
 
         jQuery(document).ready(function ($) {

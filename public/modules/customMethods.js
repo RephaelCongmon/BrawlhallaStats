@@ -346,7 +346,7 @@ function getGlory(wins, elo){
     else if (elo >= 1680 && elo <= 1999){
         eloGlory = 10*(300 + (137*(elo-1680)/320) );
     }
-    else if (elo >= 2000 ** elo <= 2299){
+    else if (elo >= 2000 && elo <= 2299){
         eloGlory = 10*(437 + (43*(elo-2000)/300) );
     }
     else {

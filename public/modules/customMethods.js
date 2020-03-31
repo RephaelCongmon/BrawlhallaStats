@@ -329,6 +329,7 @@ function getGlory(wins, elo){
     var glory = 0;
     var winsGlory = 0;
     var eloGlory = 0;
+    var temp = 0;
 
     if (elo < 1200){
         eloGlory = 250;
@@ -357,11 +358,17 @@ function getGlory(wins, elo){
         
     }
     else {
-        winsGlory = 245 + (450*(Math.pow(Math.log10(2*wins), 2)) );
+        temp = Math.log10(2*wins);
+        temp = Math.pow(temp, 2);
+        temp = 450* temp;
+        temp = 245 + temp;
+        winsGlory = temp;
+       
     }
 
     glory += winsGlory;
     glory += eloGlory;
+    Math.floor(glory);
     return glory;
 
 }

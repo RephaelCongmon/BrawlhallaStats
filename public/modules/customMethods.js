@@ -268,7 +268,7 @@ function showStats(result) {
         + `<b>Total 1v1 Matches: </b>${numberWithCommas(result.playerRanked.games)}<br />`
         + `<b>Ranked 1v1 Wins: </b>${numberWithCommas(result.playerRanked.wins)}<br />`
         + `<b>Ranked 1v1 W/L Ratio: </b>${((result.playerRanked.wins/result.playerRanked.games)*100).toFixed(2).toString()}%<br />`
-        + `<b>Glory Earned So Far: </b>${getGlory(result.playerRanked.wins, result.playerRanked.peak_rating)} glory.<br />`
+        + `<b>Glory Earned So Far: </b>${numberWithCommas(getGlory(result.playerRanked.wins, result.playerRanked.peak_rating))} glory.<br />`
         + `</div>`;
 
         jQuery(document).ready(function ($) {
@@ -369,6 +369,8 @@ function getGlory(wins, elo){
     glory += winsGlory;
     glory += eloGlory;
     glory = Math.floor(glory);
+    console.log("winsGlory = ", winsGlory);
+    console.log("eloGlory = ", eloGlory);
     return glory;
 
 }

@@ -350,7 +350,10 @@ function getGlory(wins, elo){
         eloGlory = 10*(437 + (43*(elo-2000)/300) );
     }
     else {
-        eloGlory = 10*(480 + ((elo-2300)/20) );
+        eloGlory = (elo-2300)/20;
+        eloGlory = eloGlory + 480;
+        eloGlory = eloGlory * 10;
+      
     }
 
     if (wins <= 150){

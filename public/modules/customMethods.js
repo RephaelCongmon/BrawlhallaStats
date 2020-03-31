@@ -21,6 +21,7 @@ function showStats(result) {
         var playerXPPercentage = result.xp_percentage;
         var playerCurrentElo = result.playerRanked.rating;
         var playerPeakElo = result.playerRanked.peak_rating;
+        var playerTier = result.playerRanked.tier;
 
         playerXPPercentage *= 100;
         playerXPPercentage = Math.floor(playerXPPercentage);
@@ -256,6 +257,7 @@ function showStats(result) {
         document.getElementById('playerSnowballKOs').innerHTML = `<b>Snowball Kills: </b>${numberWithCommas(playerSnowballKOs)}<br />`;
 
         document.getElementById('playerRankedStatsInfo').innerHTML = `<hr>`
+        + `<img src="https://brawlhallastats.herokuapp.com/assets/images/${playerTier}.png"><br />`
         + `<b>Current Elo: </b>${playerCurrentElo}<br />`
         + `<b>Peak Elo: </b>${playerPeakElo}<br />`;
 

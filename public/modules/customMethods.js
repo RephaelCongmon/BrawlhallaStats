@@ -19,6 +19,9 @@ function showStats(result) {
         var playerLosses = result.games-result.wins;
         var playerLevel = result.level;
         var playerXPPercentage = result.xp_percentage;
+        var playerCurrentElo = result.playerRanked.rating;
+        var playerPeakElo = result.playerRanked.peak_rating;
+
         playerXPPercentage *= 100;
         playerXPPercentage = Math.floor(playerXPPercentage);
         var playerXPPercentageString = playerXPPercentage + "%";
@@ -252,7 +255,9 @@ function showStats(result) {
         document.getElementById('playerSidekickKOs').innerHTML = `<b>Sidekick Kills: </b>${numberWithCommas(playerSidekickKOs)}<br />`;
         document.getElementById('playerSnowballKOs').innerHTML = `<b>Snowball Kills: </b>${numberWithCommas(playerSnowballKOs)}<br />`;
 
-        document.getElementById('playerRankedStatsInfo').innerHTML = `<hr>`;
+        document.getElementById('playerRankedStatsInfo').innerHTML = `<hr>`
+        + `<b>Current Elo: </b>${playerCurrentElo}<br />`
+        + `<b>Peak Elo: </b>${playerPeakElo}<br />`;
 
         jQuery(document).ready(function ($) {
             $.noConflict();

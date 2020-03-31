@@ -368,7 +368,7 @@ function getGlory(wins, elo){
 
     glory += winsGlory;
     glory += eloGlory;
-    Math.floor(glory);
+    glory = Math.floor(glory);
     return glory;
 
 }

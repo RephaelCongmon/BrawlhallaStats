@@ -261,7 +261,7 @@ function showStats(result) {
         + `<img src="https://brawlhallastats.herokuapp.com/assets/images/${playerTier}.png" ALIGN=”left” HSPACE=”50” VSPACE=”50”/>`
         + `</div>`
         + `<div style="display:inline-block;">`
-        + `<b>Current Elo: </b>${playerCurrentElo}\n`
+        + `<b>Current Elo: </b>${playerCurrentElo}<br />`
         + `<b>Peak Elo: </b>${playerPeakElo}<br />`
         + `</div>`;
 

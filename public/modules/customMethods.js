@@ -261,8 +261,14 @@ function showStats(result) {
         + `<img src="https://brawlhallastats.herokuapp.com/assets/images/${playerTier}.png" ALIGN=”left” HSPACE=”50” VSPACE=”50”/>`
         + `</div>`
         + `<div style="display:inline-block;">`
+        + `<b>Current Tier: </b>${result.playerRanked.tier}<br />`
         + `<b>Current Elo: </b>${playerCurrentElo}<br />`
         + `<b>Peak Elo: </b>${playerPeakElo}<br />`
+        + `<b>Global Rank: </b>${numberWithCommas(result.playerRanked.global_rank)}<br />`
+        + `<b>Region Rank: </b>${numberWithCommas(result.playerRanked.region_rank)}<br />`
+        + `<b>Region: </b>${result.playerRanked.region}<br />`
+        + `<b>Total 1v1 Matches: </b>${numberWithCommas(result.playerRanked.games)}<br />`
+        + `<b>Ranked 1v1 Wins: </b>${numberWithCommas(result.playerRanked.wins)}<br />`
         + `</div>`;
 
         jQuery(document).ready(function ($) {

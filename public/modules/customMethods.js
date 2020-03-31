@@ -264,11 +264,11 @@ function showStats(result) {
         + `<b>Current Tier: </b>${result.playerRanked.tier}<br />`
         + `<b>Current Elo: </b>${playerCurrentElo}<br />`
         + `<b>Peak Elo: </b>${playerPeakElo}<br />`
-        + `<b>Global Rank: </b>${numberWithCommas(result.playerRanked.global_rank)}<br />`
-        + `<b>Region Rank: </b>${numberWithCommas(result.playerRanked.region_rank)}<br />`
         + `<b>Region: </b>${result.playerRanked.region}<br />`
         + `<b>Total 1v1 Matches: </b>${numberWithCommas(result.playerRanked.games)}<br />`
         + `<b>Ranked 1v1 Wins: </b>${numberWithCommas(result.playerRanked.wins)}<br />`
+        + `<b>Ranked 1v1 W/L Ratio: </b>${((result.playerRanked.wins/result.playerRanked.games)*100).toFixed(2).toString()}%<br />`
+        + `<b>Glory Earned So Far: </b>${getGlory(result.playerRanked.wins, result.playerRanked.peak_rating)} glory.<br />`
         + `</div>`;
 
         jQuery(document).ready(function ($) {
@@ -323,4 +323,45 @@ function showPlayerStatsWithFunctions(id) {
 
     //return playerXPPercentageString;
     return;
+}
+
+function getGlory(wins, elo){
+    var glory = 0;
+    var winsGlory = 0;
+    var eloGlory = 0;
+
+    if (elo < 1200){
+        eloGlory = 250;
+    }
+    else if (elo >= 1200 && elo <= 1285){
+        eloGlory = 10*(25 + (75*(elo-1200)/86) );
+    }
+    else if (elo >= 1286 && elo <= 1389){
+        eloGlory = 10*(100 + (75*(elo-1286)/104) );
+    }
+    else if (elo >= 1390 && elo <= 1679){
+        eloGlory = 10*(187 + (113*(elo-1390)/290) );
+    }
+    else if (elo >= 1680 && elo <= 1999){
+        eloGlory = 10*(300 + (137*(elo-1680)/320) );
+    }
+    else if (elo >= 2000 ** elo <= 2299){
+        eloGlory = 10*(437 + (43*(elo-2000)/300) );
+    }
+    else {
+        eloGlory = 10*(480 + ((elo-2300)/20) );
+    }
+
+    if (wins <= 150){
+        winsGlory = 20*wins;
+        
+    }
+    else {
+        winsGlory = 245 + (450*(Math.pow(Math.log10(2*wins), 2)) );
+    }
+
+    glory += winsGlory;
+    glory += eloGlory;
+    return glory;
+
 }

@@ -257,7 +257,7 @@ function showStats(result) {
         document.getElementById('playerSnowballKOs').innerHTML = `<b>Snowball Kills: </b>${numberWithCommas(playerSnowballKOs)}<br />`;
 
         document.getElementById('playerRankedStatsInfo').innerHTML = `<hr>`
-        + `<img src="https://brawlhallastats.herokuapp.com/assets/images/${playerTier}.png"><br />`
+        + `<img src="https://brawlhallastats.herokuapp.com/assets/images/${playerTier}.png" ALIGN=”left” HSPACE=”50” VSPACE=”50”/>`
         + `<b>Current Elo: </b>${playerCurrentElo}<br />`
         + `<b>Peak Elo: </b>${playerPeakElo}<br />`;
 

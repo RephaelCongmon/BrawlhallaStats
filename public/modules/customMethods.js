@@ -252,6 +252,8 @@ function showStats(result) {
         document.getElementById('playerSidekickKOs').innerHTML = `<b>Sidekick Kills: </b>${numberWithCommas(playerSidekickKOs)}<br />`;
         document.getElementById('playerSnowballKOs').innerHTML = `<b>Snowball Kills: </b>${numberWithCommas(playerSnowballKOs)}<br />`;
 
+        document.getElementById('playerRankedStatsInfo').innerHTML = `<hr>`;
+
         jQuery(document).ready(function ($) {
             $.noConflict();
             $('#leaderboard-table').DataTable( {

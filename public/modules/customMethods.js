@@ -256,7 +256,7 @@ function showStats(result) {
         document.getElementById('playerSidekickKOs').innerHTML = `<b>Sidekick Kills: </b>${numberWithCommas(playerSidekickKOs)}<br />`;
         document.getElementById('playerSnowballKOs').innerHTML = `<b>Snowball Kills: </b>${numberWithCommas(playerSnowballKOs)}<br />`;
 
-        document.getElementById('playerRankedStatsInfo').innerHTML = `<hr>`
+        document.getElementById('playerRankedStatsInfo').innerHTML = result.playerRanked.games ? (`<hr>`
         + `<div style="display:inline-block;vertical-align:top;">`
         + `<img src="https://brawlhallastats.herokuapp.com/assets/images/${playerTier}.png" ALIGN=”left” HSPACE=”50” VSPACE=”50”/>`
         + `</div>`
@@ -265,11 +265,11 @@ function showStats(result) {
         + `<b>Current Elo: </b>${playerCurrentElo}<br />`
         + `<b>Peak Elo: </b>${playerPeakElo}<br />`
         + `<b>Region: </b>${result.playerRanked.region}<br />`
-        + `<b>Total 1v1 Matches: </b>${numberWithCommas(result.playerRanked.games)}<br />`
+        + (result.playerRanked.games ? `<b>Total 1v1 Matches: </b>${numberWithCommas(result.playerRanked.games)}<br />`: `<b>Total 1v1 Matches: </b>0`)
         + `<b>Ranked 1v1 Wins: </b>${numberWithCommas(result.playerRanked.wins)}<br />`
         + `<b>Ranked 1v1 W/L Ratio: </b>${((result.playerRanked.wins/result.playerRanked.games)*100).toFixed(2).toString()}%<br />`
-        + `<b>Glory Earned So Far: </b>${numberWithCommas(getGlory(result.playerRanked.wins, result.playerRanked.peak_rating))} glory.<br />`
-        + `</div>`;
+        + `<b>Glory Earned This Season: </b>${numberWithCommas(getGlory(result.playerRanked.wins, result.playerRanked.peak_rating))} glory.<br />`
+        + `</div>`):`Player has not played enough ranked matches this season for ranked data!`;
 
         jQuery(document).ready(function ($) {
             $.noConflict();

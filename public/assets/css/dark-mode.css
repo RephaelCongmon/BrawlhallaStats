@@ -20,19 +20,19 @@
 }
 
 [data-theme="dark"] .page-title-box {
-  background-color: #111111 !important;
+  background-color: #171717 !important;
   color: #cac5bc;
   transition: 0.5s;
 }
 
 [data-theme="dark"] .page-title {
-  background-color: #111111 !important;
+  background-color: #171717 !important;
   color: #cac5bc;
   transition: 0.5s;
 }
 
 [data-theme="dark"] .header-title {
-  background-color: #131313 !important;
+  background-color: #171717 !important;
   color: #cac5bc;
   transition: 0.5s;
 }
@@ -73,45 +73,45 @@
 }
 
 [data-theme="dark"] table.dataTable {
-  border-bottom: 1px #222222;
+  border: 1px solid #222222 !important;
   transition: 0.5s;
 }
 
 [data-theme="dark"] table.dataTable thead th,
 table.dataTable thead td {
   
-  border-bottom: 1px solid #222222 !important; }
+  border: 1px solid #222222 !important; }
 
 [data-theme="dark"] table.dataTable tfoot th,
 table.dataTable tfoot td {
-  border-top: 1px #222222 !important;
+  border: 1px solid #222222 !important;
   transition: 0.5s;
 }
 
 [data-theme="dark"] table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td {
-  border-top: 1px solid #222222 !important;
+  border: 1px solid #222222 !important;
 
 }
 
 [data-theme="dark"] table.dataTable.cell-border tbody th, table.dataTable.cell-border tbody td {
-  border-top: 1px solid #222222 !important;
-  border-right: 1px solid #222222 !important; }
+  border: 1px solid #222222 !important;
+  }
 
-  [data-theme="dark"] table.dataTable.cell-border tbody tr th:first-child,
-  table.dataTable.cell-border tbody tr td:first-child {
-    border-left: 1px solid #222222 !important; }
+[data-theme="dark"] table.dataTable.cell-border tbody tr th:first-child,
+table.dataTable.cell-border tbody tr td:first-child {
+  border: 1px solid #222222 !important; }
+
+[data-theme="dark"] table.dataTable.no-footer {
+  border: 1px solid #222222 !important; }
+
+[data-theme="dark"] .dataTables_wrapper.no-footer .dataTables_scrollBody {
+  border: 1px solid #222222 !important; }
 
 [data-theme="dark"] .footer {
   background-color: #222222 !important;
   color: #7b7b7b;
   transition: 0.5s;
 }
-
-[data-theme="dark"] table.dataTable.no-footer {
-  border-bottom: 1px solid #222222 !important; }
-
-  [data-theme="dark"] .dataTables_wrapper.no-footer .dataTables_scrollBody {
-    border-bottom: 1px solid #222222 !important; }
 
 [data-theme="dark"] .side-menu {
   background-color: #111111 !important;

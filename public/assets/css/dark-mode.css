@@ -44,16 +44,22 @@
   transition: 0.5s;
 }
 
+[data-theme="dark"] .form-control {
+  background-color: #131313 !important;
+  color: #cac5bc;
+  transition: 0.5s;
+}
+
 [data-theme="dark"] .table-striped>tbody>tr:nth-child(odd)>td, 
 .table-striped>tbody>tr:nth-child(odd)>th {
-  background-color: #2d2d2d;
+  background-color: #161616;
   color: #cac5bc;
   transition: 0.5s;
 }
 
 [data-theme="dark"] .table-striped>tbody>tr:nth-child(even)>td, 
 .table-striped>tbody>tr:nth-child(even)>th{
-  background-color: #303030;
+  background-color: #131313;
   color: #cac5bc;
   transition: 0.5s;
 }

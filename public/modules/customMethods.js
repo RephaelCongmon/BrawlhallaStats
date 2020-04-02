@@ -377,3 +377,4 @@ function getGlory(wins, elo){
     return glory;
 
 }
+

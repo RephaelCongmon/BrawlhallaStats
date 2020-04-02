@@ -19,7 +19,7 @@
   transition: 0.5s;
 }
 
-[data-theme="dark"] .topbar {
+[data-theme="dark"] .navbar {
   background-color: #c38fff !important;
   color: #2a1e37 !important;
   transition: 0.5s;

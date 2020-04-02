@@ -757,23 +757,20 @@ router.get('/leaderboards/mostsearched', async function(req, res) {
     //console.log(data.rows);
 
     res.json(data.rows);
-    // var keys = [];
+  
 
-    // for (var key in req.query) {
-    //     if (req.query.hasOwnProperty(key)) {
-    //         keys.push(key);
-    //     }
-    // }
+});
 
-    // console.log(`keys[0] = ${keys[0]}`);
+router.get('/leaderboards/mosttimeplayed', async function(req, res) {
+    console.log("most searched button submitted");
 
-    // await fetch(`https://api.brawlhalla.com/rankings/${keys[0]}/all/1?api_key=${TOKEN}`)
-    //     .then(res => res.json())
-    //     .then(json => {
+    let searchQueryData = `SELECT * FROM brawlhalla ORDER BY totaltime DESC LIMIT 100`;
 
-    //         res.json(json);
-        
-    // });
+    const data = await new Promise((res, rej) => pool.query(searchQueryData, (err, data) => err ? rej(err) : res(data)));
+    //console.log(data.rows);
+
+    res.json(data.rows);
+  
 
 });
 

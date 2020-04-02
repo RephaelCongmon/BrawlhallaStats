@@ -37,6 +37,12 @@
   transition: 0.5s;
 }
 
+[data-theme="dark"] .portlet-title {
+  background-color: #171717 !important;
+  color: #cac5bc;
+  transition: 0.5s;
+}
+
 [data-theme="dark"] .card {
   background-color: #171717 !important;
   border: 1px solid #191919 !important;
@@ -57,7 +63,21 @@
   transition: 0.5s;
 }
 
-[data-theme="dark"] .portlet-heading, .portlet-default, .portlet-body {
+[data-theme="dark"] .portlet-heading {
+  background-color: #171717 !important;
+  border: 1px solid #191919 !important;
+  color: #cac5bc;
+  transition: 0.5s;
+}
+
+[data-theme="dark"] .portlet-default {
+  background-color: #171717 !important;
+  border: 1px solid #191919 !important;
+  color: #cac5bc;
+  transition: 0.5s;
+}
+
+[data-theme="dark"] .portlet-body {
   background-color: #171717 !important;
   border: 1px solid #191919 !important;
   color: #cac5bc;

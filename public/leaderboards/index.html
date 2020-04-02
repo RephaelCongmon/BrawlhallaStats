@@ -586,7 +586,7 @@
 
     }
 
-    document.querySelectorAll('#ButtonOneVOne, #ButtonTwoVTwo, #mostSearchedButton').forEach(button => button.addEventListener('click', e => {
+    document.querySelectorAll('#ButtonOneVOne, #ButtonTwoVTwo, #mostSearchedButton,  #mostTimePlayedButton').forEach(button => button.addEventListener('click', e => {
         
         e.preventDefault();
 
@@ -837,7 +837,7 @@
                         $('#leaderboard-table').DataTable();
 
                     });
-                    document.getElementById("leaderboard-name").innerHTML = ` - Most Searched Players`;         
+                    document.getElementById("leaderboard-name").innerHTML = ` - Most Time Played Players`;         
             });
         }
     }));

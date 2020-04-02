@@ -762,7 +762,7 @@ router.get('/leaderboards/mostsearched', async function(req, res) {
 });
 
 router.get('/leaderboards/mosttimeplayed', async function(req, res) {
-    console.log("most searched button submitted");
+    console.log("most time played button submitted");
 
     let searchQueryData = `SELECT * FROM brawlhalla ORDER BY totaltime DESC LIMIT 100`;
 

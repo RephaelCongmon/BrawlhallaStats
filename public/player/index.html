@@ -57,9 +57,9 @@
     }
 </style>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://brawlhallastats.herokuapp.com/assets/css/dark-mode.css">
- <!-- <link href="https://brawlhallastats.herokuapp.com/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+ <link href="https://brawlhallastats.herokuapp.com/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
  <link href="https://brawlhallastats.herokuapp.com/assets/css/core.css" rel="stylesheet" type="text/css">
  <link href="https://brawlhallastats.herokuapp.com/assets/css/icons.css" rel="stylesheet" type="text/css">
  <link href="https://brawlhallastats.herokuapp.com/assets/css/components.css" rel="stylesheet" type="text/css">
@@ -122,7 +122,25 @@
  </div>
  </div>
  
- <div class="navbar navbar-default" role="navigation"><div class="container"><div class=""><div class="pull-left"><button class="button-menu-mobile open-left waves-effect"><i class="zmdi zmdi-menu"></i></button><span class="clearfix"></span></div><ul class="nav navbar-nav hidden-xs"></ul></div></div></div> </div>
+ <div class="navbar navbar-default" role="navigation">
+     <div class="container">
+         <div class="">
+             <div class="pull-left">
+                 <button class="button-menu-mobile open-left waves-effect">
+                     <i class="zmdi zmdi-menu"></i></button>
+                <span class="clearfix"></span>
+            </div>
+            <ul class="nav navbar-nav hidden-xs"></ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="darkSwitch">
+                        <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+                      </div>
+                </li>
+            </ul>
+        </div>
+    </div></div> </div>
  
 
  <div class="left side-menu">

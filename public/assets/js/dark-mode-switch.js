@@ -3,6 +3,7 @@
   if (darkSwitch) {
     initTheme();
     darkSwitch.addEventListener("change", function(event) {
+      console.log("Dark switch invoked!")
       resetTheme();
     });
     function initTheme() {

@@ -120,6 +120,13 @@ table.dataTable.cell-border tbody tr td:first-child {
   border-right: 1px solid #222222 !important;
 }
 
+[data-theme="dark"] .menu-title {
+  
+  color: #dbdbdb;
+  transition: 0.5s;
+  border-right: 1px solid #222222 !important;
+}
+
 /* [data-theme="dark"] .card-header {
   background-color: #444 !important;
   border: 1px solid rgba(0, 0, 0, 0.125);

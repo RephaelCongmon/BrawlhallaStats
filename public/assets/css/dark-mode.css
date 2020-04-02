@@ -38,21 +38,22 @@
 }
 
 [data-theme="dark"] .card {
-  background-color: #131313 !important;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: #141414 !important;
+  border: 1px solid #151515 !important;
   transition: 0.5s;
 }
 
 [data-theme="dark"] .card-box {
-  background-color: #131313 !important;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: #141414 !important;
+  border: 1px solid #151515 !important;
   color: #cac5bc;
   transition: 0.5s;
 }
 
 [data-theme="dark"] .form-control {
-  background-color: #131313 !important;
+  background-color: #141414 !important;
   color: #cac5bc;
+  border: 1px #1e1e1e !important;
   transition: 0.5s;
 }
 
@@ -72,6 +73,17 @@
   transition: 0.5s;
 }
 
+[data-theme="dark"] .footer {
+  background-color: #222222 !important;
+  color: #7b7b7b;
+  transition: 0.5s;
+}
+
+[data-theme="dark"] .side-menu {
+  background-color: #111111 !important;
+  color: #7b7b7b;
+  transition: 0.5s;
+}
 
 /* [data-theme="dark"] .card-header {
   background-color: #444 !important;

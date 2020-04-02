@@ -1290,6 +1290,17 @@
         showPlayerStatsWithFunctions(new URLSearchParams(window.location.search).toString() );
         
     }
+
+    if (urlParams.has('darkmode') && getUrlParameter('darkmode') == "true"){
+        console.log("Dark mode activated!");
+
+        if( $( "body" ).hasClass( "darkmode" )) { 
+            $( "body" ).removeClass( "darkmode" ); 
+       
+        } else { 
+            $( "body" ).addClass( "darkmode" ); 
+        }
+    }
         //$('#leaderboard-table').DataTable();
 
     });

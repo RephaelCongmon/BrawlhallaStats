@@ -19,6 +19,14 @@
   transition: 0.5s;
 }
 
+[data-theme="dark"] .topbar {
+  background-color: #c38fff !important;
+  color: #2a1e37 !important;
+  transition: 0.5s;
+}
+
+#c38fff
+
 [data-theme="dark"] .page-title-box {
   background-color: #171717 !important;
   color: #cac5bc;

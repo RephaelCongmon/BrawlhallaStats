@@ -117,7 +117,7 @@ table.dataTable.cell-border tbody tr td:first-child {
   background-color: #111111 !important;
   color: #7b7b7b;
   transition: 0.5s;
-  border-right: 1px #222222 !important;
+  border-right: 1px solid #222222 !important;
 }
 
 /* [data-theme="dark"] .card-header {

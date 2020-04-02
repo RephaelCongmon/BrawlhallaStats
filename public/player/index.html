@@ -132,12 +132,12 @@
                 <span class="clearfix"></span>
             </div>
             <ul class="nav navbar-nav hidden-xs"></ul>
-        </div>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+                <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+              </div>
 
-        <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="darkSwitch" />
-            <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
-          </div>
+        </div>
           
         
     </div>
@@ -606,6 +606,32 @@
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     };
 
+    var darkSwitch = document.getElementById("darkSwitch");
+  if (darkSwitch) {
+    initTheme();
+    darkSwitch.addEventListener("change", function(event) {
+      console.log("Dark switch invoked!")
+      resetTheme();
+    });
+    function initTheme() {
+      var darkThemeSelected =
+        localStorage.getItem("darkSwitch") !== null &&
+        localStorage.getItem("darkSwitch") === "dark";
+      darkSwitch.checked = darkThemeSelected;
+      darkThemeSelected
+        ? document.body.setAttribute("data-theme", "dark")
+        : document.body.removeAttribute("data-theme");
+    }
+    function resetTheme() {
+      if (darkSwitch.checked) {
+        document.body.setAttribute("data-theme", "dark");
+        localStorage.setItem("darkSwitch", "dark");
+      } else {
+        document.body.removeAttribute("data-theme");
+        localStorage.removeItem("darkSwitch");
+      }
+    }
+  }
     
     document.querySelector('#myFormByBrawlhallaID').addEventListener('submit', e => {
         console.log("Search by Brawlhalla ID Ran!");
@@ -1226,6 +1252,7 @@
         // });
     }));
    
+
 </script>
 
 

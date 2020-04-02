@@ -14,3 +14,34 @@
 [data-theme="dark"] .bg-black {
   background-color: #eee !important;
 }
+
+[data-theme="dark"] .card {
+  background-color: #303030 !important;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+[data-theme="dark"] .card-header {
+  background-color: #444 !important;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+[data-theme="dark"] .card-footer {
+  background-color: #444 !important;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+[data-theme="dark"] .modal-content {
+  background-color: #303030 !important;
+  border: 1px solid #444;
+}
+
+[data-theme="dark"] .breadcrumb {
+  background-color: #444 !important;
+
+}
+
+[data-theme="dark"] .breadcrumb a{
+  background-color: #fff !important;
+
+}
+

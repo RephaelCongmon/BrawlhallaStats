@@ -8,7 +8,7 @@
         if (darkSwitch) {
             console.log("Dark switch initialized!");
           initTheme();
-          document.getElementyById("darkModeClick").addEventListener("click", function(event) {
+          darkSwitch.addEventListener("click", function(event) {
             console.log("Dark switch invoked!")
             resetTheme();
           });
@@ -28,11 +28,11 @@
   
         if (darkThemeSelected){
           document.getElementById("darkModeText").innerHTML=`Turn Lights On`;
-          document.getElementById("darkModeText").className="zmdi zmdi-brightness-5";
+          document.getElementById("darkModeIcon").className="zmdi zmdi-brightness-5";
         }
         else {
           document.getElementById("darkModeText").innerHTML=`Turn Lights Off`;
-          document.getElementById("darkModeText").className="zmdi zmdi-brightness-3";
+          document.getElementById("darkModeIcon").className="zmdi zmdi-brightness-3";
         }
       }
       function resetTheme() {

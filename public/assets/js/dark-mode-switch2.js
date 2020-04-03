@@ -4,16 +4,18 @@
         darkSwitch = document.getElementById("darkModeClick");
         console.log("Dark Switch loaded!");
         console.log("darkSwitch = ", darkSwitch);
+
+        if (darkSwitch) {
+            console.log("Dark switch initialized!");
+          initTheme();
+          document.getElementyById("darkModeClick").addEventListener("click", function(event) {
+            console.log("Dark switch invoked!")
+            resetTheme();
+          });
     }
     
     
-    if (darkSwitch) {
-        console.log("Dark switch initialized!");
-      initTheme();
-      document.getElementyById("darkModeClick").addEventListener("click", function(event) {
-        console.log("Dark switch invoked!")
-        resetTheme();
-      });
+    
       function initTheme() {
           console.log("initTheme() invoked!");
         var darkThemeSelected =

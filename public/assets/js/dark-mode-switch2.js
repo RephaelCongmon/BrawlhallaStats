@@ -1,11 +1,15 @@
 (function() {
-    var darkSwitch = document.getElementById("darkModeClick");
+    var darkSwitch;
+    window.onload = function(){
+        darkSwitch = document.getElementById("darkModeClick");
+    }
+    
     console.log("Dark Switch loaded!");
     console.log("darkSwitch = ", darkSwitch);
     if (darkSwitch) {
         console.log("Dark switch initialized!");
       initTheme();
-      darkSwitch.addEventListener("click", function(event) {
+      document.getElementyById("darkModeClick").addEventListener("click", function(event) {
         console.log("Dark switch invoked!")
         resetTheme();
       });

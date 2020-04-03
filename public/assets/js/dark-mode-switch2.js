@@ -40,12 +40,12 @@
           document.body.setAttribute("data-theme", "dark");
           localStorage.setItem("darkSwitch", "dark");
           document.getElementById("darkModeText").innerHTML=`Turn Lights On`;
-          document.getElementById("darkModeText").className="zmdi zmdi-brightness-5";
+          document.getElementById("darkModeIcon").className="zmdi zmdi-brightness-5";
         } else {
           document.body.removeAttribute("data-theme");
           localStorage.removeItem("darkSwitch");
           document.getElementById("darkModeText").innerHTML=`Turn Lights Off`;
-          document.getElementById("darkModeText").className="zmdi zmdi-brightness-3";
+          document.getElementById("darkModeIcon").className="zmdi zmdi-brightness-3";
         }
       }
     }

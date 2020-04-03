@@ -2,10 +2,11 @@
     var darkSwitch;
     window.onload = function(){
         darkSwitch = document.getElementById("darkModeClick");
+        console.log("Dark Switch loaded!");
+        console.log("darkSwitch = ", darkSwitch);
     }
     
-    console.log("Dark Switch loaded!");
-    console.log("darkSwitch = ", darkSwitch);
+    
     if (darkSwitch) {
         console.log("Dark switch initialized!");
       initTheme();

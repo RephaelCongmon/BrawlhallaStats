@@ -208,7 +208,7 @@
   
   color: #dbdbdb;
   transition: 0.3s;
-  border-right: 1px solid #222222 !important;
+  border-right: none !important;
 }
 
 /* [data-theme="dark"] .card-header {

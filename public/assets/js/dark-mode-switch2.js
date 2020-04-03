@@ -3,7 +3,7 @@
     console.log("Dark Switch loaded!");
     if (darkSwitch) {
       initTheme();
-      darkSwitch.addEventListener("onclick", function(event) {
+      darkSwitch.addEventListener("click", function(event) {
         console.log("Dark switch invoked!")
         resetTheme();
       });

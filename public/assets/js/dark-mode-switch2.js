@@ -2,16 +2,18 @@
     var darkSwitch = document.getElementById("darkModeClick");
     console.log("Dark Switch loaded!");
     if (darkSwitch) {
+        console.log("Dark switch initialized!");
       initTheme();
       darkSwitch.addEventListener("click", function(event) {
         console.log("Dark switch invoked!")
         resetTheme();
       });
       function initTheme() {
+          console.log("initTheme() invoked!");
         var darkThemeSelected =
           localStorage.getItem("darkSwitch") !== null &&
           localStorage.getItem("darkSwitch") === "dark";
-        darkSwitch.checked = darkThemeSelected;
+        
         darkThemeSelected
           ? document.body.setAttribute("data-theme", "dark") 
           : document.body.removeAttribute("data-theme");

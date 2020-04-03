@@ -19,7 +19,13 @@
   transition: 0.3s;
 }
 
-[data-theme="dark"] .navbar {
+[data-theme="dark"] .topbar {
+  background-color: #2196f3 !important;
+  color: #2a1e37 !important;
+  transition: 0.3s;
+}
+
+[data-theme="dark"] .btn {
   background-color: #2196f3 !important;
   color: #2a1e37 !important;
   transition: 0.3s;
@@ -113,7 +119,7 @@
 }
 
 [data-theme="dark"] table.dataTable {
-  border: 1px solid #222222 !important;
+  border: none !important;
   transition: 0.3s;
 }
 

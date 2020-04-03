@@ -27,6 +27,7 @@
 
 [data-theme="dark"] .btn {
   background-color: #2196f3 !important;
+  border: 1px solid #2196f3 !important;
   color: #2a1e37 !important;
   transition: 0.3s;
 }

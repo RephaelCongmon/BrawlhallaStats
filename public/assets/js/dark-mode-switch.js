@@ -28,7 +28,7 @@
 })();
 
 (function() {
-  var darkSwitch = document.getElementById("darkModeIcon");
+  var darkSwitch = document.getElementById("darkModeClick");
   if (darkSwitch) {
     initTheme();
     darkSwitch.addEventListener("click", function(event) {

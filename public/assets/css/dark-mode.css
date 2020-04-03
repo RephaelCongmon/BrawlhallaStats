@@ -4,6 +4,12 @@
   transition: 0.3s;
 }
 
+[data-theme="dark"] html {
+  background-color: #111111 !important;
+  
+  transition: 0.3s;
+}
+
 [data-theme="dark"] .bg-light {
   background-color: #333 !important;
   transition: 0.3s;

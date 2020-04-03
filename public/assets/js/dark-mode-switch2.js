@@ -36,7 +36,7 @@
         }
       }
       function resetTheme() {
-        if (darkSwitch.checked) {
+        if (localStorage.getItem('darkSwitch') != "dark") {
           document.body.setAttribute("data-theme", "dark");
           localStorage.setItem("darkSwitch", "dark");
           document.getElementById("darkModeText").innerHTML=`Turn Lights On`;

@@ -162,7 +162,7 @@ async function showStatsByID(id, req, res){
     });
 
     if (jsonRanked == undefined || typeof jsonRanked === 'undefined' || (!jsonRanked[0])){ //checking to see if jsonRanked exists or contains anything
-        jsonRanked.error.code = 404;
+        jsonRanked = {error: {code: 404}};
         console.log("jsonRanked is not found.\njsonRanked: ", jsonRanked);
         //res.json(jsonRanked);
     }

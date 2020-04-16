@@ -161,7 +161,7 @@ async function showStatsByID(id, req, res){
         jsonRanked = json;
     });
 
-    if (!jsonRanked.name){
+    if (jsonRanked == undefined){
         jsonRanked.error.code = 404;
         console.log("jsonRanked is not found.\njsonRanked: ", jsonRanked);
         //res.json(jsonRanked);

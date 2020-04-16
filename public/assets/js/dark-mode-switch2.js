@@ -1,5 +1,6 @@
 (function() {
     var darkSwitch;
+
     window.onload = function(){
         darkSwitch = document.getElementById("darkModeClick");
         console.log("Dark Switch loaded!");

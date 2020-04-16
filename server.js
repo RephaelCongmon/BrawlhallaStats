@@ -168,6 +168,8 @@ async function showStatsByID(id, req, res){
     }
     else {
         console.log("jsonRanked is found!");
+        console.log("type of jsonRanked = ", typeof jsonRanked);
+        console.log(jsonRanked);
     }
 
     await fetch(`https://api.brawlhalla.com/player/${keys[0]}/stats?api_key=${TOKEN}`)

@@ -161,6 +161,15 @@ async function showStatsByID(id, req, res){
         jsonRanked = json;
     });
 
+    if (!jsonRanked){
+        jsonRanked.error.code = 404;
+        console.log("jsonRanked is not found.\njsonRanked: ", jsonRanked);
+        //res.json(jsonRanked);
+    }
+    else {
+        console.log(jsonRanked);
+    }
+
     await fetch(`https://api.brawlhalla.com/player/${keys[0]}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
         .then(json => {

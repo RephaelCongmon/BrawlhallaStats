@@ -182,9 +182,9 @@ async function showStatsByID(id, req, res){
                 return;
             }
             else {
-                console.log("json is found!");
-                console.log("type of json = ", typeof json);
-                console.log(json);
+                //console.log("json is found!");
+                //console.log("type of json = ", typeof json);
+                //console.log(json);
             }
 
             gamesDifference = json.games*1 - previousGames;

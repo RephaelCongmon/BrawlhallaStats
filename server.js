@@ -161,17 +161,7 @@ async function showStatsByID(id, req, res){
         jsonRanked = json;
     });
 
-    if (jsonRanked == undefined || typeof jsonRanked === 'undefined'){ //checking to see if jsonRanked exists or contains anything
-        jsonRanked = {error: {code: 404}};
-        console.log("jsonRanked is not found.\njsonRanked: ", jsonRanked);
-        res.json(jsonRanked);
-        return;
-    }
-    else {
-        console.log("jsonRanked is found!");
-        console.log("type of jsonRanked = ", typeof jsonRanked);
-        console.log(jsonRanked);
-    }
+    
 
     await fetch(`https://api.brawlhalla.com/player/${keys[0]}/stats?api_key=${TOKEN}`)
         .then(res => res.json())
@@ -184,6 +174,18 @@ async function showStatsByID(id, req, res){
             let newLookups;
             var damageDealt = 0;
             var timeSpentInGame = 0;
+
+            if (json == undefined || typeof json === 'undefined' || typeof json.legends === 'undefined'){ //checking to see if json exists or contains anything
+                json = {error: {code: 404}};
+                console.log("jsonRanked is not found.\njson: ", json);
+                res.json(json);
+                return;
+            }
+            else {
+                console.log("json is found!");
+                console.log("type of json = ", typeof json);
+                console.log(json);
+            }
 
             gamesDifference = json.games*1 - previousGames;
 
